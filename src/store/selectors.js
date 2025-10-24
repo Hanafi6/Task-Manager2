@@ -86,6 +86,7 @@ export const selectAdminStats = createSelector(
 
 // ✅ بيرجع كل المستخدمين
 export const selectUsers = (s) => s.auth?.usersList || [];
+// ✅ بيرجع بيانات اليوزر الحالي (المسجل دخول)
 export const selectUser = (s) => s.auth?.user || {};
 
 // ✅ بيرجع كل المشاريع
@@ -98,7 +99,17 @@ export const selectTasks = (s) => s.projects?.tasks || [];
 export const selectSelectedTaskId = (s) => s.projects?.selectedTaskId ?? null;
 
 // ✅ بيرجع الـ ID للمشروع المحدد في الـ UI (لو المستخدم اختار بروجيكت)
-export const selectSelectedProjectId = (s) => s.projects?.selectedProjectId ?? null;
+export const selectSelectedProjectId = (s) => s.projects?.selectProject ?? null;
+
+
+// بيرجع مشروع فردي بالID
+export const selectProjectById = (projectId) =>
+  createSelector([selectProjects], (projects) => {
+    const project = projects.find((p) => String(p.id) === String(projectId)) || null;
+    return project;
+  });
+
+
 
 /*───────────────────────────────
  🧠 [5] أدوات الوقت الخاصة بالمهام
@@ -108,7 +119,7 @@ export const selectSelectedProjectId = (s) => s.projects?.selectedProjectId ?? n
 // هل بدأت؟ انتهت؟ متأخرة؟ ومعاها وقت متبقي
 export function computeTaskTimeMeta(task, now = new Date()) {
 
-  if(!task) return
+  if (!task) return
   const start = task.startAt ? new Date(task.startAt) : null;
   const end = task.endAt ? new Date(task.endAt) : (task.dueDate ? new Date(task.dueDate) : null);
 
@@ -153,12 +164,12 @@ export const makeSelectTasksByUser = (userId, { activeOnly = false } = {}) =>
     const userById = new Map(users.map((u) => [Number(u.id), u]));
     const projById = new Map(projects.map((p) => [Number(p.id), p]));
     return tasks
-      .filter((t) => Number(t.assignedTo) === Number(userId))
-      .filter((t) => !activeOnly || activeIds.has(Number(t.projectId)))
+      .filter((t) => t.assignedTo == userId)
+      .filter((t) => !activeOnly || activeIds.has(t.projectId))
       .map((t) => ({
         ...t,
-        user: userById.get(Number(t.assignedTo)) || null,
-        project: projById.get(Number(t.projectId)) || null,
+        user: userById.get(t.assignedTo) || null,
+        project: projById.get(t.projectId) || null,
         time: computeTaskTimeMeta(t),
       }));
   });
@@ -168,10 +179,12 @@ export const makeSelectTasksByUser = (userId, { activeOnly = false } = {}) =>
 // بيانات المهمة + اليوزر + المشروع + حالة الوقت
 export const makeSelectTaskDetails = (taskId) =>
   createSelector([selectTasks, selectUsers, selectProjects], (tasks, users, projects) => {
-    const t = tasks.find((x) => Number(x.id) === Number(taskId));
-    if (!t) return null;
-    const user = users.find((u) => Number(u.id) === Number(t.assignedTo)) || null;
-    const project = projects.find((p) => Number(p.id) === Number(t.projectId)) || null;
+    if (!taskId) return null;
+
+    const t = tasks.find((x) => x.id == taskId);
+    const user = users.find((u) => u.id == t.assignedTo) || null;
+    const project = projects.find((p) => p.id == t.projectId) || null;
+
     return { ...t, user, project, time: computeTaskTimeMeta(t) };
   });
 
@@ -179,7 +192,7 @@ export const makeSelectTaskDetails = (taskId) =>
 // بيرجع مشروع واحد بناءً على الـ ID
 export const makeSelectProjectById = (projectId) =>
   createSelector([selectProjects], (projects) =>
-    projects.find((p) => Number(p.id) === Number(projectId)) || null
+    projects.find((p) => p.id == projectId) || null
   );
 
 // ✅ makeSelectTasksByProjectId(projectId)
@@ -187,7 +200,7 @@ export const makeSelectProjectById = (projectId) =>
 export const makeSelectTasksByProjectId = (projectId) =>
   createSelector([selectTasks], (tasks) =>
     tasks
-      .filter((t) => Number(t.projectId) === Number(projectId))
+      .filter((t) => t.projectId == projectId)
       .map((t) => ({ ...t, time: computeTaskTimeMeta(t) }))
   );
 
@@ -232,6 +245,7 @@ export const selectSelectedProject = createSelector(
   (pid, projects) => projects.find((p) => Number(p.id) === Number(pid)) || null
 );
 
+// ✅ makeSelectUserProjects(userId)
 export const makeSelectUserProjects = (userId) => createSelector(
   [selectProjects],
   (projects) => {
@@ -261,8 +275,8 @@ const usersOnTask = (t) => {
  * ]
  */
 export const makeSelectCollaboratorsPerProjectForUser = (userId) => createSelector(
-  [makeSelectUserProjects(userId), selectTasks, selectUsers,selectUser],
-  (myProjects, allTasks, users,user) => {
+  [makeSelectUserProjects(userId), selectTasks, selectUsers, selectUser],
+  (myProjects, allTasks, users, user) => {
     const uid = Number(userId);
     const usersById = new Map(users.map(u => [Number(u.id), u]));
 

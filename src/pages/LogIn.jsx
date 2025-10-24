@@ -9,7 +9,7 @@ function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { list } = useSelector((state) => state.users);
-    const {user,authLoading} = useSelector((state) => state.auth);
+    const { user, authLoading } = useSelector((state) => state.auth);
 
     // form: identifier = email OR name
     const [formData, setFormData] = useState({ identifier: "", password: "" });
@@ -40,9 +40,9 @@ function Login() {
 
     };
 
-      useEffect(() => {
+    useEffect(() => {
         // console.log(authLoading)
-      },[authLoading])
+    }, [authLoading])
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-50">
@@ -53,12 +53,12 @@ function Login() {
                 <h2 className="text-2xl font-semibold text-center text-blue-600">
                     LogIn
                 </h2>
-
+                {/* 
                 {error && (
                     <p className="text-red-500 bg-red-50 border border-red-200 rounded p-2 text-sm">
                         {error}
                     </p>
-                )}
+                )} */}
 
                 {info && (
                     <p className="text-yellow-700 bg-yellow-50 border border-yellow-200 rounded p-2 text-sm">
@@ -90,7 +90,7 @@ function Login() {
                     type="submit"
                     className="w-full flex justify-evenly items-center bg-blue-600 text-white rounded-lg py-2 hover:bg-blue-700 transition"
                 >
-                   {!authLoading ?<> LogIn <LogIn/></> :<div>...loged In</div>} 
+                    {!authLoading ? <> LogIn <LogIn /></> : <div>...loged In</div>}
                 </button>
 
                 <p className="text-sm text-gray-500 text-center">

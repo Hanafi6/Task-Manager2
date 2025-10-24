@@ -1,39 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {LogOut} from 'lucide-react'
-import {logoutUser} from '../slices/AuthSlice.js'
+import { LogOut } from 'lucide-react'
+import { logoutUser } from '../slices/AuthSlice.js'
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard: React.FC = () => {
-  const [err,setError] = useState('')
+  const [err, setError] = useState('')
   const users = useSelector((state: any) => state.auth.usersList);
-  const {user,logoutLoading} = useSelector((state: any) => state.auth);
+  const { user, logoutLoading } = useSelector((state: any) => state.auth);
   const projects = useSelector((state: any) => state.projects.list);
   const tasks = useSelector((state: any) => state.projects.tasks);
-      const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
 
   const handelLogOut = () => {
-        dispatch(logoutUser())
-            .unwrap()
-            .then((res) => {
-                  navigate("/");
-            })
-            .catch((err) => {
-                console.log("❌ error:", err);
-                setError(err);
-            });
+    dispatch(logoutUser())
+      .unwrap()
+      .then((res) => {
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("❌ error:", err);
+      });
   }
 
   useEffect(() => {
     // console.log(logoutLoading)
-  },[logoutLoading])
+  }, [logoutLoading])
   return (
     <div className="container mx-auto p-4">
       <div className='w-full flex justify-evenly'>
-      <div>{user.name.slice(0,8)}</div>
-      <button onClick={() => handelLogOut()}>{!logoutLoading ? <LogOut/> :<div>...Loged Out</div>}</button>
+        <div>{user.name.slice(0, 8)}</div>
+        <button onClick={() => handelLogOut()}>{!logoutLoading ? <LogOut /> : <div>...Loged Out</div>}</button>
       </div>
       <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

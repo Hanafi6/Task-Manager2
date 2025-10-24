@@ -3,15 +3,19 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProjectCard from "../components/ProjectCard";
+import { makeSelectTasksByProjectId, selectProjectById } from "../store/selectors";
 
 export default function ViewProject() {
   const { id } = useParams();
-  const pid = Number(id);
-  const { list: projects = [],loading} = useSelector((s) => s.projects || { list: [] });
+  const { list: projects = [], loading } = useSelector((s) => s.projects || { list: [] });
   const user = useSelector((s) => s.auth?.user);
   const role = user?.role || "user";
 
-  const project = projects.find((p) => Number(p.id) === pid);
+  // const project = projects.find((p) => p.id === id);
+  const project = useSelector(selectProjectById(id));
+
+  const tasks = useSelector((s) => makeSelectTasksByProjectId(id)(s));
+
   if (!project) return <div className="p-6">❌ Project not found</div>;
   if (loading) return <div className="p-6">Gitting</div>;
 
@@ -20,6 +24,7 @@ export default function ViewProject() {
       <ul className="space-y-3">
         <ProjectCard
           project={project}
+          tasksForProject={tasks}
           mode={role === "admin" ? "all" : "mine"}
           currentUserId={user?.id}
           collapsible={false}
@@ -28,7 +33,7 @@ export default function ViewProject() {
           showMeta
           clickableTitle={false}
         />
-        
+
       </ul>
     </div>
   );

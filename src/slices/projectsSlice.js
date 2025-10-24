@@ -1,8 +1,9 @@
-// store/projectsSlice.js
+// src/store/projectsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getData, postData } from "../api/api";
+import { getData, postData, updateData } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
-// helper: تطبيع الخطأ
+// 🧩 helper: تطبيع الأخطاء
 const normalizeError = (err) => {
   if (typeof err === "string") return err;
   if (err?.response?.data?.message) return err.response.data.message;
@@ -10,7 +11,7 @@ const normalizeError = (err) => {
   return "Something went wrong";
 };
 
-// 🟦 Fetch
+// 🟦 Fetch Projects
 export const fetchProjects = createAsyncThunk(
   "projects/fetch",
   async (_, { rejectWithValue }) => {
@@ -28,25 +29,19 @@ export const fetchProjects = createAsyncThunk(
 );
 
 // 🟦 Add Project
-// نستقبل كل الفورم من الكمبوننت ونحط ديفولتس من عندنا لو ناقص
 export const addProject = createAsyncThunk(
   "projects/add",
-  async (form, { rejectWithValue }) => {
+  async (payload, { rejectWithValue }) => {
     try {
-      const payload = {
-        // لازم اسم + وصف على الأقل
-        name: form.name?.trim(),
-        description: form.description?.trim() || "",
-        // لو مفيش leaderId نخليها null ونطلع وارننج في UI (لكن السيرفر ممكن يسمح)
-        leaderId: form.leaderId ? Number(form.leaderId) : null,
-        // ديفولتس
-        status: form.status || "active",
-        members: Array.isArray(form.members) ? form.members.map(Number) : [],
-        // لو مش جاي من الفورم، نولّد دلوقتي
-        createdAt: form.createdAt || new Date().toISOString(),
-        // المشاريع الجديدة غالبًا بدون مهام
-        tasks: Array.isArray(form.tasks) ? form.tasks : [],
-      };
+      // const payload = {
+      //   name: form.name?.trim(),
+      //   description: form.description?.trim() || "",
+      //   leaderId: form.leaderId ? Number(form.leaderId) : null,
+      //   status: form.status || "active",
+      //   members: Array.isArray(form.members) ? form.members.map(Number) : [],
+      //   createdAt: form.createdAt || new Date().toISOString(),
+      //   tasks: Array.isArray(form.tasks) ? form.tasks : [],
+      // };
 
       if (!payload.name) {
         return rejectWithValue("Project name is required");
@@ -63,23 +58,65 @@ export const addProject = createAsyncThunk(
   }
 );
 
+// 🟦 Add Task (Thunk)
+export const addTask = createAsyncThunk(
+  "projects/addTask",
+  async ({ projectId, task }, { rejectWithValue }) => {
+    try {
+      if (!projectId || !task) throw new Error("ProjectId and Task required");
+
+      // 1️⃣ احضر المشروع أولاً
+      const project = await getData(`projects/${projectId}`);
+      if (!project) throw new Error("Project not found");
+
+      // 2️⃣ جهز التاسك الجديدة
+      const newTask = {
+        ...task,
+        id: task.id || Date.now().toString(),
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+
+      // 3️⃣ حدّث المشروع نفسه (json-server لازم PUT كامل)
+      const updatedProject = {
+        ...project,
+        tasks: [...(project.tasks || []), newTask],
+      };
+      // updateData
+
+      const saved = await updateData('projects', projectId, updatedProject);
+
+      if (!saved.ok) throw new Error("Failed to add task to project");
+      const data = await saved.json();
+      return { projectId, task: newTask, updatedProject: data };
+    } catch (err) {
+      return rejectWithValue(
+        err.message || "Failed to add task. Please try again."
+      );
+    }
+  }
+);
+
 const projectsSlice = createSlice({
   name: "projects",
   initialState: {
-    list: [],          // projects فقط
-    tasks: [],         // جميع المهام (flat) + projectId
-    loading: false,    // لطلبات عامة (fetch)
-    loadingSome: false,// لطلبات جزئية (add/update)
+    list: [], // المشاريع
+    tasks: [], // جميع المهام
+    loading: false,
+    loadingSome: false,
     error: null,
+    selectProject: null,
   },
   reducers: {
+    setSelectProject(state, action) {
+      state.selectProject = action.payload;
+    },
     clearError(state) {
       state.error = null;
     },
-    // (اختياري) إضافة مهمة لمشروع محليًا
     addTaskToProjectLocal(state, action) {
       const { projectId, task } = action.payload;
-      const proj = state.list.find((p) => Number(p.id) === Number(projectId));
+      const proj = state.list.find((p) => String(p.id) === String(projectId));
       if (proj) {
         if (!Array.isArray(proj.tasks)) proj.tasks = [];
         proj.tasks.push(task);
@@ -89,7 +126,7 @@ const projectsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // fetch
+      // 🔹 Fetch
       .addCase(fetchProjects.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -105,7 +142,7 @@ const projectsSlice = createSlice({
           action.payload || action.error?.message || "Failed to fetch projects";
       })
 
-      // add
+      // 🔹 Add Project
       .addCase(addProject.pending, (state) => {
         state.loadingSome = true;
         state.error = null;
@@ -120,12 +157,45 @@ const projectsSlice = createSlice({
         }
       })
       .addCase(addProject.rejected, (state, action) => {
-        state.loadingSome = false; // ✅ المهم تصلّح هنا
+        state.loadingSome = false;
         state.error =
           action.payload || action.error?.message || "Failed to add project";
+      })
+
+      // 🔹 Add Task
+      .addCase(addTask.pending, (state) => {
+        state.loadingSome = true;
+        state.error = null;
+      })
+      .addCase(addTask.fulfilled, (state, action) => {
+        state.loadingSome = false;
+        const { projectId, task, updatedProject } = action.payload;
+        // useNavigate(`/projects/${projectId}`)
+
+        // أضف التاسك للـ flat list
+        state.tasks.push({ ...task, projectId });
+
+        // حدث المشروع نفسه
+        const projIndex = state.list.findIndex(
+          (p) => String(p.id) == String(projectId)
+        );
+        if (projIndex !== -1) {
+          state.list[projIndex] = {
+            ...updatedProject,
+            tasks: updatedProject.tasks || [],
+          };
+        }
+      })
+      .addCase(addTask.rejected, (state, action) => {
+        state.loadingSome = false;
+        state.error =
+          action.payload ||
+          action.error?.message ||
+          "Failed to add task to project";
       });
   },
 });
 
-export const { clearError, addTaskToProjectLocal } = projectsSlice.actions;
+export const { setSelectProject, clearError, addTaskToProjectLocal } =
+  projectsSlice.actions;
 export default projectsSlice.reducer;

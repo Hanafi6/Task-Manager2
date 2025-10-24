@@ -8,11 +8,11 @@ import TaskCard from "../components/TaskeCard";
 
 // Helpers
 const PRIORITY_ORDER = ["urgent", "high", "medium", "low"];
-const arr=[]
+const arr = []
 const lower = (v) => (v || "").toString().toLowerCase();
 const prioRank = (p) => {
   const i = PRIORITY_ORDER.indexOf(lower(p));
-  
+
   return i === -1 ? PRIORITY_ORDER.length : i;
 };
 
@@ -28,9 +28,9 @@ const getTopPriorityInProject = (tasks = []) => {
 const priorityChipCls = (p) => {
   const pr = lower(p);
   if (pr === "urgent") return "bg-red-100 text-red-700";
-  if (pr === "high")   return "bg-orange-100 text-orange-700";
+  if (pr === "high") return "bg-orange-100 text-orange-700";
   if (pr === "medium") return "bg-amber-100 text-amber-800";
-  if (pr === "low")    return "bg-gray-100 text-gray-700";
+  if (pr === "low") return "bg-gray-100 text-gray-700";
   return "bg-gray-100 text-gray-700";
 };
 
@@ -41,6 +41,7 @@ const sortTasksByPriority = (a, b) => {
   const db = b.dueDate ? new Date(b.dueDate).getTime() : Infinity;
   return da - db;
 };
+
 
 function projectBadge(project, tasks) {
   const allDone = tasks.length > 0 && tasks.every((t) => t.status === "done");
@@ -74,27 +75,29 @@ export default function ProjectCard({
   const { role } = useSelector((s) => s.auth || {});
   const users = useSelector((s) => s.auth?.usersList || []);
   const { tasks: allFlatTasks = [] } = useSelector((s) => s.projects || { tasks: [] });
-
   const tasks = Array.isArray(tasksForProject)
     ? tasksForProject
     : allFlatTasks.filter((t) => Number(t.projectId) === Number(project.id));
 
   const visibleTasks =
     mode === "mine" && currentUserId != null
-      ? tasks.filter((t) => Number(t.assignedTo) === Number(currentUserId))
+      ? tasks.filter((t) => Number(t.assignedTo) === currentUserId)
       : tasks;
 
   const visibleTasksSorted = [...visibleTasks].sort(sortTasksByPriority);
+
   const pc = projectBadge(project, tasks);
+
+  // console.log(tasks)
 
   const stats = showStats
     ? {
-        total: tasks.length,
-        todo: tasks.filter((t) => t.status === "todo").length,
-        inProgress: tasks.filter((t) => t.status === "in progress").length,
-        blocked: tasks.filter((t) => t.status === "blocked").length,
-        done: tasks.filter((t) => t.status === "done").length,
-      }
+      total: tasks.length,
+      todo: tasks.filter((t) => t.status === "todo").length,
+      inProgress: tasks.filter((t) => t.status === "in progress").length,
+      blocked: tasks.filter((t) => t.status === "blocked").length,
+      done: tasks.filter((t) => t.status === "done").length,
+    }
     : null;
 
   const leader = users.find((u) => Number(u.id) === Number(project.leaderId)) || null;
@@ -105,9 +108,9 @@ export default function ProjectCard({
 
   const checkStatus = (status) => {
     const map = {
-      active:    { label: "Archive", action: "archive", cls: "bg-amber-100 text-amber-800" },
+      active: { label: "Archive", action: "archive", cls: "bg-amber-100 text-amber-800" },
       completed: { label: "Unblock", action: "unblock", cls: "bg-green-100 text-green-700" },
-      block:     { label: "Block",   action: "block",   cls: "bg-red-100 text-red-700" },
+      block: { label: "Block", action: "block", cls: "bg-red-100 text-red-700" },
     };
     return map[status?.toLowerCase()] || { label: "Unknown", action: "none", cls: "bg-gray-100 text-gray-600" };
   };

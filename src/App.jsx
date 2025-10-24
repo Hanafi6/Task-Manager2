@@ -20,6 +20,7 @@ import User from "./pages/User.jsx";
 import PageSlide from "./components/PageSlide.jsx"; // ✅
 import PageFade from "./components/PageFade.jsx";   // ✅ (للصفحات اللي عايزها فِيد)
 import CreaateProject from "./pages/CreaateProject.jsx";
+import AddTaskToProject from "./pages/AddTaskToProject .jsx";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -102,6 +103,16 @@ export default function App() {
             />
 
             <Route
+              path="/add-taske-to-project/"
+              element={
+                <ProtectedRoute allowedRoles={["admin", "developer"]}>
+                  <PageSlide><AddTaskToProject /></PageSlide>
+                </ProtectedRoute>
+              }
+            />
+
+
+            <Route
               path="/user/:id"
               element={
                 <ProtectedRoute allowedRoles={["admin", "developer"]}>
@@ -127,6 +138,6 @@ export default function App() {
           </Routes>
         </AnimatePresence>
       </main>
-    </div>
+    </div >
   );
 }

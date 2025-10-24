@@ -20,7 +20,7 @@ export const updateData = async (endpoint, id, data) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  return res.json();
+  return res
 };
 
 export const deleteData = async (endpoint, id) => {

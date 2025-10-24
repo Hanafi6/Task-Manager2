@@ -113,7 +113,6 @@ export default function CreateProject() {
         : form.dueAt || null;
 
     const payload = {
-      id: Date.now(),
       name: form.name.trim(),
       description: form.description.trim(),
       leaderId: form.leaderId ? Number(form.leaderId) : null, // ممكن يبقى null لو حابب تسمح
@@ -126,8 +125,11 @@ export default function CreateProject() {
       tasks: [], // يبدأ فاضي - إضافة المهام بتكون لاحقًا
     };
 
-    // dispatch(addProject(payload));
-    // navigate("/projects");
+    dispatch(addProject(payload)).unwrap()
+      .then(() => navigate("/projects"))
+      .catch((err) => setWarnning(err || "Failed to add task"));
+
+
   };
 
   return (
@@ -215,7 +217,7 @@ export default function CreateProject() {
               onChange={handleChange}
               placeholder="Enter project name..."
             />
-            {errors.name && <p className="text-sm text-red-400 mt-1">{errors.name}</p>}
+            <p>{errors?.message || errors?.toString() || "Unknown error"}</p>
           </motion.div>
 
           {/* Description */}

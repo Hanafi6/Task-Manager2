@@ -11,7 +11,13 @@ function NavBar() {
     const { pathname } = useLocation();
     const [open, setOpen] = useState(false);
     const [drob, setDrob] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const selectManeu = [
+        { name: "Create Project", path: "/create-project" },
+        { name: "Create Taske", path: "/add-taske-to-project" },
+
+    ]
 
 
 
@@ -32,6 +38,7 @@ function NavBar() {
     const Drob = ({ drob }) => {
         const [f] = useState(`left-${Math.floor(Math.random() * 10)}`);
         const [InOpen, setIsOpen] = useState(false);
+        console.log(InOpen)
         useEffect(() => {
             setIsOpen(true)
         }, [drob])
@@ -52,11 +59,14 @@ function NavBar() {
                             transition={{ type: "spring", stiffness: 260, damping: 15 }}
                         >
                             <ul>
-                                <li onClick={e => {
-                                    setDrob(false);
-                                    setIsOpen(false)
-                                    navigate(`/create-project`);
-                                }} className=" cursor-pointer hover:text-red-500 duration-200 text-white font-bold">Create Project</li>
+                                {selectManeu.map((item) => (
+                                    <li onClick={e => {
+                                        setDrob(false);
+                                        setIsOpen(false)
+                                        navigate(item.path);
+                                    }
+                                    } key={item.path} className=" cursor-pointer hover:text-red-500 duration-200 text-white font-bold">{item.name}</li>
+                                ))}
                             </ul>
                         </motion.div>
                     )}
@@ -78,11 +88,11 @@ function NavBar() {
                 <div className="hidden md:flex space-x-6 items-center">
 
                     <AnimatePresence>
-                        {pathname !== '/create-project' && (
+                        {pathname !== '/create-project' && pathname !== '/add-taske-to-project' && (
                             <motion.div
-                                initial={{ scale: 0, opacity: 0,x:-50 }}
-                                animate={{ scale: 1, opacity: 1 ,x:0}}
-                                exit={{ scale: 0, opacity: 0 ,x:-50}}
+                                initial={{ scale: 0, opacity: 0, x: -50 }}
+                                animate={{ scale: 1, opacity: 1, x: 0 }}
+                                exit={{ scale: 0, opacity: 0, x: -50 }}
                                 transition={{ type: "spring", stiffness: 260, damping: 15 }}
                                 onClick={e => setDrob(prev => !prev)}
                                 className={`font-medium select-none transition-colors cursor-pointer ${drob

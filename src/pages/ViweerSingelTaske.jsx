@@ -2,24 +2,22 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { makeSelectTaskDetails, formatDuration, computeTaskTimeMeta } from "../store/selectors";
+import {
+  makeSelectTaskDetails,
+  formatDuration,
+  computeTaskTimeMeta,
+  makeSelectProjectById,
+} from "../store/selectors";
 
 function ViweerSingelTaske() {
   const { id } = useParams();
-  const role = useSelector((s) => s.auth?.user?.role || "user");
+  const role = useSelector((s) => s.auth?.role || "user");
 
-  // نجيب المهمة + اليوزر + البروجيكت + time meta
+  // 📦 هات بيانات المهمة
   const selectTask = React.useMemo(() => makeSelectTaskDetails(id), [id]);
   const task = useSelector(selectTask);
 
-  const data = computeTaskTimeMeta(task);
-
-
-  if (!data) return;
-  if (!data) throw Error('canot Reade The Taske');
-  
-
-  if (!task) {
+  if (!task)
     return (
       <div className="container mx-auto px-6 py-8">
         <div className="p-4 rounded border border-dashed text-gray-600">
@@ -27,40 +25,51 @@ function ViweerSingelTaske() {
         </div>
       </div>
     );
-  }
 
+  const project = useSelector(
+    task?.projectId ? makeSelectProjectById(task.projectId) : () => null
+  );
 
+  // ⏱️ حسِب الوقت المتبقي وراقبه كل ثانية
+  const [now, setNow] = React.useState(Date.now());
+  React.useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
-  const {
-    title,
-    description,
-    status,
-    priority,
-    dueDate,
-    createdAt,
-    updatedAt,
-    user,     // assignee
-    project,  // project object
-    time,     // { start, end, msLeft, inWindow, isOverdue, isDisabled }
-  } = task;
+  const data = computeTaskTimeMeta(task) || {};
+  const dueDate = new Date(task.dueDate);
+  const msLeft = dueDate - now;
+  const remaining = msLeft > 0 ? formatDuration(msLeft) : "Overdue";
+  const isOverdue = msLeft < 0;
 
-  const remaining = time?.msLeft != null ? formatDuration(time.msLeft) : "—";
-  const overdue = time?.isOverdue ? "Yes" : "No";
+  const statusColor = chipColorByStatus(task.status);
+  const priorityColor = chipColorByPriority(task.priority);
 
-  const statusChip = chipColorByStatus(status);
-  const priorityChip = chipColorByPriority(priority);
-  const disabled = Boolean(time?.isDisabled);
+  // 🎨 لون التايمر حسب الحالة
+  const timerColor = isOverdue
+    ? "text-red-600"
+    : msLeft < 6 * 60 * 60 * 1000
+      ? "text-green-600"
+      : "text-sky-600";
+
+  const disabled = Boolean(task.status === "done" || isOverdue);
 
   return (
     <div className="container mx-auto px-6 py-8 space-y-6">
       {/* Breadcrumbs */}
       <nav className="text-sm text-gray-500">
-        <Link to="/projects" className="hover:underline">Projects</Link>
-        {project && (
+        <Link to="/projects" className="hover:underline">
+          Projects
+        </Link>
+        {project?.id && (
           <>
             <span className="mx-1">/</span>
-            <Link to={`/projects/${project.id}`} className="hover:underline">
-              {project.name}
+            <Link
+              to={`/projects/${project.id}`}
+              className="hover:underline font-medium"
+            >
+              {project.name || "Unnamed Project"}
             </Link>
           </>
         )}
@@ -71,14 +80,21 @@ function ViweerSingelTaske() {
       {/* Header */}
       <header className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold">{title}</h1>
-          {description && (
-            <p className="text-gray-600 mt-1">{description}</p>
+          <h1 className="text-2xl md:text-3xl font-bold">
+            {task.title || "Untitled Task"}
+          </h1>
+          {task.description && (
+            <p className="text-gray-600 mt-1">{task.description}</p>
           )}
           <div className="flex flex-wrap items-center gap-2 mt-3">
-            <Chip label={status} className={statusChip} />
-            <Chip label={priority || "no-priority"} className={priorityChip} />
-            {time?.isOverdue && <Chip label="Overdue" className="bg-red-100 text-red-700" />}
+            <Chip label={task.status || "unknown"} className={statusColor} />
+            <Chip
+              label={task.priority || "no-priority"}
+              className={priorityColor}
+            />
+            {isOverdue && (
+              <Chip label="Overdue" className="bg-red-100 text-red-700" />
+            )}
           </div>
         </div>
 
@@ -86,7 +102,11 @@ function ViweerSingelTaske() {
           <button
             className="px-3 py-1.5 rounded bg-sky-600 text-white disabled:opacity-50"
             disabled={disabled}
-            title={disabled ? "Action disabled: task done/blocked/overdue" : "Start / Open"}
+            title={
+              disabled
+                ? "Action disabled: task done/blocked/overdue"
+                : "Start / Open"
+            }
           >
             Start / Open
           </button>
@@ -102,20 +122,29 @@ function ViweerSingelTaske() {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card title="Assignee">
           <div className="text-gray-800">
-            {user?.name || "Unassigned"}
-            {user?.email && <div className="text-sm text-gray-500">{user.email}</div>}
+            {task.user?.name || "Unassigned"}
+            {task.user?.email && (
+              <div className="text-sm text-gray-500">{task.user.email}</div>
+            )}
           </div>
         </Card>
 
         <Card title="Project">
-          {project ? (
+          {project?.id ? (
             <div className="text-gray-800">
-              <Link to={`/projects/${project.id}`} className="hover:underline font-medium">
-                {project.name}
+              <Link
+                to={`/projects/${project.id}`}
+                className="hover:underline font-medium"
+              >
+                {project.name || "Unnamed Project"}
               </Link>
-              <div className="text-sm text-gray-500">Status: {project.status || "—"}</div>
+              <div className="text-sm text-gray-500">
+                Status: {project.status || "—"}
+              </div>
               {Array.isArray(project.members) && (
-                <div className="text-sm text-gray-500">Members: {project.members.length}</div>
+                <div className="text-sm text-gray-500">
+                  Members: {project.members.length}
+                </div>
               )}
             </div>
           ) : (
@@ -123,20 +152,61 @@ function ViweerSingelTaske() {
           )}
         </Card>
 
+        {/* 🕒 Timing + Timer */}
         <Card title="Timing">
           <ul className="text-sm text-gray-700 space-y-1">
-            <li>Due date: <strong>{dueDate ? new Date(dueDate).toLocaleString() : "—"}</strong></li>
-            <li>Remaining: <strong>{remaining}</strong></li>
-            <li>Overdue: <strong className={time?.isOverdue ? "text-red-600" : ""}>{overdue}</strong></li>
-            <li>Window active: <strong>{time?.inWindow ? "Yes" : "No"}</strong></li>
+            <li>
+              Due date:{" "}
+              <strong>
+                {task.dueDate
+                  ? new Date(task.dueDate).toLocaleString()
+                  : "—"}
+              </strong>
+            </li>
+            <li>
+              Remaining:{" "}
+              <strong className={`font-semibold ${timerColor}`}>
+                {remaining}
+              </strong>
+            </li>
+            <li>
+              Overdue:{" "}
+              <strong className={isOverdue ? "text-red-600" : ""}>
+                {isOverdue ? "Yes" : "No"}
+              </strong>
+            </li>
           </ul>
+
+          {/* عداد ديناميكي */}
+          <div className={`mt-4 text-lg font-bold ${timerColor}`}>
+            {isOverdue
+              ? "⏰ Task overdue!"
+              : `⏳ ${formatDuration(msLeft)} remaining`}
+          </div>
         </Card>
 
         <Card title="Audit">
           <ul className="text-sm text-gray-700 space-y-1">
-            <li>Created at: <strong>{createdAt ? new Date(createdAt).toLocaleString() : "—"}</strong></li>
-            <li>Updated at: <strong>{updatedAt ? new Date(updatedAt).toLocaleString() : "—"}</strong></li>
-            <li>Created by: <strong>{task.createdByName || "غير مذكور"}</strong></li>
+            <li>
+              Created at:{" "}
+              <strong>
+                {task.createdAt
+                  ? new Date(task.createdAt).toLocaleString()
+                  : "—"}
+              </strong>
+            </li>
+            <li>
+              Updated at:{" "}
+              <strong>
+                {task.updatedAt
+                  ? new Date(task.updatedAt).toLocaleString()
+                  : "—"}
+              </strong>
+            </li>
+            <li>
+              Created by:{" "}
+              <strong>{task.createdByName || "غير مذكور"}</strong>
+            </li>
           </ul>
         </Card>
       </section>
@@ -147,7 +217,7 @@ function ViweerSingelTaske() {
 /* UI helpers */
 function Card({ title, children }) {
   return (
-    <div className="rounded-lg border border-gray-200 p-4 bg-white">
+    <div className="rounded-lg border border-gray-200 p-4 bg-white shadow-sm">
       <div className="text-sm text-gray-500 mb-2">{title}</div>
       {children}
     </div>
@@ -156,7 +226,9 @@ function Card({ title, children }) {
 
 function Chip({ label, className = "" }) {
   return (
-    <span className={`text-xs px-2 py-0.5 rounded ${className}`}>
+    <span
+      className={`text-xs px-2 py-0.5 rounded font-medium ${className}`}
+    >
       {label}
     </span>
   );
