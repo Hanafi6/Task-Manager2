@@ -1,61 +1,180 @@
-import React, { useEffect, useState } from 'react';
+// pages/Dashboard.tsx
+import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LogOut } from 'lucide-react'
-import { logoutUser } from '../slices/AuthSlice.js'
+import { LogOut } from 'lucide-react';
+import { logoutUser } from '../slices/AuthSlice';
 import { useNavigate } from 'react-router-dom';
+// import ProjectCard from '../components/ProjectCard';
+import { archiveProject, toggleProjectHidden } from '../slices/projectsSlice';
 
 const Dashboard: React.FC = () => {
-  const [err, setError] = useState('')
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const users = useSelector((state: any) => state.auth.usersList);
   const { user, logoutLoading } = useSelector((state: any) => state.auth);
   const projects = useSelector((state: any) => state.projects.list);
   const tasks = useSelector((state: any) => state.projects.tasks);
-  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
-
+  // Logout handler
   const handelLogOut = () => {
     dispatch(logoutUser())
       .unwrap()
-      .then((res) => {
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log("❌ error:", err);
-      });
-  }
+      .then(() => navigate("/"))
+      .catch((err) => console.log("❌ Logout error:", err));
+  };
 
-  useEffect(() => {
-    // console.log(logoutLoading)
-  }, [logoutLoading])
+  // Filtered projects for sections
+  const activeProjects = useMemo(
+    () => projects.filter(p => p.status === 'active' && !p.hidden),
+    [projects]
+  );
+  const hiddenProjects = useMemo(
+    () => projects.filter(p => p.hidden),
+    [projects]
+  );
+  const archivedProjects = useMemo(
+    () => projects.filter(p => ['completed', 'archived'].includes(p.status)),
+    [projects]
+  );
+
+  console.log(archivedProjects)
+
+  // Actions
+  const handleToggleHidden = (project: any) => {
+    dispatch(toggleProjectHidden(project.id));
+  };
+
+  const handleRestoreProject = (project: any) => {
+    dispatch(archiveProject({ ...project, status: 'active' }));
+  };
+
   return (
     <div className="container mx-auto p-4">
-      <div className='w-full flex justify-evenly'>
-        <div>{user.name.slice(0, 8)}</div>
-        <button onClick={() => handelLogOut()}>{!logoutLoading ? <LogOut /> : <div>...Loged Out</div>}</button>
-      </div>
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-lg shadow p-4">
-          <h2 className="text-xl font-semibold mb-2">Users</h2>
-          <p className="text-3xl font-bold text-blue-600">{users?.length}</p>
+      {/* Header */}
+      <header className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <div className="flex items-center gap-4">
+          <span>{user?.name?.slice(0, 8)}</span>
+          <button onClick={handelLogOut}>
+            {!logoutLoading ? <LogOut /> : <div>...Logging Out</div>}
+          </button>
         </div>
+      </header>
 
-        <div className="bg-white rounded-lg shadow p-4">
-          <h2 className="text-xl font-semibold mb-2">Projects</h2>
-          <p className="text-3xl font-bold text-green-600">{projects?.length}</p>
-        </div>
-
-        <div className="bg-white rounded-lg shadow p-4">
-          <h2 className="text-xl font-semibold mb-2">Tasks</h2>
-          <p className="text-3xl font-bold text-purple-600">{tasks?.length}</p>
-          <p className="text-sm text-gray-600 mt-2">
-            Completed: {tasks?.filter((task: any) => task.completed).length}
-          </p>
-        </div>
+      {/* Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <StatCard title="Users" count={users?.length} color="blue" />
+        <StatCard title="Projects" count={projects?.length} color="green" />
+        <StatCard
+          title="Tasks"
+          count={tasks?.length}
+          color="purple"
+          completed={tasks?.filter((t: any) => t.completed).length}
+        />
       </div>
+
+      {/* Projects Sections (admin only) */}
+      {user?.role === 'admin' && (
+        <div className="space-y-6">
+          <ProjectsSection
+            title="Active Projects"
+            projects={activeProjects}
+            onToggleHidden={handleToggleHidden}
+            onRestore={handleRestoreProject}
+          />
+          <ProjectsSection
+            title="Hidden Projects"
+            projects={hiddenProjects}
+            onToggleHidden={handleToggleHidden}
+            onRestore={handleRestoreProject}
+          />
+          <ProjectsSection
+            title="Archived Projects"
+            projects={archivedProjects}
+            onToggleHidden={handleToggleHidden}
+            onRestore={handleRestoreProject}
+          />
+        </div>
+      )}
+
+      {/* Optional: Projects for normal users */}
+      {user?.role !== 'admin' && (
+        <ProjectsSection
+          title="Your Projects"
+          projects={projects.filter(
+            p => p.leaderId === user.id || p.members?.includes(user.id)
+          )}
+          onToggleHidden={handleToggleHidden}
+          onRestore={handleRestoreProject}
+        />
+      )}
     </div>
   );
 };
+
+// ---- StatCard Component ----
+const StatCard = ({ title, count, color, completed }: any) => (
+  <div className={`bg-white rounded-lg shadow p-4 border-l-4 border-${color}-500`}>
+    <h2 className="text-xl font-semibold mb-2">{title}</h2>
+    <p className={`text-3xl font-bold text-${color}-600`}>{count}</p>
+    {completed != null && (
+      <p className="text-sm text-gray-600 mt-2">Completed: {completed}</p>
+    )}
+  </div>
+);
+
+// ---- ProjectsSection Component ----
+const ProjectsSection = ({ title, projects, onToggleHidden, onRestore }: any) => (
+
+
+  <div className="bg-white rounded-lg shadow p-4">
+    <h2 className="text-xl font-semibold mb-4">
+      {title} ({projects.length})
+    </h2>
+    <ul className="space-y-3">
+      {projects.map((project: any) => (
+        <li
+          key={project.id}
+          className={`flex justify-between items-center p-3 border rounded hover:bg-gray-50 ${project.hidden ? 'bg-gray-100 opacity-80' : ''
+            }`}
+        >
+          <div>
+            <div className={`font-semibold ${project.hidden ? 'line-through text-gray-400' : ''}`}>
+              {project.name}
+            </div>
+            <div className="text-sm text-gray-600 line-clamp-1">{project.description}</div>
+          </div>
+          <div className="flex gap-2">
+            {project.hidden && (
+              <button
+                className="px-2 py-1 bg-green-500 text-white rounded"
+                onClick={() => onToggleHidden(project)}
+              >
+                Unhide
+              </button>
+            )}
+            {!project.hidden && project.status === 'active' && (
+              <button
+                className="px-2 py-1 bg-red-500 text-white rounded"
+                onClick={() => onToggleHidden(project)}
+              >
+                Hide
+              </button>
+            )}
+            {['completed', 'archived'].includes(project.status) && (
+              <button
+                className="px-2 py-1 bg-blue-500 text-white rounded"
+                onClick={() => onRestore(project)}
+              >
+                Restore
+              </button>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export default Dashboard;

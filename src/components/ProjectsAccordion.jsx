@@ -2,11 +2,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ProjectCard from "./ProjectCard"; // ✅ بدل TaskeCard/TaskCard
+import { makeSelectTasksByProjectId, selectProjectById } from "../store/selectors";
 // مفيش احتياج لـ framer-motion هنا لأن ProjectCard نفسه فيه expand/collapse
 
 export default function ProjectsAccordionUnified({ mode = "auto" }) {
   const { list: projects = [], projectsLoading: loading } =
     useSelector((s) => s.projects || { list: [], projectsLoading: false });
+  // const [OpenDatilsDelete, setOpenDiitailsDelete] = React.useState(false);
+
+
+
 
   const user = useSelector((s) => s.auth?.user);
   const uid = Number(user?.id);
@@ -14,6 +19,10 @@ export default function ProjectsAccordionUnified({ mode = "auto" }) {
 
   // حسم المود تلقائيًا حسب الدور
   const resolvedMode = mode === "auto" ? (role === "admin" ? "all" : "mine") : mode;
+
+  // const project = useSelector(selectProjectById(id));
+
+  // const tasks = useSelector((s) => makeSelectTasksByProjectId(id)(s));
 
   // فلترة المشاريع لو mode = mine
   const filteredProjects =
@@ -27,6 +36,8 @@ export default function ProjectsAccordionUnified({ mode = "auto" }) {
     <ul className="space-y-3">
       {filteredProjects.map((p) => (
         <ProjectCard
+          mineTaskes={true} // فيه نركه هنا خد باللك
+          tasksForProject={[]}
           key={p.id}
           project={p}
           mode={resolvedMode}
@@ -35,9 +46,11 @@ export default function ProjectsAccordionUnified({ mode = "auto" }) {
           defaultOpen={false}
           showStats
           showMeta
-          // clickableTitle = true by default (يفتح /projects/:id)
+          hidden={p.hidden ? true : false}
+          clickableTitle={p?.hidden ? false : true}
         />
       ))}
+
     </ul>
   );
 }

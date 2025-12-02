@@ -4,14 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTask, addTaskToProjectLocal, setSelectProject } from "../slices/projectsSlice";
 import { selectProjects, selectSelectedProject, selectUsers } from "../store/selectors";
 import { AnimatePresence, motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AddTaskToProject = () => {
   const navigate = useNavigate();
+  const { projectId } = useParams(); // يمكن يكون undefined
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
   const selectProject = useSelector(state => state.projects.selectProject);
   const users = useSelector(selectUsers);
+  const { user } = useSelector(state => state.auth);
 
   const [warning, setWarnning] = useState("");
   const [IsWarning, setIsWarning] = useState(false);
@@ -45,6 +47,17 @@ const AddTaskToProject = () => {
     acceptanceCriteria: "",
     labels: "",
   });
+
+  useEffect(_ => {
+    if (projectId) {
+      setForm(prev => ({ ...prev, projectId: projectId }));
+      dispatch(setSelectProject(projects.find(c => c.id == projectId)));
+      setIsWarning(false);
+    } else {
+      setIsWarning(true);
+      setWarnning("Please select a project to add task to.");
+    }
+  }, [projectId, projects, dispatch]);
 
   useEffect(() => {
     if (form.startAt && form.dueDate) {
@@ -89,7 +102,7 @@ const AddTaskToProject = () => {
       id: Date.now().toString(),
       title: form.title,
       description: form.description,
-      status: "todo",
+      status: "active",
       priority: form.priority,
       assignedTo: form.assignedTo || null,
       createdBy: 1,
@@ -109,16 +122,23 @@ const AddTaskToProject = () => {
       updatedAt: new Date().toISOString(),
     };
 
-    dispatch(addTask({ projectId: form.projectId, task: newTask }))
+
+
+    dispatch(addTask({ projectId: form.projectId, task: newTask, createdBy: user.id }))
       .unwrap()
       .then((res) => {
+        console.log(res)
         console.log(res)
         navigate(`/tasks/${res.task.id}`)
       })
       .catch((err) => {
-        console.log(err)
+        setIsWarning(true);
+        setWarnning(err)
+        // console.log(err)
         // setWarnning(err.message || "Failed to add task")
       });
+
+
 
     // navigate(`/projects/${form.projectId}`)
 
@@ -175,11 +195,14 @@ const AddTaskToProject = () => {
           className="w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">-- Choose Project --</option>
-          {projects.map((project) => (
-            <option key={project.id} value={project.id}>
-              {project.name}
-            </option>
-          ))}
+          {projects.map((project) => {
+            if (project?.hidden) return;
+            return (
+              <option key={project.id} value={project.id}>
+                {project.name}
+              </option>
+            )
+          })}
         </select>
       </div>
 
@@ -195,6 +218,8 @@ const AddTaskToProject = () => {
           className="w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={form.title}
           onChange={handleChange}
+          required
+          autoFocus={projectId ? true : false}
         />
       </div>
 

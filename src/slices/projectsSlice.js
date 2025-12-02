@@ -1,7 +1,5 @@
-// src/store/projectsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getData, postData, updateData } from "../api/api";
-import { useNavigate } from "react-router-dom";
+import { deleteData, getData, postData, updateData } from "../api/api";
 
 // 🧩 helper: تطبيع الأخطاء
 const normalizeError = (err) => {
@@ -11,7 +9,215 @@ const normalizeError = (err) => {
   return "Something went wrong";
 };
 
+// 🟦 Request Delete Task (طلب حذف تاسك)
+export const requestDeleteTask = createAsyncThunk(
+  "projects/requestDeleteTask",
+  async ({ projectId, taskId, userId }, { rejectWithValue }) => {
+    try {
+      const project = await getData(`projects/${projectId}`);
+      if (!project) throw new Error("Project not found");
+      const task = (project.tasks || []).find(t => String(t.id) === String(taskId));
+      if (!task) throw new Error("Task not found");
+
+      // snapshot of task to include in notification/logs
+      const taskSnapshot = { ...task };
+
+      const updatedTasks = (project.tasks || []).map((t) =>
+        String(t.id) === String(taskId)
+          ? { ...t, deleteRequest: { userId, requestedAt: new Date().toISOString(), snapshot: taskSnapshot } }
+          : t
+      );
+
+      const updatedProject = { ...project, tasks: updatedTasks };
+      const saved = await updateData("projects", projectId, updatedProject);
+      if (!saved.ok) throw new Error("Failed to send delete request");
+      const data = await saved.json();
+
+      // return snapshot as part of result/meta
+      return { projectId, taskId, userId, updatedProject: data, taskSnapshot };
+    } catch (err) {
+      return rejectWithValue(err.message || "Failed to request delete task");
+    }
+  }
+);
+
+
+// 🟦 Confirm Delete Task (موافقة أو رفض الحذف)
+export const confirmDeleteTask = createAsyncThunk(
+  "projects/confirmDeleteTask",
+  async ({ projectId, taskId, approverId, approve, Abrov }, { rejectWithValue }) => {
+    try {
+      const project = await getData(`projects/${projectId}`);
+      if (!project) throw new Error("Project not found");
+
+      const task = (project.tasks || []).find(t => String(t.id) === String(taskId));
+      const snapshot = task ? { ...task } : null;
+
+      let updatedTasks = [...(project.tasks || [])];
+      let deleted = false;
+
+      if (approve) {
+        updatedTasks = updatedTasks.filter((t) => String(t.id) !== String(taskId));
+        deleted = true;
+      } else {
+        updatedTasks = updatedTasks.map((t) =>
+          String(t.id) === String(taskId)
+            ? { ...t, deleteRequest: null }
+            : t
+        );
+      }
+
+      const updatedProject = { ...project, tasks: updatedTasks };
+      const saved = await updateData("projects", projectId, updatedProject);
+      if (!saved.ok) throw new Error("Failed to confirm delete request");
+      const data = await saved.json();
+
+      return {
+        projectId,
+        taskId,
+        approverId,
+        approve,
+        deleted,
+        updatedProject: data,
+        taskSnapshot: snapshot,
+        Abrov
+      };
+    } catch (err) {
+      return rejectWithValue(err.message || "Failed to confirm delete task");
+    }
+  }
+);
+
+
+// export const DeleteProject = createAsyncThunk(
+//   "projects/DeleteProject",
+//   async (project, { rejectWithValue }) => {
+//     try {
+//       if (!project) throw new Error("Invalid project");
+
+//       const projectId = project.id;
+
+//       // 1️⃣ نعدّل المشروع: نخليه deleted + ممكن نحط deletedAt
+//       const updatedProject = {
+//         ...project,
+//         deleted: true,
+//         deletedAt: new Date().toISOString(),
+//       };
+
+//       // ده بيرجع الـ project بعد التعديل من الـ API (res.json)
+//       const projectRes = await updateData("projects", projectId, updatedProject);
+//       const ProJectInAcrchive = await postData("archeivePorjects", updatedProject);
+//       // archeivePorjects
+
+
+
+//       return { projectId, archivedProject: projectRes };
+//     } catch (err) {
+//       console.error("DeleteProject error:", err);
+//       return rejectWithValue(err.message || "Failed to delete project");
+//     }
+//   }
+// );
+
+
+
 // 🟦 Fetch Projects
+
+
+
+// 🟦 Archive Project (بدل DeleteProject)
+export const archiveProject = createAsyncThunk(
+  "projects/archiveProject",
+  async (project, { rejectWithValue }) => {
+    try {
+      if (!project) throw new Error("Invalid project");
+
+      const projectId = project.id;
+
+      const updated = {
+        ...project,
+        deleted: true,
+        deletedAt: new Date().toISOString(),
+      };
+
+      const saved = await updateData("projects", projectId, updated);
+      const archived = await postData("archeivePorjects", updated);
+      await deleteData("projects", projectId);
+
+      return { projectId, updatedProject: saved };
+    } catch (err) {
+      return rejectWithValue(err.message || "Failed to archive project");
+    }
+  }
+);
+
+// 🟦 UnArchive Project (رجوع من الأرشيف)
+export const unArchiveProject = createAsyncThunk(
+  "projects/unArchiveProject",
+  async (project, { rejectWithValue }) => {
+    try {
+      if (!project) throw new Error("Invalid project");
+
+      const updated = {
+        ...project,
+        deleted: false,
+        deletedAt: null,
+      };
+
+      const saved = await updateData("projects", project.id, updated);
+      await deleteData("archeivePorjects", project.id);
+
+      return { projectId: project.id, updatedProject: saved };
+    } catch (err) {
+      return rejectWithValue(err.message || "Failed to unarchive project");
+    }
+  }
+);
+
+// 🟦 Delete Permanently
+export const deletePermanentlyProject = createAsyncThunk(
+  "projects/deletePermanently",
+  async (projectId, { rejectWithValue }) => {
+    try {
+      await deleteData("projects", projectId);
+      await deleteData("archeivePorjects", projectId);
+
+      return { projectId };
+    } catch (err) {
+      return rejectWithValue(err.message || "Failed to delete permanently");
+    }
+  }
+);
+
+// 🟦 Stop Project
+export const stopProject = createAsyncThunk(
+  "projects/stopProject",
+  async (project, { rejectWithValue }) => {
+    try {
+      const updated = { ...project, status: "stopped" };
+      const saved = await updateData("projects", project.id, updated);
+      return saved;
+    } catch (err) {
+      return rejectWithValue(err.message || "Failed to stop project");
+    }
+  }
+);
+
+// 🟦 Hide Project
+export const hideProject = createAsyncThunk(
+  "projects/hideProject",
+  async (project, { rejectWithValue }) => {
+    try {
+      const updated = { ...project, hidden: true };
+      const saved = await updateData("projects", project.id, updated);
+      return saved;
+    } catch (err) {
+      return rejectWithValue(err.message || "Failed to hide project");
+    }
+  }
+);
+
+
 export const fetchProjects = createAsyncThunk(
   "projects/fetch",
   async (_, { rejectWithValue }) => {
@@ -33,24 +239,10 @@ export const addProject = createAsyncThunk(
   "projects/add",
   async (payload, { rejectWithValue }) => {
     try {
-      // const payload = {
-      //   name: form.name?.trim(),
-      //   description: form.description?.trim() || "",
-      //   leaderId: form.leaderId ? Number(form.leaderId) : null,
-      //   status: form.status || "active",
-      //   members: Array.isArray(form.members) ? form.members.map(Number) : [],
-      //   createdAt: form.createdAt || new Date().toISOString(),
-      //   tasks: Array.isArray(form.tasks) ? form.tasks : [],
-      // };
-
-      if (!payload.name) {
-        return rejectWithValue("Project name is required");
-      }
-
+      if (!payload.name) return rejectWithValue("Project name is required");
       const created = await postData("projects", payload);
-      if (!created || !created.id) {
+      if (!created || !created.id)
         return rejectWithValue("Server did not return created project");
-      }
       return created;
     } catch (e) {
       return rejectWithValue(normalizeError(e));
@@ -58,18 +250,16 @@ export const addProject = createAsyncThunk(
   }
 );
 
-// 🟦 Add Task (Thunk)
+// 🟦 Add Task
 export const addTask = createAsyncThunk(
   "projects/addTask",
   async ({ projectId, task }, { rejectWithValue }) => {
     try {
       if (!projectId || !task) throw new Error("ProjectId and Task required");
 
-      // 1️⃣ احضر المشروع أولاً
       const project = await getData(`projects/${projectId}`);
       if (!project) throw new Error("Project not found");
 
-      // 2️⃣ جهز التاسك الجديدة
       const newTask = {
         ...task,
         id: task.id || Date.now().toString(),
@@ -77,18 +267,17 @@ export const addTask = createAsyncThunk(
         updatedAt: new Date().toISOString(),
       };
 
-      // 3️⃣ حدّث المشروع نفسه (json-server لازم PUT كامل)
       const updatedProject = {
         ...project,
         tasks: [...(project.tasks || []), newTask],
       };
-      // updateData
 
-      const saved = await updateData('projects', projectId, updatedProject);
+      // مش fetch Response
+      const saved = await updateData("projects", projectId, updatedProject);
 
-      if (!saved.ok) throw new Error("Failed to add task to project");
-      const data = await saved.json();
-      return { projectId, task: newTask, updatedProject: data };
+      // هنا مش محتاج saved.ok ولا saved.json()
+      return { projectId, task: newTask, updatedProject: saved };
+
     } catch (err) {
       return rejectWithValue(
         err.message || "Failed to add task. Please try again."
@@ -100,18 +289,41 @@ export const addTask = createAsyncThunk(
 const projectsSlice = createSlice({
   name: "projects",
   initialState: {
-    list: [], // المشاريع
-    tasks: [], // جميع المهام
+    list: [],
+    tasks: [],
     loading: false,
     loadingSome: false,
     error: null,
     selectProject: null,
   },
   reducers: {
+    toggleProjectHidden: (state, action) => {
+      const project = state.list.find(p => p.id === action.payload);
+      if (project) {
+        project.hidden = !project.hidden;
+      }
+    },
     setSelectProject(state, action) {
       state.selectProject = action.payload;
     },
     clearError(state) {
+      state.error = null;
+    },
+    setData: (state, action) => {
+      const { projects: rawProjects = [] } = action.payload || {};
+
+      // تقسيم المشاريع
+      state.list = rawProjects.map(({ tasks = [], ...p }) => p);
+
+      // تقسيم الـ tasks
+      state.tasks = rawProjects.flatMap((p) =>
+        (p.tasks || []).map((t) => ({ ...t, projectId: p.id }))
+      );
+
+      // إشعارات
+      // flags
+      state.loading = false;
+      state.loadingSome = false;
       state.error = null;
     },
     addTaskToProjectLocal(state, action) {
@@ -123,10 +335,15 @@ const projectsSlice = createSlice({
       }
       state.tasks.push({ ...task, projectId });
     },
+    addSingleProject: (state, action) => {
+      console.log(state)
+      console.log(action)
+      state.list.push(action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
-      // 🔹 Fetch
+      // 🔹 Fetch Projects
       .addCase(fetchProjects.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -138,8 +355,7 @@ const projectsSlice = createSlice({
       })
       .addCase(fetchProjects.rejected, (state, action) => {
         state.loading = false;
-        state.error =
-          action.payload || action.error?.message || "Failed to fetch projects";
+        state.error = action.payload || "Failed to fetch projects";
       })
 
       // 🔹 Add Project
@@ -158,8 +374,7 @@ const projectsSlice = createSlice({
       })
       .addCase(addProject.rejected, (state, action) => {
         state.loadingSome = false;
-        state.error =
-          action.payload || action.error?.message || "Failed to add project";
+        state.error = action.payload || "Failed to add project";
       })
 
       // 🔹 Add Task
@@ -168,16 +383,13 @@ const projectsSlice = createSlice({
         state.error = null;
       })
       .addCase(addTask.fulfilled, (state, action) => {
+
         state.loadingSome = false;
         const { projectId, task, updatedProject } = action.payload;
-        // useNavigate(`/projects/${projectId}`)
-
-        // أضف التاسك للـ flat list
         state.tasks.push({ ...task, projectId });
 
-        // حدث المشروع نفسه
         const projIndex = state.list.findIndex(
-          (p) => String(p.id) == String(projectId)
+          (p) => String(p.id) === String(projectId)
         );
         if (projIndex !== -1) {
           state.list[projIndex] = {
@@ -188,14 +400,147 @@ const projectsSlice = createSlice({
       })
       .addCase(addTask.rejected, (state, action) => {
         state.loadingSome = false;
-        state.error =
-          action.payload ||
-          action.error?.message ||
-          "Failed to add task to project";
-      });
+        state.error = action.payload || "Failed to add task";
+      })
+
+      // 🔹 Request Delete Task
+      .addCase(requestDeleteTask.fulfilled, (state, action) => {
+        const { projectId, updatedProject } = action.payload;
+        const projIndex = state.list.findIndex((p) => p.id === projectId);
+        if (projIndex !== -1) state.list[projIndex] = updatedProject;
+      })
+      .addCase(requestDeleteTask.rejected, (state, action) => {
+        state.error = action.payload || "Failed to request delete task";
+      })
+
+      // 🔹 Confirm Delete Task
+      .addCase(confirmDeleteTask.fulfilled, (state, action) => {
+        const { projectId, updatedProject } = action.payload;
+        const projIndex = state.list.findIndex((p) => p.id === projectId);
+        if (projIndex !== -1) state.list[projIndex] = updatedProject;
+        state.tasks = state.tasks.filter(
+          (t) => !(String(t.projectId) === String(projectId) && !updatedProject.tasks.find((x) => x.id === t.id))
+        );
+      })
+      .addCase(confirmDeleteTask.rejected, (state, action) => {
+        state.error = action.payload || "Failed to confirm delete task";
+      })
+      // ------------------------------
+      // 🟥 ARCHIVE PROJECT
+      // ------------------------------
+      .addCase(archiveProject.pending, (state) => {
+        // بدأ أرشفة مشروع
+        state.loadingSome = true;
+      })
+      .addCase(archiveProject.fulfilled, (state, action) => {
+        state.loadingSome = false;
+
+        const { projectId } = action.payload;
+
+        // شيل المشروع من القائمة (لأنه اتنقل للأرشيف)
+        state.list = state.list.filter((p) => String(p.id) !== String(projectId));
+
+        // شيل التاسكات بتاعته
+        state.tasks = state.tasks.filter((t) => String(t.projectId) !== String(projectId));
+      })
+      .addCase(archiveProject.rejected, (state, action) => {
+        state.loadingSome = false;
+        state.error = action.payload;
+      })
+
+      // ------------------------------
+      // 🟩 UNARCHIVE PROJECT
+      // ------------------------------
+      .addCase(unArchiveProject.pending, (state) => {
+        // بدأ إرجاع المشروع من الأرشيف
+        state.loadingSome = true;
+      })
+      .addCase(unArchiveProject.fulfilled, (state, action) => {
+        state.loadingSome = false;
+
+        const { updatedProject } = action.payload;
+
+        const { tasks, ...proj } = updatedProject;
+
+        // رجّع المشروع للمين ليست
+        state.list.push(proj);
+
+        // ضيف التاسكات للمين ليست
+        if (Array.isArray(tasks)) {
+          state.tasks.push(...tasks.map((t) => ({ ...t, projectId: proj.id })));
+        }
+      })
+      .addCase(unArchiveProject.rejected, (state, action) => {
+        state.loadingSome = false;
+        state.error = action.payload;
+      })
+
+      // ------------------------------
+      // ⛔ DELETE PERMANENTLY
+      // ------------------------------
+      .addCase(deletePermanentlyProject.pending, (state) => {
+        // بدأ حذف نهائي
+        state.loadingSome = true;
+      })
+      .addCase(deletePermanentlyProject.fulfilled, (state, action) => {
+        state.loadingSome = false;
+        const { projectId } = action.payload;
+
+        // شيل المشروع نهائيًا
+        state.list = state.list.filter((p) => String(p.id) !== String(projectId));
+        state.tasks = state.tasks.filter((t) => String(t.projectId) !== String(projectId));
+      })
+      .addCase(deletePermanentlyProject.rejected, (state, action) => {
+        state.loadingSome = false;
+        state.error = action.payload;
+      })
+
+      // ------------------------------
+      // 🟧 STOP PROJECT
+      // ------------------------------
+      .addCase(stopProject.pending, (state) => {
+        state.loadingSome = true;
+      })
+      .addCase(stopProject.fulfilled, (state, action) => {
+        state.loadingSome = false;
+
+        const updated = action.payload;
+
+        const i = state.list.findIndex((p) => p.id === updated.id);
+        if (i !== -1) {
+          state.list[i] = { ...state.list[i], status: updated.status };
+        }
+      })
+      .addCase(stopProject.rejected, (state, action) => {
+        state.loadingSome = false;
+        state.error = action.payload;
+      })
+
+      // ------------------------------
+      // 👁️ HIDE PROJECT
+      // ------------------------------
+      .addCase(hideProject.pending, (state) => {
+        state.loadingSome = true;
+      })
+      .addCase(hideProject.fulfilled, (state, action) => {
+        state.loadingSome = false;
+        console.log(action)
+
+        const updated = action.payload;
+
+        const i = state.list.findIndex((p) => p.id === updated.id);
+        if (i !== -1) {
+          state.list[i] = { ...state.list[i], hidden: true };
+        }
+      })
+      .addCase(hideProject.rejected, (state, action) => {
+        state.loadingSome = false;
+        state.error = action.payload;
+      })
+
   },
 });
 
-export const { setSelectProject, clearError, addTaskToProjectLocal } =
+export const { setSelectProject, clearError, addTaskToProjectLocal, setData, addSingleProject, toggleProjectHidden } =
   projectsSlice.actions;
 export default projectsSlice.reducer;

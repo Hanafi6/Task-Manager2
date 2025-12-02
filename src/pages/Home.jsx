@@ -6,6 +6,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 export default function Home() {
   const role = useSelector((s) => s.auth?.user?.role) || "user";
+
   return (
     <section className="mb-10">
       <div className="flex items-center justify-between mb-3">

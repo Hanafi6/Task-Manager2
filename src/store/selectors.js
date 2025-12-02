@@ -1,5 +1,6 @@
 // store/selectors.js
 import { createSelector } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 
 /*───────────────────────────────
  🟢 [1] Projects & Tasks (أساسيات)
@@ -11,6 +12,35 @@ export const selectActiveProjects = (state) =>
 
 // ✅ بيرجع كل المهام (فلات من كل المشاريع)
 export const selectAllTasks = (state) => state.projects?.tasks || [];
+
+
+// ✅ بيرجع كل المستخدمين
+export const selectUsers = (s) => s.auth?.usersList || [];
+// ✅ بيرجع بيانات اليوزر الحالي (المسجل دخول)
+export const selectUser = (s) => s.auth?.user || {};
+
+export const selectUserId = (id, users) => users.find(e => e.id == id);
+
+// ✅ بيرجع كل المشاريع
+export const selectProjects = (s) => s.projects?.list || [];
+
+// ✅ بيرجع كل المهام
+export const selectTasks = (s) => s?.projects?.tasks || [];
+
+// ✅ بيرجع الـ ID للمهمة المحددة في الـ UI (لو المستخدم اختار تاسك)
+export const selectSelectedTaskId = (s) => s.projects?.selectedTaskId ?? null;
+
+// ✅ بيرجع الـ ID للمشروع المحدد في الـ UI (لو المستخدم اختار بروجيكت)
+export const selectSelectedProjectId = (s) => s.projects?.selectProject ?? null;
+
+// Geet Users As Array Of  [{name, id}]
+export const GetUsersSelectors = (members) => {
+  return createSelector([selectUsers], (users) => {
+    if (!members || !Array.isArray(members)) return [];
+    return users.filter((user) => members.includes(+user.id));
+  });
+};
+
 
 /*───────────────────────────────
  🟢 [2] مشاريع المستخدم النشطة فقط
@@ -35,6 +65,35 @@ export const makeSelectActiveProjectsForUser = (userId) => createSelector(
     );
   }
 );
+
+export const makeSelectALLProjectsForUser = (userId) => createSelector(
+  [selectProjects, selectAllTasks],
+  (projects, tasks) => {
+    if (!userId) return [];
+    if (!tasks) return [];
+    if (!projects) return [];
+
+    const uid = Number(userId);
+    const projIdsWithMyTasks = new Set(
+      tasks.filter(t => Number(t.assignedTo) == uid).map(t => t.projectId)
+    );
+    return projects.filter(p =>
+      p.leaderId === uid ||
+      (Array.isArray(p.members) && p.members.includes(uid)) ||
+      projIdsWithMyTasks.has(p.id)
+    );
+  }
+);
+
+
+
+
+// export const Info = (taske) =>
+//   createSelector([selectSelectedProjectId(taske?.project?.id), selectSelectedTaskId(taske?.id), selectUser], (project, taske, user) => {
+
+//   })
+
+
 
 /*───────────────────────────────
  🟢 [3] مهام المستخدم النشطة فقط
@@ -84,23 +143,6 @@ export const selectAdminStats = createSelector(
  🧱 Selectors أساسية
 ───────────────────────────────*/
 
-// ✅ بيرجع كل المستخدمين
-export const selectUsers = (s) => s.auth?.usersList || [];
-// ✅ بيرجع بيانات اليوزر الحالي (المسجل دخول)
-export const selectUser = (s) => s.auth?.user || {};
-
-// ✅ بيرجع كل المشاريع
-export const selectProjects = (s) => s.projects?.list || [];
-
-// ✅ بيرجع كل المهام
-export const selectTasks = (s) => s.projects?.tasks || [];
-
-// ✅ بيرجع الـ ID للمهمة المحددة في الـ UI (لو المستخدم اختار تاسك)
-export const selectSelectedTaskId = (s) => s.projects?.selectedTaskId ?? null;
-
-// ✅ بيرجع الـ ID للمشروع المحدد في الـ UI (لو المستخدم اختار بروجيكت)
-export const selectSelectedProjectId = (s) => s.projects?.selectProject ?? null;
-
 
 // بيرجع مشروع فردي بالID
 export const selectProjectById = (projectId) =>
@@ -147,6 +189,8 @@ export function formatDuration(ms) {
     .join(" ");
 }
 
+
+
 /*───────────────────────────────
  🧩 [6] Selectors خاصة بالعلاقات
 ───────────────────────────────*/
@@ -158,7 +202,7 @@ export function formatDuration(ms) {
 export const makeSelectTasksByUser = (userId, { activeOnly = false } = {}) =>
   createSelector([selectTasks, selectProjects, selectUsers], (tasks, projects, users) => {
     const activeIds = activeOnly
-      ? new Set(projects.filter((p) => p.status === "active").map((p) => Number(p.id)))
+      ? new Set(projects.filter((p) => p.status == "active").map((p) => Number(p.id)))
       : null;
 
     const userById = new Map(users.map((u) => [Number(u.id), u]));
@@ -177,16 +221,21 @@ export const makeSelectTasksByUser = (userId, { activeOnly = false } = {}) =>
 // ✅ makeSelectTaskDetails(taskId)
 // بيرجع تفاصيل تاسك واحدة كاملة:
 // بيانات المهمة + اليوزر + المشروع + حالة الوقت
+// store/selectors.js (تصحيح)
 export const makeSelectTaskDetails = (taskId) =>
-  createSelector([selectTasks, selectUsers, selectProjects], (tasks, users, projects) => {
+  createSelector([selectTasks, selectUsers, selectProjects], (tasks = [], users = [], projects = []) => {
     if (!taskId) return null;
 
-    const t = tasks.find((x) => x.id == taskId);
-    const user = users.find((u) => u.id == t.assignedTo) || null;
-    const project = projects.find((p) => p.id == t.projectId) || null;
+    // ابحث عن التاسك - تأكد من المقارنة بالـ String/Number
+    const t = tasks.find((x) => String(x.id) === String(taskId));
+    if (!t) return null; // <-- الحماية الأساسية: لو مش لقيت التاسك رجع null
+
+    const user = users.find((u) => String(u.id) === String(t.assignedTo)) || null;
+    const project = projects.find((p) => String(p.id) === String(t.projectId)) || null;
 
     return { ...t, user, project, time: computeTaskTimeMeta(t) };
   });
+
 
 // ✅ makeSelectProjectById(projectId)
 // بيرجع مشروع واحد بناءً على الـ ID

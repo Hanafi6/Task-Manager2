@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:4000";
 
 export const getData = async (endpoint) => {
   const res = await fetch(`${BASE_URL}/${endpoint}`);
@@ -15,14 +15,16 @@ export const postData = async (endpoint, data) => {
 };
 
 export const updateData = async (endpoint, id, data) => {
+
   const res = await fetch(`${BASE_URL}/${endpoint}/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  return res
+  return res.json()
 };
 
 export const deleteData = async (endpoint, id) => {
-  await fetch(`${BASE_URL}/${endpoint}/${id}`, { method: "DELETE" });
+  const res = await fetch(`${BASE_URL}/${endpoint}/${id}`, { method: "DELETE" });
+  return res.json();
 };

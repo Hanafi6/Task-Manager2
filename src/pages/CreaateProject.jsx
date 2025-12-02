@@ -1,10 +1,12 @@
 // pages/CreateProject.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProject } from "../slices/projectsSlice";
+// import { addSingleProject } from "../slices/projectsSlice";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, MotionConfig } from "framer-motion";
+import { addProject } from "../slices/projectsSlice";
 
+// دوال لتحويل التاريخ ISO
 function toIsoEndOfDay(dateStr) {
   if (!dateStr) return null;
   const dt = new Date(dateStr + "T23:59:59");
@@ -21,35 +23,42 @@ export default function CreateProject() {
   const navigate = useNavigate();
 
   const authUser = useSelector((s) => s.auth?.user);
-  const creatorId = Number(authUser?.id); // اللي أنشأ المشروع
+  const creatorId = Number(authUser?.id);
   const { usersList: users = [], usersLoading, usersError } = useSelector(
     (s) => s.auth || {}
   );
-  const { loading: saving } = useSelector((s) => s.projects || {});
+
+  // RTK Query mutation (rename to avoid confusion with slice action)
+  // const [createProjectMutation, { isLoading: saving }] = useAddProjectMutation();
 
   const [form, setForm] = useState({
     name: "",
     description: "",
-    leaderId: authUser.id,
+    leaderId: authUser?.id ?? "",
     members: [],
     status: "active", // active | block | completed
     startAt: "",
     dueAt: "",
   });
 
+  const { loading: saving } = useSelector(s => s.projects);
+
+  console.log(users)
+  // addProject
   const [query, setQuery] = useState("");
-  const [errors, setErrors] = useState({});  // { name: '...', dates: '...' }
+  const [errors, setErrors] = useState({}); // validation errors
+  const [warnning, setWarnning] = useState(null);
+
+
 
   const filteredUsers = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = (query || "").trim().toLowerCase();
     if (!q) return users;
     return users.filter((u) => (u.name || "").toLowerCase().includes(q));
   }, [users, query]);
 
-
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-
 
   const handleMembersChange = (e) => {
     const picked = Array.from(e.target.selectedOptions, (o) => Number(o.value));
@@ -57,44 +66,56 @@ export default function CreateProject() {
   };
 
   const ensureLeaderInMembers = (members, leaderId) => {
-    const set = new Set(members.map(Number));
+    const set = new Set((members || []).map(Number));
     if (leaderId) set.add(Number(leaderId));
     return Array.from(set);
   };
 
-
   const validate = () => {
     const next = {};
-
-    if (!form.name.trim()) next.name = "Project name is required.";
+    if (!form.name || !form.name.trim()) next.name = "Project name is required.";
 
     if (form.startAt && form.dueAt) {
       const s = new Date(form.startAt);
       const d = new Date(form.dueAt);
       if (s > d) next.dates = "Start date must be before the due date.";
     }
-
-    // ممكن نخلي leader تحذير فقط (مش error)
-    // فلو عايز تحوّلها Error امنع الحفظ: next.leaderId = "Leader is required."
     return next;
   };
 
-
-  // warnning
   const [hasLeaderWarning, setHasLeaderWarning] = useState(false);
-
   useEffect(() => {
-    // لو مفيش leaderId => وارننج
-    if (!form.leaderId || form.leaderId == authUser.id) {
-      setHasLeaderWarning(true);
-    } else {
-      setHasLeaderWarning(false);
+    setHasLeaderWarning(!form.leaderId || String(form.leaderId) === String(authUser?.id));
+  }, [form.leaderId, authUser?.id]);
+
+  // helper: broadcast update to other tabs (BroadcastChannel + localStorage fallback)
+  const broadcastProjectsUpdated = (project) => {
+    try {
+      // BroadcastChannel (modern)
+      const bc = new BroadcastChannel("projects_channel");
+      bc.postMessage({ type: "projects_updated", project });
+      bc.close();
+    } catch (e) {
+      // ignore if not supported
     }
-  }, [form.leaderId]);
 
+    try {
+      // localStorage event (fires "storage" in other tabs)
+      localStorage.setItem("projects_updated_at", String(Date.now()));
+      // also stash the project briefly if you want other tabs to read it
+      localStorage.setItem("projects_last_added", JSON.stringify(project));
+      // cleanup after short while
+      setTimeout(() => {
+        localStorage.removeItem("projects_last_added");
+      }, 2000);
+    } catch (e) {
+      // ignore
+    }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setWarnning(null);
     const v = validate();
     setErrors(v);
     if (Object.keys(v).length > 0) return;
@@ -103,37 +124,46 @@ export default function CreateProject() {
     const members = ensureLeaderInMembers(form.members, form.leaderId);
 
     const startAtIso =
-      form.startAt && form.startAt.length <= 10
-        ? toIsoStart(form.startAt)
-        : form.startAt || null;
-
+      form.startAt && form.startAt.length <= 10 ? toIsoStart(form.startAt) : form.startAt || null;
     const dueAtIso =
-      form.dueAt && form.dueAt.length <= 10
-        ? toIsoEndOfDay(form.dueAt)
-        : form.dueAt || null;
+      form.dueAt && form.dueAt.length <= 10 ? toIsoEndOfDay(form.dueAt) : form.dueAt || null;
 
     const payload = {
       name: form.name.trim(),
       description: form.description.trim(),
-      leaderId: form.leaderId ? Number(form.leaderId) : null, // ممكن يبقى null لو حابب تسمح
+      leaderId: form.leaderId ? Number(form.leaderId) : null,
       members,
       status: form.status,
       startAt: startAtIso,
       dueAt: dueAtIso,
       createdAt: nowIso,
-      createdBy: creatorId || null,  // اللي أنشأ المشروع
-      tasks: [], // يبدأ فاضي - إضافة المهام بتكون لاحقًا
+      createdBy: creatorId || null,
+      tasks: [],
     };
 
-    dispatch(addProject(payload)).unwrap()
-      .then(() => navigate("/projects"))
-      .catch((err) => setWarnning(err || "Failed to add task"));
+    try {
+      // call RTK Query mutation
+      const newProject = await createProjectMutation(payload).unwrap();
 
+      // update the old slice so selectors still work (bridge)
+      dispatch(addSingleProject(newProject));
 
+      // broadcast update to other tabs so they can refetch
+      broadcastProjectsUpdated(newProject);
+
+      // navigate to projects list
+      navigate("/projects");
+    } catch (err) {
+      // err could be a fetchBaseQuery error object or plain Error
+      const msg = err?.data?.message || err?.message || String(err) || "Failed to create project";
+      setWarnning(msg);
+      // optional: console.log for debugging
+      console.error("create project failed:", err);
+    }
   };
 
   return (
-    <MotionConfig reducedMotion="never">
+    <MotionConfig reducedMotion="always">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -163,8 +193,6 @@ export default function CreateProject() {
               Loading members…
             </motion.div>
           )}
-        </AnimatePresence>
-        <AnimatePresence>
           {usersError && (
             <motion.div
               key="users-error"
@@ -180,7 +208,7 @@ export default function CreateProject() {
 
         {/* Warning لو مفيش Leader */}
         <AnimatePresence>
-          {hasLeaderWarning ? (
+          {hasLeaderWarning && (
             <motion.div
               key="leader-warning"
               initial={{ opacity: 0, y: -6 }}
@@ -190,9 +218,17 @@ export default function CreateProject() {
             >
               You should choose a project leader. If you want to be the leader in the original case, then continue creating.
             </motion.div>
-          ) : ''}
+          )}
         </AnimatePresence>
 
+        {/* Warning message from API */}
+        {warnning && (
+          <div className="text-sm text-red-300 bg-red-950/20 border border-red-700 rounded p-2">
+            {warnning}
+          </div>
+        )}
+
+        {/* Form */}
         <motion.form
           onSubmit={handleSubmit}
           className="space-y-4"
@@ -217,7 +253,7 @@ export default function CreateProject() {
               onChange={handleChange}
               placeholder="Enter project name..."
             />
-            <p>{errors?.message || errors?.toString() || "Unknown error"}</p>
+            {errors.name && <p className="text-sm text-red-400 mt-1">{errors.name}</p>}
           </motion.div>
 
           {/* Description */}
@@ -336,7 +372,7 @@ export default function CreateProject() {
                       const u = users.find((x) => Number(x.id) === Number(id));
                       return (
                         <motion.div
-                          key={id} // ✅ هنا
+                          key={id}
                           initial={{ scale: 0, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           exit={{ scale: 0, opacity: 0 }}
@@ -368,7 +404,6 @@ export default function CreateProject() {
                 </div>
               )}
             </AnimatePresence>
-
           </motion.div>
 
           {/* Submit */}

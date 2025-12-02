@@ -22,12 +22,18 @@ function NavBar() {
 
 
     const { user } = useSelector((state) => state.auth);
+
+
+    // if (!user) navigate('/log_in')
+
+
     const links = user ? [
         { name: "Home", path: "/" },
         { name: "Dashboard", path: "/dashboard" },
         { name: "Users", path: "/users" },
         { name: "Projects", path: "/projects" },
         { name: "Tasks", path: "/tasks" },
+        { name: "Notifications", path: "/notifications" },
     ] : [
         { name: "Log In", path: "/log_in" },
         { name: "Regester", path: "/regester" },
@@ -38,7 +44,6 @@ function NavBar() {
     const Drob = ({ drob }) => {
         const [f] = useState(`left-${Math.floor(Math.random() * 10)}`);
         const [InOpen, setIsOpen] = useState(false);
-        console.log(InOpen)
         useEffect(() => {
             setIsOpen(true)
         }, [drob])
@@ -59,14 +64,17 @@ function NavBar() {
                             transition={{ type: "spring", stiffness: 260, damping: 15 }}
                         >
                             <ul>
-                                {selectManeu.map((item) => (
-                                    <li onClick={e => {
-                                        setDrob(false);
-                                        setIsOpen(false)
-                                        navigate(item.path);
-                                    }
-                                    } key={item.path} className=" cursor-pointer hover:text-red-500 duration-200 text-white font-bold">{item.name}</li>
-                                ))}
+                                {selectManeu.map((item) => {
+
+                                    return (
+                                        <li onClick={e => {
+                                            setDrob(false);
+                                            setIsOpen(false)
+                                            navigate(item.path);
+                                        }
+                                        } key={item.path} className=" cursor-pointer hover:text-red-500 duration-200 text-white font-bold">{item.name}</li>
+                                    )
+                                })}
                             </ul>
                         </motion.div>
                     )}
@@ -88,7 +96,7 @@ function NavBar() {
                 <div className="hidden md:flex space-x-6 items-center">
 
                     <AnimatePresence>
-                        {pathname !== '/create-project' && pathname !== '/add-taske-to-project' && (
+                        {user?.role === 'admin' && <>{pathname !== '/create-project' && pathname !== '/add-taske-to-project' && (
                             <motion.div
                                 initial={{ scale: 0, opacity: 0, x: -50 }}
                                 animate={{ scale: 1, opacity: 1, x: 0 }}
@@ -100,7 +108,7 @@ function NavBar() {
                                     : "text-[#fff] hover:text-blue-600"
                                     }`}
                             >start</motion.div>
-                        )}
+                        )}</>}
                     </AnimatePresence>
 
                     <AnimatePresence>
@@ -109,26 +117,28 @@ function NavBar() {
                             <Drob drob={drob} />
                         )}
                     </AnimatePresence>
-                    {links.map((link) => (
-                        <div key={link.path} className="relative">
-                            <Link
-                                to={link.path}
-                                className={`font-medium transition-colors ${pathname === link.path
-                                    ? "text-blue-600"
-                                    : "text-[#fff] hover:text-blue-600"
-                                    }`}
-                            >
-                                {link.name}
-                            </Link>
-                            {pathname === link.path && (
-                                <motion.div
-                                    layoutId="underline"
-                                    className="absolute left-0 right-0 -bottom-1 h-[2px] bg-blue-600 rounded-full"
-                                />
-                            )}
+                    {links.map((link) => {
+                        return (
+                            <div key={link.path} className="relative">
+                                <Link
+                                    to={link.path}
+                                    className={`font-medium transition-colors ${pathname === link.path
+                                        ? "text-blue-600"
+                                        : "text-[#fff] hover:text-blue-600"
+                                        }`}
+                                >
+                                    {link.name}
+                                </Link>
+                                {pathname === link.path && (
+                                    <motion.div
+                                        layoutId="underline"
+                                        className="absolute left-0 right-0 -bottom-1 h-[2px] bg-blue-600 rounded-full"
+                                    />
+                                )}
 
-                        </div>
-                    ))}
+                            </div>
+                        )
+                    })}
 
                 </div>
 
@@ -151,19 +161,21 @@ function NavBar() {
                         exit={{ height: 0, opacity: 0 }}
                         className="md:hidden bg-white border-t shadow-sm"
                     >
-                        {links.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                onClick={() => setOpen(false)}
-                                className={`block px-6 py-3 text-base border-b ${pathname === link.path
-                                    ? "text-blue-600 font-semibold"
-                                    : "text-gray-700 hover:text-blue-600"
-                                    }`}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+                        {links.map((link) => {
+                            return (
+                                <Link
+                                    key={link.path}
+                                    to={link.path}
+                                    onClick={() => setOpen(false)}
+                                    className={`block px-6 py-3 text-base border-b ${pathname === link.path
+                                        ? "text-blue-600 font-semibold"
+                                        : "text-gray-700 hover:text-blue-600"
+                                        }`}
+                                >
+                                    {link.pa}
+                                </Link>
+                            )
+                        })}
                     </motion.div>
                 )}
             </AnimatePresence>
