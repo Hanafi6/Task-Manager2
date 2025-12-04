@@ -205,18 +205,21 @@ export const stopProject = createAsyncThunk(
 
 // 🟦 Hide Project
 export const hideProject = createAsyncThunk(
-  "projects/hideProject",
+  "projects/toggleProjectHidden",
   async (project, { rejectWithValue }) => {
     try {
-      const updated = { ...project, hidden: true };
+      // نعمل toggle للـ hidden
+      const updated = { ...project, hidden: !project.hidden };
+
+      // نحدث الـ project في الـ backend
       const saved = await updateData("projects", project.id, updated);
+
       return saved;
     } catch (err) {
-      return rejectWithValue(err.message || "Failed to hide project");
+      return rejectWithValue(err.message || "Failed to toggle project hidden");
     }
   }
 );
-
 
 export const fetchProjects = createAsyncThunk(
   "projects/fetch",
@@ -302,6 +305,7 @@ const projectsSlice = createSlice({
       if (project) {
         project.hidden = !project.hidden;
       }
+      console.log(state.list)
     },
     setSelectProject(state, action) {
       state.selectProject = action.payload;

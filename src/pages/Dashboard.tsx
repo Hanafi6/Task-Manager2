@@ -3,18 +3,49 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LogOut } from 'lucide-react';
 import { logoutUser } from '../slices/AuthSlice';
-import { useNavigate } from 'react-router-dom';
-// import ProjectCard from '../components/ProjectCard';
-import { archiveProject, toggleProjectHidden } from '../slices/projectsSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { archiveProject, toggleProjectHidden, hideProject } from '../slices/projectsSlice';
+import ProjectSection from '../typs/TypsOfNavigates';
+import { motion } from 'framer-motion';
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const users = useSelector((state: any) => state.auth.usersList);
   const { user, logoutLoading } = useSelector((state: any) => state.auth);
   const projects = useSelector((state: any) => state.projects.list);
   const tasks = useSelector((state: any) => state.projects.tasks);
+
+  const [highlightId, setHighlightId] = useState<string | null>(null);
+
+  // Scroll + Highlight
+  useEffect(() => {
+    if (location.state?.scroll) {
+      const element = document.getElementById(location.state.scroll);
+      if (element) {
+        // Scroll للمنتصف
+        const elementRect = element.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
+
+        window.scrollTo({ top: middle, behavior: 'smooth' });
+
+        // Highlight
+        setHighlightId(location.state.scroll);
+
+        const timeout = setTimeout(() => {
+          setHighlightId(null); // نمسح highlight
+          navigate(location.pathname, { replace: true, state: {} }); // نمسح state بعد الانتهاء
+        }, 800);
+
+        return () => clearTimeout(timeout); // cleanup
+      }
+    }
+  }, [location.state]);
+
+
 
   // Logout handler
   const handelLogOut = () => {
@@ -38,11 +69,10 @@ const Dashboard: React.FC = () => {
     [projects]
   );
 
-  console.log(archivedProjects)
-
   // Actions
   const handleToggleHidden = (project: any) => {
-    dispatch(toggleProjectHidden(project.id));
+    dispatch(hideProject(project));
+    dispatch(toggleProjectHidden(project.id)); // مشكلتك في إداره الحاله عشان انتا محدثتش الستور
   };
 
   const handleRestoreProject = (project: any) => {
@@ -78,35 +108,43 @@ const Dashboard: React.FC = () => {
       {user?.role === 'admin' && (
         <div className="space-y-6">
           <ProjectsSection
+            idS={ProjectSection.ACTIVE}
             title="Active Projects"
             projects={activeProjects}
             onToggleHidden={handleToggleHidden}
             onRestore={handleRestoreProject}
+            highlightId={highlightId}
           />
           <ProjectsSection
+            idS={ProjectSection.HIDDEN}
             title="Hidden Projects"
             projects={hiddenProjects}
             onToggleHidden={handleToggleHidden}
             onRestore={handleRestoreProject}
+            highlightId={highlightId}
           />
           <ProjectsSection
+            idS={ProjectSection.ARCHIVED}
             title="Archived Projects"
             projects={archivedProjects}
             onToggleHidden={handleToggleHidden}
             onRestore={handleRestoreProject}
+            highlightId={highlightId}
           />
         </div>
       )}
 
-      {/* Optional: Projects for normal users */}
+      {/* Projects Sections for normal users */}
       {user?.role !== 'admin' && (
         <ProjectsSection
+          idS="your_projects"
           title="Your Projects"
           projects={projects.filter(
             p => p.leaderId === user.id || p.members?.includes(user.id)
           )}
           onToggleHidden={handleToggleHidden}
           onRestore={handleRestoreProject}
+          highlightId={highlightId}
         />
       )}
     </div>
@@ -125,10 +163,16 @@ const StatCard = ({ title, count, color, completed }: any) => (
 );
 
 // ---- ProjectsSection Component ----
-const ProjectsSection = ({ title, projects, onToggleHidden, onRestore }: any) => (
-
-
-  <div className="bg-white rounded-lg shadow p-4">
+const ProjectsSection = ({ idS, title, projects, onToggleHidden, onRestore, highlightId }: any) => (
+  <motion.div
+    id={idS}
+    className="rounded-lg shadow p-4"
+    animate={{
+      backgroundColor: highlightId === idS ? "#fef3c7" : "#ffffff", // Highlight yellow
+      border: highlightId === idS ? "2px solid #f59e0b" : "2px solid transparent",
+    }}
+    transition={{ duration: 0.3 }}
+  >
     <h2 className="text-xl font-semibold mb-4">
       {title} ({projects.length})
     </h2>
@@ -174,7 +218,7 @@ const ProjectsSection = ({ title, projects, onToggleHidden, onRestore }: any) =>
         </li>
       ))}
     </ul>
-  </div>
+  </motion.div>
 );
 
 export default Dashboard;

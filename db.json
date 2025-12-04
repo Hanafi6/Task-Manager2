@@ -86,58 +86,7 @@
       ],
       "status": "active",
       "createdAt": "2025-10-02T09:00:00Z",
-      "tasks": [
-        {
-          "id": "1764255381419",
-          "title": "Landeng Page",
-          "description": "[posdf0isd9fjisdf",
-          "status": "active",
-          "priority": "urgent",
-          "assignedTo": "1",
-          "createdBy": 1,
-          "requirements": [
-            "asdas"
-          ],
-          "acceptanceCriteria": [
-            "dasdasd"
-          ],
-          "labels": [
-            "asdasd"
-          ],
-          "blockerNote": null,
-          "endAt": null,
-          "startAt": "2025-11-27T16:56",
-          "dueDate": "2025-11-28T16:56",
-          "estimateHours": 24,
-          "createdAt": "2025-11-27T14:56:21.424Z",
-          "updatedAt": "2025-11-27T14:56:21.424Z"
-        },
-        {
-          "id": "1764255441267",
-          "title": "Landeng Page",
-          "description": "[posdf0isd9fjisdf",
-          "status": "active",
-          "priority": "urgent",
-          "assignedTo": "1",
-          "createdBy": 1,
-          "requirements": [
-            "asdas"
-          ],
-          "acceptanceCriteria": [
-            "dasdasd"
-          ],
-          "labels": [
-            "asdasd"
-          ],
-          "blockerNote": null,
-          "endAt": null,
-          "startAt": "2025-11-27T16:56",
-          "dueDate": "2025-11-28T16:56",
-          "estimateHours": 24,
-          "createdAt": "2025-11-27T14:57:21.271Z",
-          "updatedAt": "2025-11-27T14:57:21.271Z"
-        }
-      ]
+      "hidden": true
     },
     {
       "id": "3",

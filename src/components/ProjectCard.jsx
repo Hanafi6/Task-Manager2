@@ -8,6 +8,7 @@ import TaskCard from "../components/TaskeCard"; // تأكد من المسار و
 import { makeSelectTasksByProjectId } from "../store/selectors";
 import { setOpenDiitailsDelete } from "../slices/Modals";
 import { setSelectProject } from "../slices/projectsSlice";
+import ProjectSection from "../typs/TypsOfNavigates";
 
 // Helpers (مثل ما عندك)
 const PRIORITY_ORDER = ["urgent", "high", "medium", "low"];
@@ -224,7 +225,11 @@ export default function ProjectCard({
               </button>
               {hidden &&
                 // if You Clicked On It Will Rotion You To Hiddens Pages
-                <div className="text-[#444] font-bold rounded p-1 bg-[#1f1f1f] duration-200 hover:text-[#fff] hover:bg-[#444] cursor-pointer "> Hided</div>
+                <div
+                  onClick={_ => {
+                    navigate('/dashboard', { state: { scroll: ProjectSection.HIDDEN } });
+                  }}
+                  className="text-[#444] font-bold rounded p-1 bg-[#1f1f1f] duration-200 hover:text-[#fff] hover:bg-[#444] cursor-pointer "> Hided</div>
               }
 
               <span className={`text-xs px-2 py-0.5 rounded ${pc.badgeCls}`}>{pc.badge}</span>
