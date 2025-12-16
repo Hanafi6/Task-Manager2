@@ -7,6 +7,9 @@ import { createSelector } from "@reduxjs/toolkit";
 export default function Home() {
   const role = useSelector((s) => s.auth?.user?.role) || "user";
 
+
+  let mode = role == 'admin' ? 'auto':'mine'
+
   return (
     <section className="mb-10">
       <div className="flex items-center justify-between mb-3">
@@ -14,7 +17,7 @@ export default function Home() {
           {role === "admin" ? "📂 All Projects" : "📂 Your Projects"}
         </h3>
       </div>
-      <ProjectsAccordionUnified mode="auto" />
+      <ProjectsAccordionUnified mode={mode} />
     </section>
   );
 }

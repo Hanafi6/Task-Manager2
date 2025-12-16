@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Factory, Menu, X } from "lucide-react";
+import {  Menu, X } from "lucide-react";
 import { useSelector } from "react-redux";
 
-
+import '../style/navBar.css'
 
 
 function NavBar() {
@@ -87,8 +87,8 @@ function NavBar() {
         <nav className="bg-[#38159f] shadow fixed top-0 left-0 w-full max-h-20 z-50">
             <div className="container mx-auto px-4 py-3 flex items-center justify-between">
                 {/* Logo */}
-                <h1 className="text-2xl font-bold text-blue-600 tracking-tight">
-                    Taske<span className="text-gray-800">Manger</span>
+                <h1 id="logo" className="text-2xl font-bold text-blue-600 tracking-tight">
+                    Taske<span className="">Manger</span>
                 </h1>
 
                 {/* Desktop Links */}

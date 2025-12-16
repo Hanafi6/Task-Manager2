@@ -71,22 +71,34 @@
       ],
       "status": "block",
       "createdAt": "2025-10-01T10:00:00Z",
-      "hidden": true
-    },
-    {
-      "id": "2",
-      "name": "Mobile App Redesign",
-      "description": "New UI/UX for the company mobile app.",
-      "leaderId": 3,
-      "members": [
-        2,
-        3,
-        6,
-        1
-      ],
-      "status": "active",
-      "createdAt": "2025-10-02T09:00:00Z",
-      "hidden": true
+      "hidden": false,
+      "tasks": [
+        {
+          "id": "1765290496459",
+          "title": "Landeing page",
+          "description": "dfkojdsiofjisoojuredfwerf",
+          "status": "active",
+          "priority": "urgent",
+          "assignedTo": "1",
+          "createdBy": 1,
+          "requirements": [
+            "dsdaa"
+          ],
+          "acceptanceCriteria": [
+            "sdasdas"
+          ],
+          "labels": [
+            "dasdsa"
+          ],
+          "blockerNote": null,
+          "endAt": null,
+          "startAt": "2025-12-09T16:28",
+          "dueDate": "2025-12-10T16:28",
+          "estimateHours": 24,
+          "createdAt": "2025-12-09T14:28:16.463Z",
+          "updatedAt": "2025-12-09T14:28:16.463Z"
+        }
+      ]
     },
     {
       "id": "3",
@@ -100,7 +112,34 @@
       ],
       "status": "active",
       "createdAt": "2025-10-03T08:15:00Z",
-      "hidden": true
+      "hidden": false,
+      "tasks": [
+        {
+          "id": "1765113610773",
+          "title": "Test aske",
+          "description": "[sldokfpjsudiofgsjdfh89uywerfj",
+          "status": "active",
+          "priority": "urgent",
+          "assignedTo": "2",
+          "createdBy": 1,
+          "requirements": [
+            "sdasdads"
+          ],
+          "acceptanceCriteria": [
+            "asdasd"
+          ],
+          "labels": [
+            "asdasd"
+          ],
+          "blockerNote": null,
+          "endAt": null,
+          "startAt": "2025-12-07T15:20",
+          "dueDate": "2025-12-08T15:20",
+          "estimateHours": 24,
+          "createdAt": "2025-12-07T13:20:10.777Z",
+          "updatedAt": "2025-12-07T13:20:10.777Z"
+        }
+      ]
     },
     {
       "id": "4",
@@ -115,87 +154,7 @@
       ],
       "status": "active",
       "createdAt": "2025-10-04T12:00:00Z",
-      "tasks": [
-        {
-          "id": 8,
-          "title": "Asset upload UI",
-          "description": "Drag & drop uploads with progress and preview.",
-          "status": "todo",
-          "priority": "high",
-          "assignedTo": 6,
-          "createdBy": 1,
-          "requirements": [
-            "Chunked upload",
-            "Retry on fail"
-          ],
-          "acceptanceCriteria": [
-            "Upload 100MB works fine"
-          ],
-          "labels": [
-            "frontend",
-            "upload"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-04T13:00:00Z",
-          "dueDate": "2025-10-15T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 10,
-          "createdAt": "2025-10-04T13:00:00Z",
-          "updatedAt": "2025-10-04T13:00:00Z"
-        },
-        {
-          "id": 11,
-          "title": "Approval workflow",
-          "description": "Define states and actions for asset approvals.",
-          "status": "todo",
-          "priority": "medium",
-          "assignedTo": 3,
-          "createdBy": 1,
-          "requirements": [
-            "States: draft/pending/approved/rejected"
-          ],
-          "acceptanceCriteria": [
-            "Happy path tested"
-          ],
-          "labels": [
-            "workflow"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-05T10:00:00Z",
-          "dueDate": "2025-10-16T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 6,
-          "createdAt": "2025-10-05T10:00:00Z",
-          "updatedAt": "2025-10-05T10:00:00Z"
-        },
-        {
-          "id": 17,
-          "title": "Client notifications (email)",
-          "description": "Email notifications on status changes.",
-          "status": "todo",
-          "priority": "high",
-          "assignedTo": 2,
-          "createdBy": 1,
-          "requirements": [
-            "SendGrid integration",
-            "Template system"
-          ],
-          "acceptanceCriteria": [
-            "Emails delivered reliably"
-          ],
-          "labels": [
-            "email",
-            "notifications"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-06T10:50:00Z",
-          "dueDate": "2025-10-12T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 7,
-          "createdAt": "2025-10-06T10:50:00Z",
-          "updatedAt": "2025-10-06T10:50:00Z"
-        }
-      ]
+      "hidden": false
     },
     {
       "id": "5",
@@ -209,35 +168,7 @@
       ],
       "status": "active",
       "createdAt": "2025-10-05T09:20:00Z",
-      "tasks": [
-        {
-          "id": 13,
-          "title": "Type-safe API client",
-          "description": "Introduce a typed API client for fetch calls.",
-          "status": "in progress",
-          "priority": "high",
-          "assignedTo": 5,
-          "createdBy": 5,
-          "requirements": [
-            "Types for endpoints",
-            "Error handling"
-          ],
-          "acceptanceCriteria": [
-            "Compile-time safety"
-          ],
-          "labels": [
-            "typescript",
-            "api"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-05T10:00:00Z",
-          "dueDate": "2025-10-17T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 8,
-          "createdAt": "2025-10-05T10:00:00Z",
-          "updatedAt": "2025-10-06T15:30:00Z"
-        }
-      ]
+      "hidden": false
     },
     {
       "id": "6",
@@ -251,295 +182,7 @@
       ],
       "status": "active",
       "createdAt": "2025-10-06T09:00:00Z",
-      "tasks": [
-        {
-          "id": 19,
-          "title": "Design fact tables",
-          "description": "Define star schema (facts/dimensions).",
-          "status": "in progress",
-          "priority": "medium",
-          "assignedTo": 1,
-          "createdBy": 1,
-          "requirements": [
-            "Events fact",
-            "Users/Channels dims"
-          ],
-          "acceptanceCriteria": [
-            "ERD doc approved"
-          ],
-          "labels": [
-            "data",
-            "dbt"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-06T09:10:00Z",
-          "dueDate": "2025-10-12T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 10,
-          "createdAt": "2025-10-06T09:10:00Z",
-          "updatedAt": "2025-10-06T12:10:00Z"
-        },
-        {
-          "id": 20,
-          "title": "dbt project scaffolding",
-          "description": "Bootstrap dbt repo with basic models.",
-          "status": "todo",
-          "priority": "high",
-          "assignedTo": 5,
-          "createdBy": 1,
-          "requirements": [
-            "Core models",
-            "CI with dbt tests"
-          ],
-          "acceptanceCriteria": [
-            "CI green",
-            "Docs generated"
-          ],
-          "labels": [
-            "dbt"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-06T09:30:00Z",
-          "dueDate": "2025-10-13T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 6,
-          "createdAt": "2025-10-06T09:30:00Z",
-          "updatedAt": "2025-10-06T09:30:00Z"
-        },
-        {
-          "id": 21,
-          "title": "Airflow DAGs for daily jobs",
-          "description": "DAGs for ingest/transform, daily schedule.",
-          "status": "todo",
-          "priority": "medium",
-          "assignedTo": 2,
-          "createdBy": 1,
-          "requirements": [
-            "Ingest pipeline",
-            "Retry policy"
-          ],
-          "acceptanceCriteria": [
-            "DAGs pass dry-run"
-          ],
-          "labels": [
-            "airflow"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-06T09:50:00Z",
-          "dueDate": "2025-10-16T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 7,
-          "createdAt": "2025-10-06T09:50:00Z",
-          "updatedAt": "2025-10-06T09:50:00Z",
-          "deleteRequest": {
-            "requestedAt": "2025-11-05T14:49:25.759Z",
-            "snapshot": {
-              "id": 21,
-              "title": "Airflow DAGs for daily jobs",
-              "description": "DAGs for ingest/transform, daily schedule.",
-              "status": "todo",
-              "priority": "medium",
-              "assignedTo": 2,
-              "createdBy": 1,
-              "requirements": [
-                "Ingest pipeline",
-                "Retry policy"
-              ],
-              "acceptanceCriteria": [
-                "DAGs pass dry-run"
-              ],
-              "labels": [
-                "airflow"
-              ],
-              "blockerNote": null,
-              "startAt": "2025-10-06T09:50:00Z",
-              "dueDate": "2025-10-16T23:59:59Z",
-              "endAt": null,
-              "estimateHours": 7,
-              "createdAt": "2025-10-06T09:50:00Z",
-              "updatedAt": "2025-10-06T09:50:00Z",
-              "deleteRequest": {
-                "requestedAt": "2025-11-05T14:48:55.830Z",
-                "snapshot": {
-                  "id": 21,
-                  "title": "Airflow DAGs for daily jobs",
-                  "description": "DAGs for ingest/transform, daily schedule.",
-                  "status": "todo",
-                  "priority": "medium",
-                  "assignedTo": 2,
-                  "createdBy": 1,
-                  "requirements": [
-                    "Ingest pipeline",
-                    "Retry policy"
-                  ],
-                  "acceptanceCriteria": [
-                    "DAGs pass dry-run"
-                  ],
-                  "labels": [
-                    "airflow"
-                  ],
-                  "blockerNote": null,
-                  "startAt": "2025-10-06T09:50:00Z",
-                  "dueDate": "2025-10-16T23:59:59Z",
-                  "endAt": null,
-                  "estimateHours": 7,
-                  "createdAt": "2025-10-06T09:50:00Z",
-                  "updatedAt": "2025-10-06T09:50:00Z"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": "7",
-      "name": "Design System v2",
-      "description": "Unify UI components with tokens & themes.",
-      "leaderId": 3,
-      "members": [
-        3,
-        6,
-        7
-      ],
-      "status": "completed",
-      "createdAt": "2025-09-20T11:00:00Z",
-      "tasks": [
-        {
-          "id": 23,
-          "title": "Docs & Storybook",
-          "description": "Document components and publish Storybook.",
-          "status": "done",
-          "priority": "low",
-          "assignedTo": 6,
-          "createdBy": 3,
-          "requirements": [
-            "Stories per component",
-            "Theming example"
-          ],
-          "acceptanceCriteria": [
-            "Docs accessible to team"
-          ],
-          "labels": [
-            "docs",
-            "storybook"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-09-20T12:10:00Z",
-          "dueDate": "2025-09-28T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 5,
-          "createdAt": "2025-09-20T12:10:00Z",
-          "updatedAt": "2025-09-27T17:20:00Z",
-          "deleteRequest": {
-            "userId": "2",
-            "requestedAt": "2025-11-06T10:33:14.803Z",
-            "snapshot": {
-              "id": 23,
-              "title": "Docs & Storybook",
-              "description": "Document components and publish Storybook.",
-              "status": "done",
-              "priority": "low",
-              "assignedTo": 6,
-              "createdBy": 3,
-              "requirements": [
-                "Stories per component",
-                "Theming example"
-              ],
-              "acceptanceCriteria": [
-                "Docs accessible to team"
-              ],
-              "labels": [
-                "docs",
-                "storybook"
-              ],
-              "blockerNote": null,
-              "startAt": "2025-09-20T12:10:00Z",
-              "dueDate": "2025-09-28T23:59:59Z",
-              "endAt": null,
-              "estimateHours": 5,
-              "createdAt": "2025-09-20T12:10:00Z",
-              "updatedAt": "2025-09-27T17:20:00Z"
-            }
-          }
-        },
-        {
-          "id": 24,
-          "title": "Publish npm packages",
-          "description": "Publish core UI packages under org scope.",
-          "status": "done",
-          "priority": "medium",
-          "assignedTo": 7,
-          "createdBy": 3,
-          "requirements": [
-            "Build pipeline",
-            "Semver rules"
-          ],
-          "acceptanceCriteria": [
-            "Packages published"
-          ],
-          "labels": [
-            "release"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-09-21T09:30:00Z",
-          "dueDate": "2025-09-29T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 6,
-          "createdAt": "2025-09-21T09:30:00Z",
-          "updatedAt": "2025-09-29T09:30:00Z"
-        },
-        {
-          "id": "1764255598563",
-          "title": "v3",
-          "description": "asdasdfasfdasdf",
-          "status": "active",
-          "priority": "medium",
-          "assignedTo": "3",
-          "createdBy": 1,
-          "requirements": [
-            "asdas"
-          ],
-          "acceptanceCriteria": [
-            "dasdasd"
-          ],
-          "labels": [
-            "asdasd"
-          ],
-          "blockerNote": null,
-          "endAt": null,
-          "startAt": "2025-11-27T16:58",
-          "dueDate": "2025-11-28T16:58",
-          "estimateHours": 24,
-          "createdAt": "2025-11-27T14:59:58.569Z",
-          "updatedAt": "2025-11-27T14:59:58.569Z"
-        },
-        {
-          "id": "1764256741673",
-          "title": "add v4",
-          "description": "lspoifomsadfjewiornhfwe;l,kf",
-          "status": "active",
-          "priority": "urgent",
-          "assignedTo": "7",
-          "createdBy": 1,
-          "requirements": [
-            "fdgfdg"
-          ],
-          "acceptanceCriteria": [
-            "dfgfdgd"
-          ],
-          "labels": [
-            "fgdfgfg"
-          ],
-          "blockerNote": null,
-          "endAt": null,
-          "startAt": "2025-11-27T17:18",
-          "dueDate": "2025-11-28T17:18",
-          "estimateHours": 24,
-          "createdAt": "2025-11-27T15:19:01.678Z",
-          "updatedAt": "2025-11-27T15:19:01.678Z"
-        }
-      ]
+      "hidden": false
     },
     {
       "id": "8",
@@ -553,34 +196,7 @@
       ],
       "status": "active",
       "createdAt": "2025-10-06T10:00:00Z",
-      "tasks": [
-        {
-          "id": 27,
-          "title": "Invoices PDF",
-          "description": "Generate branded PDF invoices.",
-          "status": "todo",
-          "priority": "low",
-          "assignedTo": 2,
-          "createdBy": 2,
-          "requirements": [
-            "PDF template",
-            "Watermark"
-          ],
-          "acceptanceCriteria": [
-            "Matches finance template"
-          ],
-          "labels": [
-            "pdf"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-06T10:40:00Z",
-          "dueDate": "2025-10-18T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 4,
-          "createdAt": "2025-10-06T10:40:00Z",
-          "updatedAt": "2025-10-06T10:40:00Z"
-        }
-      ]
+      "hidden": false
     },
     {
       "id": "9",
@@ -594,63 +210,7 @@
       ],
       "status": "active",
       "createdAt": "2025-10-06T11:00:00Z",
-      "tasks": [
-        {
-          "id": 28,
-          "title": "Collect click signals",
-          "description": "Log and aggregate click/skip signals.",
-          "status": "todo",
-          "priority": "medium",
-          "assignedTo": 7,
-          "createdBy": 5,
-          "requirements": [
-            "Client events",
-            "Aggregation job"
-          ],
-          "acceptanceCriteria": [
-            "Dataset ready for training"
-          ],
-          "labels": [
-            "signals",
-            "data"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-06T11:05:00Z",
-          "dueDate": "2025-10-13T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 6,
-          "createdAt": "2025-10-06T11:05:00Z",
-          "updatedAt": "2025-10-06T11:05:00Z"
-        },
-        {
-          "id": 29,
-          "title": "BM25 tuning",
-          "description": "Tune BM25 parameters (k1, b) and evaluate on dev set.",
-          "status": "in progress",
-          "priority": "low",
-          "assignedTo": 5,
-          "createdBy": 1,
-          "requirements": [
-            "Run grid search over k1 and b",
-            "Report MAP@10, NDCG@10 on dev set"
-          ],
-          "acceptanceCriteria": [
-            "MAP@10 improves by ≥ 3% over baseline",
-            "Config is reproducible from docs"
-          ],
-          "labels": [
-            "search",
-            "ranking"
-          ],
-          "blockerNote": null,
-          "startAt": "2025-10-06T11:00:00Z",
-          "dueDate": "2025-10-14T23:59:59Z",
-          "endAt": null,
-          "estimateHours": 8,
-          "createdAt": "2025-10-06T11:15:00Z",
-          "updatedAt": "2025-10-06T13:00:00Z"
-        }
-      ]
+      "hidden": false
     },
     {
       "id": "d434",
@@ -667,89 +227,32 @@
       "dueAt": "2025-11-29T21:59:59.000Z",
       "createdAt": "2025-10-23T22:24:29.435Z",
       "createdBy": 1,
+      "hidden": false,
       "tasks": [
         {
-          "id": "1762433370279",
-          "title": "Log In Page ",
-          "description": "dadaljksdfiopujasidf",
+          "id": "1765364355580",
+          "title": "performans",
+          "description": ";pksfo9siud980fujsiodkfju9i8ytweq67ytegdaswjuhfd",
           "status": "active",
-          "priority": "urgent",
+          "priority": "medium",
           "assignedTo": "2",
           "createdBy": 1,
           "requirements": [
-            "ddd"
+            "fdsfsaf"
           ],
           "acceptanceCriteria": [
-            "dddd"
+            "asdasd"
           ],
           "labels": [
-            "sdsd"
+            "asdasd"
           ],
           "blockerNote": null,
           "endAt": null,
-          "startAt": "2025-11-06T14:49",
-          "dueDate": "2025-11-07T14:49",
+          "startAt": "2025-12-10T12:59",
+          "dueDate": "2025-12-11T12:59",
           "estimateHours": 24,
-          "createdAt": "2025-11-06T12:49:30.285Z",
-          "updatedAt": "2025-11-06T13:29:30.503Z",
-          "projectId": "d434",
-          "user": {
-            "id": "2",
-            "name": "Sara Ali",
-            "email": "sara@example.com",
-            "role": "user",
-            "password": "sara@123"
-          },
-          "project": {
-            "id": "d434",
-            "name": "Taske Maneger App",
-            "description": "مشاريع (Projects)\nتاسكات (Tasks)\nمستخدمين (Users)\nومواعيد تسليم (Deadlines)\nو Dashboard فيها كل ده مترتب",
-            "leaderId": 2,
-            "members": [
-              1,
-              2,
-              6
-            ],
-            "status": "active",
-            "startAt": "2025-10-24T06:00:00.000Z",
-            "dueAt": "2025-11-29T21:59:59.000Z",
-            "createdAt": "2025-10-23T22:24:29.435Z",
-            "createdBy": 1
-          },
-          "time": {
-            "start": "2025-11-06T12:49:00.000Z",
-            "end": "2025-11-07T12:49:00.000Z",
-            "msLeft": 85776394,
-            "inWindow": true,
-            "isOverdue": false,
-            "isDisabled": false
-          },
-          "restoredAt": "2025-11-06T13:29:30.503Z"
-        },
-        {
-          "id": "1762440545417",
-          "title": "Style Log inPage",
-          "description": "kosdiasdjrfikjdhfu9ihd",
-          "status": "active",
-          "priority": "urgent",
-          "assignedTo": "2",
-          "createdBy": 1,
-          "requirements": [
-            "sasas"
-          ],
-          "acceptanceCriteria": [
-            "asasas"
-          ],
-          "labels": [
-            "asassa"
-          ],
-          "blockerNote": null,
-          "endAt": null,
-          "startAt": "2025-11-06T16:48",
-          "dueDate": "2025-11-07T16:49",
-          "estimateHours": 24,
-          "createdAt": "2025-11-06T14:49:05.422Z",
-          "updatedAt": "2025-11-06T14:49:05.422Z"
+          "createdAt": "2025-12-10T10:59:15.588Z",
+          "updatedAt": "2025-12-10T10:59:15.589Z"
         }
       ]
     },
@@ -768,49 +271,7 @@
       "dueAt": "2025-11-12T21:59:59.000Z",
       "createdAt": "2025-11-09T14:19:55.902Z",
       "createdBy": 3,
-      "tasks": []
-    },
-    {
-      "id": "237d",
-      "name": "Two  Test Project",
-      "description": "f;dkefiosdujfoskdf",
-      "leaderId": 1,
-      "members": [
-        3,
-        1
-      ],
-      "status": "active",
-      "startAt": "2025-11-09T07:00:00.000Z",
-      "dueAt": "2025-11-11T21:59:59.000Z",
-      "createdAt": "2025-11-09T14:23:45.950Z",
-      "createdBy": 1,
-      "tasks": [
-        {
-          "id": "1762698280879",
-          "title": "Test Taske",
-          "description": "fedfsdfsdfsdfds",
-          "status": "active",
-          "priority": "medium",
-          "assignedTo": "3",
-          "createdBy": 1,
-          "requirements": [
-            "ddds"
-          ],
-          "acceptanceCriteria": [
-            "dsdsd"
-          ],
-          "labels": [
-            "sdsdsd"
-          ],
-          "blockerNote": null,
-          "endAt": null,
-          "startAt": "2025-11-09T16:24",
-          "dueDate": "2025-11-10T16:24",
-          "estimateHours": 24,
-          "createdAt": "2025-11-09T14:24:40.884Z",
-          "updatedAt": "2025-11-09T14:24:40.884Z"
-        }
-      ]
+      "hidden": false
     },
     {
       "id": "3047",
@@ -826,7 +287,24 @@
       "dueAt": "2025-11-12T21:59:59.000Z",
       "createdAt": "2025-11-09T15:57:08.529Z",
       "createdBy": 1,
-      "tasks": []
+      "hidden": true
+    },
+    {
+      "id": "2",
+      "name": "Mobile App Redesign",
+      "description": "New UI/UX for the company mobile app.",
+      "leaderId": 3,
+      "members": [
+        2,
+        3,
+        6,
+        1
+      ],
+      "status": "active",
+      "createdAt": "2025-10-02T09:00:00Z",
+      "hidden": true,
+      "deleted": true,
+      "deletedAt": "2025-12-06T13:03:24.346Z"
     }
   ],
   "BlokUsers": [],
@@ -845,7 +323,7 @@
       "status": "active",
       "startAt": "2025-11-09T07:00:00.000Z",
       "dueAt": "2025-11-12T21:59:59.000Z",
-      "deleted": true,
+      "deleted": false,
       "deletedAt": "2025-11-20T16:28:34.548Z"
     },
     {
@@ -866,3458 +344,47 @@
       "createdBy": 1,
       "deleted": true,
       "deletedAt": "2025-12-02T15:45:05.589Z"
+    },
+    {
+      "id": "7",
+      "name": "Design System v2",
+      "description": "Unify UI components with tokens & themes.",
+      "leaderId": 3,
+      "members": [
+        3,
+        6,
+        7
+      ],
+      "status": "active",
+      "createdAt": "2025-09-20T11:00:00Z",
+      "deleted": true,
+      "deletedAt": "2025-12-13T15:53:35.940Z"
+    },
+    {
+      "id": "237d",
+      "name": "Two  Test Project",
+      "description": "f;dkefiosdujfoskdf",
+      "leaderId": 1,
+      "members": [
+        3,
+        1
+      ],
+      "status": "active",
+      "startAt": "2025-11-09T07:00:00.000Z",
+      "dueAt": "2025-11-11T21:59:59.000Z",
+      "createdAt": "2025-11-09T14:23:45.950Z",
+      "createdBy": 1,
+      "hidden": false,
+      "deleted": true,
+      "deletedAt": "2025-12-13T15:55:26.292Z"
     }
   ],
   "notifications": [
     {
-      "id": "JfSFh4",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Taske 1\" was deleted by user 1 from project \"New Project3\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": null,
-      "taskId": "1763296250182",
-      "taskSnapshot": {
-        "id": "1763296250182",
-        "title": "Taske 1",
-        "description": "fdksafi0ush9udehf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "2",
-        "createdBy": 1,
-        "requirements": [
-          "asdas"
-        ],
-        "acceptanceCriteria": [
-          "dasda"
-        ],
-        "labels": [
-          "sdasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:30",
-        "dueDate": "2025-11-17T14:30",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:30:50.194Z",
-        "updatedAt": "2025-11-16T12:30:50.194Z",
-        "projectId": "d044",
-        "user": {
-          "id": "2",
-          "name": "Sara Ali",
-          "email": "sara@example.com",
-          "role": "user",
-          "password": "sara@123"
-        },
-        "project": {
-          "id": "d044",
-          "name": "New Project3",
-          "description": "sssssssssssssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            2,
-            3,
-            4
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-12T21:59:59.000Z",
-          "createdAt": "2025-11-09T16:07:11.624Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:30:00.000Z",
-          "end": "2025-11-17T12:30:00.000Z",
-          "msLeft": 82412585,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T13:36:32.869Z"
-      },
-      "notificationGroupId": "project:d044:task:1763296250182",
-      "status": "unread",
-      "createdAt": "2025-11-16T13:36:32.869Z"
-    },
-    {
-      "id": "lOqFqA",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Taske 1\" was deleted by user 1 from project \"New Project3\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": null,
-      "taskId": "1763296250182",
-      "taskSnapshot": {
-        "id": "1763296250182",
-        "title": "Taske 1",
-        "description": "fdksafi0ush9udehf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "2",
-        "createdBy": 1,
-        "requirements": [
-          "asdas"
-        ],
-        "acceptanceCriteria": [
-          "dasda"
-        ],
-        "labels": [
-          "sdasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:30",
-        "dueDate": "2025-11-17T14:30",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:30:50.194Z",
-        "updatedAt": "2025-11-16T12:30:50.194Z",
-        "projectId": "d044",
-        "user": {
-          "id": "2",
-          "name": "Sara Ali",
-          "email": "sara@example.com",
-          "role": "user",
-          "password": "sara@123"
-        },
-        "project": {
-          "id": "d044",
-          "name": "New Project3",
-          "description": "sssssssssssssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            2,
-            3,
-            4
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-12T21:59:59.000Z",
-          "createdAt": "2025-11-09T16:07:11.624Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:30:00.000Z",
-          "end": "2025-11-17T12:30:00.000Z",
-          "msLeft": 82412585,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T13:36:32.869Z"
-      },
-      "notificationGroupId": "project:d044:task:1763296250182",
-      "status": "read",
-      "createdAt": "2025-11-16T13:36:32.870Z"
-    },
-    {
-      "id": "vM6onz",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Taske 1\" was deleted by user 1 from project \"New Project3\"",
-      "fromUserId": "1",
-      "toUserId": "4",
-      "projectId": null,
-      "taskId": "1763296250182",
-      "taskSnapshot": {
-        "id": "1763296250182",
-        "title": "Taske 1",
-        "description": "fdksafi0ush9udehf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "2",
-        "createdBy": 1,
-        "requirements": [
-          "asdas"
-        ],
-        "acceptanceCriteria": [
-          "dasda"
-        ],
-        "labels": [
-          "sdasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:30",
-        "dueDate": "2025-11-17T14:30",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:30:50.194Z",
-        "updatedAt": "2025-11-16T12:30:50.194Z",
-        "projectId": "d044",
-        "user": {
-          "id": "2",
-          "name": "Sara Ali",
-          "email": "sara@example.com",
-          "role": "user",
-          "password": "sara@123"
-        },
-        "project": {
-          "id": "d044",
-          "name": "New Project3",
-          "description": "sssssssssssssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            2,
-            3,
-            4
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-12T21:59:59.000Z",
-          "createdAt": "2025-11-09T16:07:11.624Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:30:00.000Z",
-          "end": "2025-11-17T12:30:00.000Z",
-          "msLeft": 82412585,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T13:36:32.869Z"
-      },
-      "notificationGroupId": "project:d044:task:1763296250182",
-      "status": "unread",
-      "createdAt": "2025-11-16T13:36:32.870Z"
-    },
-    {
-      "id": "v0dlt4",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"eeee Taske\" was deleted by user 1 from project \"sssssssssssssssss\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "2965",
-      "taskId": "1763295829255",
-      "taskSnapshot": {
-        "id": "1763295829255",
-        "title": "eeee Taske",
-        "description": "f;kediosdhyufsdnf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "2",
-        "createdBy": 1,
-        "requirements": [
-          "fdsfsd"
-        ],
-        "acceptanceCriteria": [
-          "fsdfsd"
-        ],
-        "labels": [
-          "fsdf"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:23",
-        "dueDate": "2025-11-17T14:23",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:23:49.261Z",
-        "updatedAt": "2025-11-16T12:23:49.261Z",
-        "deleteRequest": {
-          "userId": "3",
-          "requestedAt": "2025-11-16T12:26:43.635Z",
-          "snapshot": {
-            "id": "1763295829255",
-            "title": "eeee Taske",
-            "description": "f;kediosdhyufsdnf",
-            "status": "active",
-            "priority": "urgent",
-            "assignedTo": "2",
-            "createdBy": 1,
-            "requirements": [
-              "fdsfsd"
-            ],
-            "acceptanceCriteria": [
-              "fsdfsd"
-            ],
-            "labels": [
-              "fsdf"
-            ],
-            "blockerNote": null,
-            "endAt": null,
-            "startAt": "2025-11-16T14:23",
-            "dueDate": "2025-11-17T14:23",
-            "estimateHours": 24,
-            "createdAt": "2025-11-16T12:23:49.261Z",
-            "updatedAt": "2025-11-16T12:23:49.261Z"
-          }
-        },
-        "projectId": "2965",
-        "user": {
-          "id": "2",
-          "name": "Sara Ali",
-          "email": "sara@example.com",
-          "role": "user",
-          "password": "sara@123"
-        },
-        "project": {
-          "id": "2965",
-          "name": "sssssssssssssssss",
-          "description": "sssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            2,
-            3
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-11T21:59:59.000Z",
-          "createdAt": "2025-11-09T16:14:49.336Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:23:00.000Z",
-          "end": "2025-11-17T12:23:00.000Z",
-          "msLeft": 80102829,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:08:01.448Z"
-      },
-      "notificationGroupId": "project:2965:task:1763295829255",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:08:01.449Z"
-    },
-    {
-      "id": "vqxDEg",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"eeee Taske\" was deleted by user 1 from project \"sssssssssssssssss\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "2965",
-      "taskId": "1763295829255",
-      "taskSnapshot": {
-        "id": "1763295829255",
-        "title": "eeee Taske",
-        "description": "f;kediosdhyufsdnf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "2",
-        "createdBy": 1,
-        "requirements": [
-          "fdsfsd"
-        ],
-        "acceptanceCriteria": [
-          "fsdfsd"
-        ],
-        "labels": [
-          "fsdf"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:23",
-        "dueDate": "2025-11-17T14:23",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:23:49.261Z",
-        "updatedAt": "2025-11-16T12:23:49.261Z",
-        "deleteRequest": {
-          "userId": "3",
-          "requestedAt": "2025-11-16T12:26:43.635Z",
-          "snapshot": {
-            "id": "1763295829255",
-            "title": "eeee Taske",
-            "description": "f;kediosdhyufsdnf",
-            "status": "active",
-            "priority": "urgent",
-            "assignedTo": "2",
-            "createdBy": 1,
-            "requirements": [
-              "fdsfsd"
-            ],
-            "acceptanceCriteria": [
-              "fsdfsd"
-            ],
-            "labels": [
-              "fsdf"
-            ],
-            "blockerNote": null,
-            "endAt": null,
-            "startAt": "2025-11-16T14:23",
-            "dueDate": "2025-11-17T14:23",
-            "estimateHours": 24,
-            "createdAt": "2025-11-16T12:23:49.261Z",
-            "updatedAt": "2025-11-16T12:23:49.261Z"
-          }
-        },
-        "projectId": "2965",
-        "user": {
-          "id": "2",
-          "name": "Sara Ali",
-          "email": "sara@example.com",
-          "role": "user",
-          "password": "sara@123"
-        },
-        "project": {
-          "id": "2965",
-          "name": "sssssssssssssssss",
-          "description": "sssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            2,
-            3
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-11T21:59:59.000Z",
-          "createdAt": "2025-11-09T16:14:49.336Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:23:00.000Z",
-          "end": "2025-11-17T12:23:00.000Z",
-          "msLeft": 80102829,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:08:01.448Z"
-      },
-      "notificationGroupId": "project:2965:task:1763295829255",
-      "status": "read",
-      "createdAt": "2025-11-16T14:08:01.449Z"
-    },
-    {
-      "id": "toK1OG",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Nav Bar Comp\" was deleted by user 1 from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "2",
-      "taskId": "1762870706646",
-      "taskSnapshot": {
-        "id": "1762870706646",
-        "title": "Nav Bar Comp",
-        "description": ";pksfgiojhsdidsds",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "3",
-        "createdBy": 1,
-        "requirements": [
-          "dsds"
-        ],
-        "acceptanceCriteria": [
-          "dsd"
-        ],
-        "labels": [
-          "sdd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-11T16:18",
-        "dueDate": "2025-11-12T16:18",
-        "estimateHours": 24,
-        "createdAt": "2025-11-11T14:18:26.651Z",
-        "updatedAt": "2025-11-11T14:18:26.651Z",
-        "deleteRequest": null,
-        "projectId": "2",
-        "user": {
-          "id": "3",
-          "name": "Omar Hassan",
-          "email": "omar@example.com",
-          "role": "user",
-          "password": "omar@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-11T14:18:00.000Z",
-          "end": "2025-11-12T14:18:00.000Z",
-          "msLeft": -345100371,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:09:50.314Z"
-      },
-      "notificationGroupId": "project:2:task:1762870706646",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:09:50.314Z"
-    },
-    {
-      "id": "uUhhrC",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Nav Bar Comp\" was deleted by user 1 from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "2",
-      "taskId": "1762870706646",
-      "taskSnapshot": {
-        "id": "1762870706646",
-        "title": "Nav Bar Comp",
-        "description": ";pksfgiojhsdidsds",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "3",
-        "createdBy": 1,
-        "requirements": [
-          "dsds"
-        ],
-        "acceptanceCriteria": [
-          "dsd"
-        ],
-        "labels": [
-          "sdd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-11T16:18",
-        "dueDate": "2025-11-12T16:18",
-        "estimateHours": 24,
-        "createdAt": "2025-11-11T14:18:26.651Z",
-        "updatedAt": "2025-11-11T14:18:26.651Z",
-        "deleteRequest": null,
-        "projectId": "2",
-        "user": {
-          "id": "3",
-          "name": "Omar Hassan",
-          "email": "omar@example.com",
-          "role": "user",
-          "password": "omar@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-11T14:18:00.000Z",
-          "end": "2025-11-12T14:18:00.000Z",
-          "msLeft": -345100371,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:09:50.314Z"
-      },
-      "notificationGroupId": "project:2:task:1762870706646",
-      "status": "read",
-      "createdAt": "2025-11-16T14:09:50.315Z"
-    },
-    {
-      "id": "5hyc-A",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Nav Bar Comp\" was deleted by user 1 from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "6",
-      "projectId": "2",
-      "taskId": "1762870706646",
-      "taskSnapshot": {
-        "id": "1762870706646",
-        "title": "Nav Bar Comp",
-        "description": ";pksfgiojhsdidsds",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "3",
-        "createdBy": 1,
-        "requirements": [
-          "dsds"
-        ],
-        "acceptanceCriteria": [
-          "dsd"
-        ],
-        "labels": [
-          "sdd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-11T16:18",
-        "dueDate": "2025-11-12T16:18",
-        "estimateHours": 24,
-        "createdAt": "2025-11-11T14:18:26.651Z",
-        "updatedAt": "2025-11-11T14:18:26.651Z",
-        "deleteRequest": null,
-        "projectId": "2",
-        "user": {
-          "id": "3",
-          "name": "Omar Hassan",
-          "email": "omar@example.com",
-          "role": "user",
-          "password": "omar@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-11T14:18:00.000Z",
-          "end": "2025-11-12T14:18:00.000Z",
-          "msLeft": -345100371,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:09:50.314Z"
-      },
-      "notificationGroupId": "project:2:task:1762870706646",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:09:50.315Z"
-    },
-    {
-      "id": "_snatB",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"eeee Taske\" was deleted by user 1 from project \"sssssssssssssssss\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "2965",
-      "taskId": "1763295829255",
-      "taskSnapshot": {
-        "id": "1763295829255",
-        "title": "eeee Taske",
-        "description": "f;kediosdhyufsdnf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "2",
-        "createdBy": 1,
-        "requirements": [
-          "fdsfsd"
-        ],
-        "acceptanceCriteria": [
-          "fsdfsd"
-        ],
-        "labels": [
-          "fsdf"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:23",
-        "dueDate": "2025-11-17T14:23",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:23:49.261Z",
-        "updatedAt": "2025-11-16T14:08:40.835Z",
-        "deleteRequest": {
-          "userId": "3",
-          "requestedAt": "2025-11-16T12:26:43.635Z",
-          "snapshot": {
-            "id": "1763295829255",
-            "title": "eeee Taske",
-            "description": "f;kediosdhyufsdnf",
-            "status": "active",
-            "priority": "urgent",
-            "assignedTo": "2",
-            "createdBy": 1,
-            "requirements": [
-              "fdsfsd"
-            ],
-            "acceptanceCriteria": [
-              "fsdfsd"
-            ],
-            "labels": [
-              "fsdf"
-            ],
-            "blockerNote": null,
-            "endAt": null,
-            "startAt": "2025-11-16T14:23",
-            "dueDate": "2025-11-17T14:23",
-            "estimateHours": 24,
-            "createdAt": "2025-11-16T12:23:49.261Z",
-            "updatedAt": "2025-11-16T12:23:49.261Z"
-          }
-        },
-        "projectId": "2965",
-        "user": {
-          "id": "2",
-          "name": "Sara Ali",
-          "email": "sara@example.com",
-          "role": "user",
-          "password": "sara@123"
-        },
-        "project": {
-          "id": "2965",
-          "name": "sssssssssssssssss",
-          "description": "sssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            2,
-            3
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-11T21:59:59.000Z",
-          "createdAt": "2025-11-09T16:14:49.336Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:23:00.000Z",
-          "end": "2025-11-17T12:23:00.000Z",
-          "msLeft": 78259616,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        },
-        "restoredAt": "2025-11-16T14:08:40.835Z"
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:38:45.168Z"
-      },
-      "notificationGroupId": "project:2965:task:1763295829255",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:38:45.168Z"
-    },
-    {
-      "id": "JFCikC",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"eeee Taske\" was deleted by user 1 from project \"sssssssssssssssss\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "2965",
-      "taskId": "1763295829255",
-      "taskSnapshot": {
-        "id": "1763295829255",
-        "title": "eeee Taske",
-        "description": "f;kediosdhyufsdnf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "2",
-        "createdBy": 1,
-        "requirements": [
-          "fdsfsd"
-        ],
-        "acceptanceCriteria": [
-          "fsdfsd"
-        ],
-        "labels": [
-          "fsdf"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:23",
-        "dueDate": "2025-11-17T14:23",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:23:49.261Z",
-        "updatedAt": "2025-11-16T14:08:40.835Z",
-        "deleteRequest": {
-          "userId": "3",
-          "requestedAt": "2025-11-16T12:26:43.635Z",
-          "snapshot": {
-            "id": "1763295829255",
-            "title": "eeee Taske",
-            "description": "f;kediosdhyufsdnf",
-            "status": "active",
-            "priority": "urgent",
-            "assignedTo": "2",
-            "createdBy": 1,
-            "requirements": [
-              "fdsfsd"
-            ],
-            "acceptanceCriteria": [
-              "fsdfsd"
-            ],
-            "labels": [
-              "fsdf"
-            ],
-            "blockerNote": null,
-            "endAt": null,
-            "startAt": "2025-11-16T14:23",
-            "dueDate": "2025-11-17T14:23",
-            "estimateHours": 24,
-            "createdAt": "2025-11-16T12:23:49.261Z",
-            "updatedAt": "2025-11-16T12:23:49.261Z"
-          }
-        },
-        "projectId": "2965",
-        "user": {
-          "id": "2",
-          "name": "Sara Ali",
-          "email": "sara@example.com",
-          "role": "user",
-          "password": "sara@123"
-        },
-        "project": {
-          "id": "2965",
-          "name": "sssssssssssssssss",
-          "description": "sssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            2,
-            3
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-11T21:59:59.000Z",
-          "createdAt": "2025-11-09T16:14:49.336Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:23:00.000Z",
-          "end": "2025-11-17T12:23:00.000Z",
-          "msLeft": 78259616,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        },
-        "restoredAt": "2025-11-16T14:08:40.835Z"
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:38:45.168Z"
-      },
-      "notificationGroupId": "project:2965:task:1763295829255",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:38:45.169Z"
-    },
-    {
-      "id": "Wb-sL-",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"ddddd\" was deleted by user 1 from project \"New Project2\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": null,
-      "taskId": "1763296523150",
-      "taskSnapshot": {
-        "id": "1763296523150",
-        "title": "ddddd",
-        "description": "dadsasdasd",
-        "status": "active",
-        "priority": "medium",
-        "assignedTo": "4",
-        "createdBy": 1,
-        "requirements": [
-          "asd"
-        ],
-        "acceptanceCriteria": [
-          "asdasd"
-        ],
-        "labels": [
-          "asd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:35",
-        "dueDate": "2025-11-17T14:35",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:35:23.154Z",
-        "updatedAt": "2025-11-16T12:35:23.154Z",
-        "projectId": "4f8a",
-        "user": {
-          "id": "4",
-          "name": "Unassigned",
-          "email": "none@system.com",
-          "role": "user",
-          "password": "none@123"
-        },
-        "project": {
-          "id": "4f8a",
-          "name": "New Project2",
-          "description": "ssssssssssssssssssssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            3,
-            4,
-            5,
-            2
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-12T21:59:59.000Z",
-          "createdAt": "2025-11-09T15:59:04.128Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:35:00.000Z",
-          "end": "2025-11-17T12:35:00.000Z",
-          "msLeft": 78906526,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:39:58.005Z"
-      },
-      "notificationGroupId": "project:4f8a:task:1763296523150",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:39:58.005Z"
-    },
-    {
-      "id": "g_MjGk",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"ddddd\" was deleted by user 1 from project \"New Project2\"",
-      "fromUserId": "1",
-      "toUserId": "4",
-      "projectId": null,
-      "taskId": "1763296523150",
-      "taskSnapshot": {
-        "id": "1763296523150",
-        "title": "ddddd",
-        "description": "dadsasdasd",
-        "status": "active",
-        "priority": "medium",
-        "assignedTo": "4",
-        "createdBy": 1,
-        "requirements": [
-          "asd"
-        ],
-        "acceptanceCriteria": [
-          "asdasd"
-        ],
-        "labels": [
-          "asd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:35",
-        "dueDate": "2025-11-17T14:35",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:35:23.154Z",
-        "updatedAt": "2025-11-16T12:35:23.154Z",
-        "projectId": "4f8a",
-        "user": {
-          "id": "4",
-          "name": "Unassigned",
-          "email": "none@system.com",
-          "role": "user",
-          "password": "none@123"
-        },
-        "project": {
-          "id": "4f8a",
-          "name": "New Project2",
-          "description": "ssssssssssssssssssssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            3,
-            4,
-            5,
-            2
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-12T21:59:59.000Z",
-          "createdAt": "2025-11-09T15:59:04.128Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:35:00.000Z",
-          "end": "2025-11-17T12:35:00.000Z",
-          "msLeft": 78906526,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:39:58.005Z"
-      },
-      "notificationGroupId": "project:4f8a:task:1763296523150",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:39:58.006Z"
-    },
-    {
-      "id": "H1M63A",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"ddddd\" was deleted by user 1 from project \"New Project2\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": null,
-      "taskId": "1763296523150",
-      "taskSnapshot": {
-        "id": "1763296523150",
-        "title": "ddddd",
-        "description": "dadsasdasd",
-        "status": "active",
-        "priority": "medium",
-        "assignedTo": "4",
-        "createdBy": 1,
-        "requirements": [
-          "asd"
-        ],
-        "acceptanceCriteria": [
-          "asdasd"
-        ],
-        "labels": [
-          "asd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:35",
-        "dueDate": "2025-11-17T14:35",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:35:23.154Z",
-        "updatedAt": "2025-11-16T12:35:23.154Z",
-        "projectId": "4f8a",
-        "user": {
-          "id": "4",
-          "name": "Unassigned",
-          "email": "none@system.com",
-          "role": "user",
-          "password": "none@123"
-        },
-        "project": {
-          "id": "4f8a",
-          "name": "New Project2",
-          "description": "ssssssssssssssssssssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            3,
-            4,
-            5,
-            2
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-12T21:59:59.000Z",
-          "createdAt": "2025-11-09T15:59:04.128Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:35:00.000Z",
-          "end": "2025-11-17T12:35:00.000Z",
-          "msLeft": 78906526,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:39:58.005Z"
-      },
-      "notificationGroupId": "project:4f8a:task:1763296523150",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:39:58.008Z"
-    },
-    {
-      "id": "t--7P4",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"ddddd\" was deleted by user 1 from project \"New Project2\"",
-      "fromUserId": "1",
-      "toUserId": "5",
-      "projectId": null,
-      "taskId": "1763296523150",
-      "taskSnapshot": {
-        "id": "1763296523150",
-        "title": "ddddd",
-        "description": "dadsasdasd",
-        "status": "active",
-        "priority": "medium",
-        "assignedTo": "4",
-        "createdBy": 1,
-        "requirements": [
-          "asd"
-        ],
-        "acceptanceCriteria": [
-          "asdasd"
-        ],
-        "labels": [
-          "asd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T14:35",
-        "dueDate": "2025-11-17T14:35",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T12:35:23.154Z",
-        "updatedAt": "2025-11-16T12:35:23.154Z",
-        "projectId": "4f8a",
-        "user": {
-          "id": "4",
-          "name": "Unassigned",
-          "email": "none@system.com",
-          "role": "user",
-          "password": "none@123"
-        },
-        "project": {
-          "id": "4f8a",
-          "name": "New Project2",
-          "description": "ssssssssssssssssssssssssssssssssssssss",
-          "leaderId": 2,
-          "members": [
-            3,
-            4,
-            5,
-            2
-          ],
-          "status": "active",
-          "startAt": "2025-11-09T07:00:00.000Z",
-          "dueAt": "2025-11-12T21:59:59.000Z",
-          "createdAt": "2025-11-09T15:59:04.128Z",
-          "createdBy": 1
-        },
-        "time": {
-          "start": "2025-11-16T12:35:00.000Z",
-          "end": "2025-11-17T12:35:00.000Z",
-          "msLeft": 78906526,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:39:58.005Z"
-      },
-      "notificationGroupId": "project:4f8a:task:1763296523150",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:39:58.007Z"
-    },
-    {
-      "id": "rC7DuS",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Billing portal\" was deleted by user Mahmoud Ahmed from project \"Payments Integration\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "8",
-      "taskId": 26,
-      "taskSnapshot": {
-        "id": 26,
-        "title": "Billing portal",
-        "description": "Self-serve customer portal for invoices.",
-        "status": "todo",
-        "priority": "medium",
-        "assignedTo": 1,
-        "createdBy": 2,
-        "requirements": [
-          "Stripe portal link",
-          "User linking"
-        ],
-        "acceptanceCriteria": [
-          "Can download invoices"
-        ],
-        "labels": [
-          "billing",
-          "frontend"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-10-06T10:25:00Z",
-        "dueDate": "2025-10-15T23:59:59Z",
-        "endAt": null,
-        "estimateHours": 5,
-        "createdAt": "2025-10-06T10:25:00Z",
-        "updatedAt": "2025-10-06T10:25:00Z",
-        "projectId": "8",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "8",
-          "name": "Payments Integration",
-          "description": "Add Stripe for subscriptions & invoicing.",
-          "leaderId": 2,
-          "members": [
-            1,
-            2,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-06T10:00:00Z"
-        },
-        "time": {
-          "start": "2025-10-06T10:25:00.000Z",
-          "end": "2025-10-15T23:59:59.000Z",
-          "msLeft": -2731603087,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:46:46.975Z"
-      },
-      "notificationGroupId": "project:8:task:26",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:46:46.975Z"
-    },
-    {
-      "id": "pyOAtT",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Billing portal\" was deleted by user Mahmoud Ahmed from project \"Payments Integration\"",
-      "fromUserId": "1",
-      "toUserId": "8",
-      "projectId": "8",
-      "taskId": 26,
-      "taskSnapshot": {
-        "id": 26,
-        "title": "Billing portal",
-        "description": "Self-serve customer portal for invoices.",
-        "status": "todo",
-        "priority": "medium",
-        "assignedTo": 1,
-        "createdBy": 2,
-        "requirements": [
-          "Stripe portal link",
-          "User linking"
-        ],
-        "acceptanceCriteria": [
-          "Can download invoices"
-        ],
-        "labels": [
-          "billing",
-          "frontend"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-10-06T10:25:00Z",
-        "dueDate": "2025-10-15T23:59:59Z",
-        "endAt": null,
-        "estimateHours": 5,
-        "createdAt": "2025-10-06T10:25:00Z",
-        "updatedAt": "2025-10-06T10:25:00Z",
-        "projectId": "8",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "8",
-          "name": "Payments Integration",
-          "description": "Add Stripe for subscriptions & invoicing.",
-          "leaderId": 2,
-          "members": [
-            1,
-            2,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-06T10:00:00Z"
-        },
-        "time": {
-          "start": "2025-10-06T10:25:00.000Z",
-          "end": "2025-10-15T23:59:59.000Z",
-          "msLeft": -2731603087,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:46:46.975Z"
-      },
-      "notificationGroupId": "project:8:task:26",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:46:46.976Z"
-    },
-    {
-      "id": "qCf-gw",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Refactor Table component\" was deleted by user Mahmoud Ahmed from project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "5",
-      "taskId": 12,
-      "taskSnapshot": {
-        "id": 12,
-        "title": "Refactor Table component",
-        "description": "Simplify props and remove legacy patterns.",
-        "status": "todo",
-        "priority": "medium",
-        "assignedTo": 8,
-        "createdBy": 5,
-        "requirements": [
-          "Use hooks",
-          "Unit tests"
-        ],
-        "acceptanceCriteria": [
-          "No regressions in UI"
-        ],
-        "labels": [
-          "refactor",
-          "frontend"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-10-05T09:30:00Z",
-        "dueDate": "2025-10-18T23:59:59Z",
-        "endAt": null,
-        "estimateHours": 6,
-        "createdAt": "2025-10-05T09:30:00Z",
-        "updatedAt": "2025-10-05T09:30:00Z",
-        "projectId": "5",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "5",
-          "name": "Internal Tools Cleanup",
-          "description": "Refactor shared components & remove dead code.",
-          "leaderId": 5,
-          "members": [
-            2,
-            5,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-05T09:20:00Z"
-        },
-        "time": {
-          "start": "2025-10-05T09:30:00.000Z",
-          "end": "2025-10-18T23:59:59.000Z",
-          "msLeft": -2472892783,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:54:56.383Z"
-      },
-      "notificationGroupId": "project:5:task:12",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:54:56.383Z"
-    },
-    {
-      "id": "h8e8po",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Refactor Table component\" was deleted by user Mahmoud Ahmed from project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "5",
-      "projectId": "5",
-      "taskId": 12,
-      "taskSnapshot": {
-        "id": 12,
-        "title": "Refactor Table component",
-        "description": "Simplify props and remove legacy patterns.",
-        "status": "todo",
-        "priority": "medium",
-        "assignedTo": 8,
-        "createdBy": 5,
-        "requirements": [
-          "Use hooks",
-          "Unit tests"
-        ],
-        "acceptanceCriteria": [
-          "No regressions in UI"
-        ],
-        "labels": [
-          "refactor",
-          "frontend"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-10-05T09:30:00Z",
-        "dueDate": "2025-10-18T23:59:59Z",
-        "endAt": null,
-        "estimateHours": 6,
-        "createdAt": "2025-10-05T09:30:00Z",
-        "updatedAt": "2025-10-05T09:30:00Z",
-        "projectId": "5",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "5",
-          "name": "Internal Tools Cleanup",
-          "description": "Refactor shared components & remove dead code.",
-          "leaderId": 5,
-          "members": [
-            2,
-            5,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-05T09:20:00Z"
-        },
-        "time": {
-          "start": "2025-10-05T09:30:00.000Z",
-          "end": "2025-10-18T23:59:59.000Z",
-          "msLeft": -2472892783,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:54:56.383Z"
-      },
-      "notificationGroupId": "project:5:task:12",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:54:56.384Z"
-    },
-    {
-      "id": "39Nnxd",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Refactor Table component\" was deleted by user Mahmoud Ahmed from project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "8",
-      "projectId": "5",
-      "taskId": 12,
-      "taskSnapshot": {
-        "id": 12,
-        "title": "Refactor Table component",
-        "description": "Simplify props and remove legacy patterns.",
-        "status": "todo",
-        "priority": "medium",
-        "assignedTo": 8,
-        "createdBy": 5,
-        "requirements": [
-          "Use hooks",
-          "Unit tests"
-        ],
-        "acceptanceCriteria": [
-          "No regressions in UI"
-        ],
-        "labels": [
-          "refactor",
-          "frontend"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-10-05T09:30:00Z",
-        "dueDate": "2025-10-18T23:59:59Z",
-        "endAt": null,
-        "estimateHours": 6,
-        "createdAt": "2025-10-05T09:30:00Z",
-        "updatedAt": "2025-10-05T09:30:00Z",
-        "projectId": "5",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "5",
-          "name": "Internal Tools Cleanup",
-          "description": "Refactor shared components & remove dead code.",
-          "leaderId": 5,
-          "members": [
-            2,
-            5,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-05T09:20:00Z"
-        },
-        "time": {
-          "start": "2025-10-05T09:30:00.000Z",
-          "end": "2025-10-18T23:59:59.000Z",
-          "msLeft": -2472892783,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T14:54:56.383Z"
-      },
-      "notificationGroupId": "project:5:task:12",
-      "status": "unread",
-      "createdAt": "2025-11-16T14:54:56.385Z"
-    },
-    {
-      "id": "vWdma7",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Landeng Page d\" was deleted by user Mahmoud Ahmed from project \"Marketing Dashboard\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "1",
-      "taskId": "1763293417666",
-      "taskSnapshot": {
-        "id": "1763293417666",
-        "title": "Landeng Page d",
-        "description": "asdasdafrdweqfrd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sas"
-        ],
-        "acceptanceCriteria": [
-          "asasasd"
-        ],
-        "labels": [
-          "asas"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T13:43",
-        "dueDate": "2025-11-17T13:43",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T11:43:37.673Z",
-        "updatedAt": "2025-11-16T11:43:37.673Z",
-        "projectId": "1",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "1",
-          "name": "Marketing Dashboard",
-          "description": "Dashboard to visualize campaign KPIs and ROAS.",
-          "leaderId": 1,
-          "members": [
-            1,
-            2,
-            3,
-            5
-          ],
-          "status": "block",
-          "createdAt": "2025-10-01T10:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T11:43:00.000Z",
-          "end": "2025-11-17T11:43:00.000Z",
-          "msLeft": 74306441,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:04:40.297Z"
-      },
-      "notificationGroupId": "project:1:task:1763293417666",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:04:40.298Z"
-    },
-    {
-      "id": "KcM2D3",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Landeng Page d\" was deleted by user Mahmoud Ahmed from project \"Marketing Dashboard\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "1",
-      "taskId": "1763293417666",
-      "taskSnapshot": {
-        "id": "1763293417666",
-        "title": "Landeng Page d",
-        "description": "asdasdafrdweqfrd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sas"
-        ],
-        "acceptanceCriteria": [
-          "asasasd"
-        ],
-        "labels": [
-          "asas"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T13:43",
-        "dueDate": "2025-11-17T13:43",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T11:43:37.673Z",
-        "updatedAt": "2025-11-16T11:43:37.673Z",
-        "projectId": "1",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "1",
-          "name": "Marketing Dashboard",
-          "description": "Dashboard to visualize campaign KPIs and ROAS.",
-          "leaderId": 1,
-          "members": [
-            1,
-            2,
-            3,
-            5
-          ],
-          "status": "block",
-          "createdAt": "2025-10-01T10:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T11:43:00.000Z",
-          "end": "2025-11-17T11:43:00.000Z",
-          "msLeft": 74306441,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:04:40.297Z"
-      },
-      "notificationGroupId": "project:1:task:1763293417666",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:04:40.299Z"
-    },
-    {
-      "id": "Nie8V3",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Landeng Page d\" was deleted by user Mahmoud Ahmed from project \"Marketing Dashboard\"",
-      "fromUserId": "1",
-      "toUserId": "5",
-      "projectId": "1",
-      "taskId": "1763293417666",
-      "taskSnapshot": {
-        "id": "1763293417666",
-        "title": "Landeng Page d",
-        "description": "asdasdafrdweqfrd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sas"
-        ],
-        "acceptanceCriteria": [
-          "asasasd"
-        ],
-        "labels": [
-          "asas"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T13:43",
-        "dueDate": "2025-11-17T13:43",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T11:43:37.673Z",
-        "updatedAt": "2025-11-16T11:43:37.673Z",
-        "projectId": "1",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "1",
-          "name": "Marketing Dashboard",
-          "description": "Dashboard to visualize campaign KPIs and ROAS.",
-          "leaderId": 1,
-          "members": [
-            1,
-            2,
-            3,
-            5
-          ],
-          "status": "block",
-          "createdAt": "2025-10-01T10:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T11:43:00.000Z",
-          "end": "2025-11-17T11:43:00.000Z",
-          "msLeft": 74306441,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:04:40.297Z"
-      },
-      "notificationGroupId": "project:1:task:1763293417666",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:04:40.299Z"
-    },
-    {
-      "id": "wLEzFV",
-      "type": "task_added team to 2",
-      "title": "New Task Added: FFFF Taske",
-      "message": "User 1 added a new task \"FFFF Taske\" to project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "2",
-      "taskId": "1763305999857",
-      "taskSnapshot": {
-        "id": "1763305999857",
-        "title": "FFFF Taske",
-        "description": "fedasfsdfsd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sa"
-        ],
-        "acceptanceCriteria": [
-          "dasdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:13",
-        "dueDate": "2025-11-17T17:13",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:13:19.862Z",
-        "updatedAt": "2025-11-16T15:13:19.862Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:13:19.868Z"
-    },
-    {
-      "id": "G7rtnB",
-      "type": "task_added team to 2",
-      "title": "New Task Added: FFFF Taske",
-      "message": "User 1 added a new task \"FFFF Taske\" to project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "2",
-      "taskId": "1763305999857",
-      "taskSnapshot": {
-        "id": "1763305999857",
-        "title": "FFFF Taske",
-        "description": "fedasfsdfsd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sa"
-        ],
-        "acceptanceCriteria": [
-          "dasdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:13",
-        "dueDate": "2025-11-17T17:13",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:13:19.862Z",
-        "updatedAt": "2025-11-16T15:13:19.862Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:13:19.903Z"
-    },
-    {
-      "id": "ipzaBs",
-      "type": "task_added team to 2",
-      "title": "New Task Added: FFFF Taske",
-      "message": "User 1 added a new task \"FFFF Taske\" to project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "6",
-      "projectId": "2",
-      "taskId": "1763305999857",
-      "taskSnapshot": {
-        "id": "1763305999857",
-        "title": "FFFF Taske",
-        "description": "fedasfsdfsd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sa"
-        ],
-        "acceptanceCriteria": [
-          "dasdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:13",
-        "dueDate": "2025-11-17T17:13",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:13:19.862Z",
-        "updatedAt": "2025-11-16T15:13:19.862Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:13:19.910Z"
-    },
-    {
-      "id": "TqFzh_",
-      "type": "task_added own to 2",
-      "title": "New Task Added: FFFF Taske",
-      "message": "User 1 added a new task \"FFFF Taske\" to project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "1",
-      "projectId": "2",
-      "taskId": "1763305999857",
-      "taskSnapshot": {
-        "id": "1763305999857",
-        "title": "FFFF Taske",
-        "description": "fedasfsdfsd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sa"
-        ],
-        "acceptanceCriteria": [
-          "dasdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:13",
-        "dueDate": "2025-11-17T17:13",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:13:19.862Z",
-        "updatedAt": "2025-11-16T15:13:19.862Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:13:19.922Z"
-    },
-    {
-      "id": "DGgV4Z",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"FFFF Taske\" was deleted by user Mahmoud Ahmed from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "2",
-      "taskId": "1763305999857",
-      "taskSnapshot": {
-        "id": "1763305999857",
-        "title": "FFFF Taske",
-        "description": "fedasfsdfsd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sa"
-        ],
-        "acceptanceCriteria": [
-          "dasdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:13",
-        "dueDate": "2025-11-17T17:13",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:13:19.862Z",
-        "updatedAt": "2025-11-16T15:13:19.862Z",
-        "projectId": "2",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T15:13:00.000Z",
-          "end": "2025-11-17T15:13:00.000Z",
-          "msLeft": 85859269,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:22:04.675Z"
-      },
-      "notificationGroupId": "project:2:task:1763305999857",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:22:04.675Z"
-    },
-    {
-      "id": "VVRx5D",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"FFFF Taske\" was deleted by user Mahmoud Ahmed from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "2",
-      "taskId": "1763305999857",
-      "taskSnapshot": {
-        "id": "1763305999857",
-        "title": "FFFF Taske",
-        "description": "fedasfsdfsd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sa"
-        ],
-        "acceptanceCriteria": [
-          "dasdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:13",
-        "dueDate": "2025-11-17T17:13",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:13:19.862Z",
-        "updatedAt": "2025-11-16T15:13:19.862Z",
-        "projectId": "2",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T15:13:00.000Z",
-          "end": "2025-11-17T15:13:00.000Z",
-          "msLeft": 85859269,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:22:04.675Z"
-      },
-      "notificationGroupId": "project:2:task:1763305999857",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:22:04.676Z"
-    },
-    {
-      "id": "L1dpcb",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"FFFF Taske\" was deleted by user Mahmoud Ahmed from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "6",
-      "projectId": "2",
-      "taskId": "1763305999857",
-      "taskSnapshot": {
-        "id": "1763305999857",
-        "title": "FFFF Taske",
-        "description": "fedasfsdfsd",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "sa"
-        ],
-        "acceptanceCriteria": [
-          "dasdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:13",
-        "dueDate": "2025-11-17T17:13",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:13:19.862Z",
-        "updatedAt": "2025-11-16T15:13:19.862Z",
-        "projectId": "2",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@example.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T15:13:00.000Z",
-          "end": "2025-11-17T15:13:00.000Z",
-          "msLeft": 85859269,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:22:04.675Z"
-      },
-      "notificationGroupId": "project:2:task:1763305999857",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:22:04.678Z"
-    },
-    {
-      "id": "DH3t3f",
-      "type": "user_login",
-      "title": "Welcome back, Mahmoud!",
-      "message": "Mahmoud logged in at 11/16/2025, 5:26:13 PM",
-      "fromUserId": null,
-      "toUserId": "8",
-      "projectId": null,
-      "taskId": null,
-      "taskSnapshot": null,
-      "meta": {
-        "source": "auth-listener",
-        "event": "login"
-      },
-      "status": "read",
-      "createdAt": "2025-11-16T15:26:13.389Z"
-    },
-    {
-      "id": "4axQg-",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Stripe webhooks\" was deleted by user Mahmoud Ahmed from project \"Payments Integration\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "8",
-      "taskId": 25,
-      "taskSnapshot": {
-        "id": 25,
-        "title": "Stripe webhooks",
-        "description": "Handle invoice.paid and subscription events.",
-        "status": "in progress",
-        "priority": "high",
-        "assignedTo": 8,
-        "createdBy": 2,
-        "requirements": [
-          "Verify signature",
-          "Idempotency keys"
-        ],
-        "acceptanceCriteria": [
-          "Events processed reliably"
-        ],
-        "labels": [
-          "stripe",
-          "backend"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-10-06T10:10:00Z",
-        "dueDate": "2025-10-11T23:59:59Z",
-        "endAt": null,
-        "estimateHours": 7,
-        "createdAt": "2025-10-06T10:10:00Z",
-        "updatedAt": "2025-10-06T12:10:00Z",
-        "projectId": "8",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "8",
-          "name": "Payments Integration",
-          "description": "Add Stripe for subscriptions & invoicing.",
-          "leaderId": 2,
-          "members": [
-            1,
-            2,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-06T10:00:00Z"
-        },
-        "time": {
-          "start": "2025-10-06T10:10:00.000Z",
-          "end": "2025-10-11T23:59:59.000Z",
-          "msLeft": -3079586400,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:26:49.436Z"
-      },
-      "notificationGroupId": "project:8:task:25",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:26:49.436Z"
-    },
-    {
-      "id": "adVdnO",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"Stripe webhooks\" was deleted by user Mahmoud Ahmed from project \"Payments Integration\"",
-      "fromUserId": "1",
-      "toUserId": "8",
-      "projectId": "8",
-      "taskId": 25,
-      "taskSnapshot": {
-        "id": 25,
-        "title": "Stripe webhooks",
-        "description": "Handle invoice.paid and subscription events.",
-        "status": "in progress",
-        "priority": "high",
-        "assignedTo": 8,
-        "createdBy": 2,
-        "requirements": [
-          "Verify signature",
-          "Idempotency keys"
-        ],
-        "acceptanceCriteria": [
-          "Events processed reliably"
-        ],
-        "labels": [
-          "stripe",
-          "backend"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-10-06T10:10:00Z",
-        "dueDate": "2025-10-11T23:59:59Z",
-        "endAt": null,
-        "estimateHours": 7,
-        "createdAt": "2025-10-06T10:10:00Z",
-        "updatedAt": "2025-10-06T12:10:00Z",
-        "projectId": "8",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "8",
-          "name": "Payments Integration",
-          "description": "Add Stripe for subscriptions & invoicing.",
-          "leaderId": 2,
-          "members": [
-            1,
-            2,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-06T10:00:00Z"
-        },
-        "time": {
-          "start": "2025-10-06T10:10:00.000Z",
-          "end": "2025-10-11T23:59:59.000Z",
-          "msLeft": -3079586400,
-          "inWindow": false,
-          "isOverdue": true,
-          "isDisabled": true
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:26:49.436Z"
-      },
-      "notificationGroupId": "project:8:task:25",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:26:49.437Z"
-    },
-    {
-      "id": "gHkNf4",
-      "type": "task_added team to 2",
-      "title": "New Task Added: FFFF by Omar Hassan",
-      "message": "User 3 added a new task \"FFFF\" to project \"Mobile App Redesign\"",
-      "fromUserId": "3",
-      "toUserId": "2",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:56:58.766Z"
-    },
-    {
-      "id": "GHFjK0",
-      "type": "task_added own to 2",
-      "title": "New Task Added: FFFF by Omar Hassan",
-      "message": "User 3 added a new task \"FFFF\" to project \"Mobile App Redesign\"",
-      "fromUserId": "3",
-      "toUserId": "3",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:56:58.815Z"
-    },
-    {
-      "id": "5Lo04O",
-      "type": "task_added team to 2",
-      "title": "New Task Added: FFFF by Omar Hassan",
-      "message": "User 3 added a new task \"FFFF\" to project \"Mobile App Redesign\"",
-      "fromUserId": "3",
-      "toUserId": "6",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:56:58.828Z"
-    },
-    {
-      "id": "xeKlAE",
-      "type": "task_added team to 2",
-      "title": "New Task Added: FFFF by Omar Hassan",
-      "message": "User 3 added a new task \"FFFF\" to project \"Mobile App Redesign\"",
-      "fromUserId": "3",
-      "toUserId": "1",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T15:56:58.844Z"
-    },
-    {
-      "id": "1dtdFj",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"FFFF\" was deleted by user Mahmoud Ahmed from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z",
-        "projectId": "2",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@gmail.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T15:56:00.000Z",
-          "end": "2025-11-17T15:56:00.000Z",
-          "msLeft": 86280754,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:58:02.146Z"
-      },
-      "notificationGroupId": "project:2:task:1763308618741",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:58:02.146Z"
-    },
-    {
-      "id": "tuCwsz",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"FFFF\" was deleted by user Mahmoud Ahmed from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z",
-        "projectId": "2",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@gmail.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T15:56:00.000Z",
-          "end": "2025-11-17T15:56:00.000Z",
-          "msLeft": 86280754,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:58:02.146Z"
-      },
-      "notificationGroupId": "project:2:task:1763308618741",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:58:02.147Z"
-    },
-    {
-      "id": "g4mfz3",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"FFFF\" was deleted by user Mahmoud Ahmed from project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "6",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z",
-        "projectId": "2",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@gmail.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T15:56:00.000Z",
-          "end": "2025-11-17T15:56:00.000Z",
-          "msLeft": 86280754,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T15:58:02.146Z"
-      },
-      "notificationGroupId": "project:2:task:1763308618741",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:58:02.148Z"
-    },
-    {
-      "id": "kUlZaU",
-      "type": "task_delete_actor_approved",
-      "title": "You approved deleting a task",
-      "message": "You approved deleting task \"FFFF\" in project \"Mobile App Redesign\".",
-      "fromUserId": "1",
-      "toUserId": "1",
-      "projectId": "2",
-      "taskId": "1763308618741",
-      "taskSnapshot": {
-        "id": "1763308618741",
-        "title": "FFFF",
-        "description": "dsadasdas",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "1",
-        "createdBy": 1,
-        "requirements": [
-          "dsf"
-        ],
-        "acceptanceCriteria": [
-          "sdfsdf"
-        ],
-        "labels": [
-          "sdfs"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T17:56",
-        "dueDate": "2025-11-17T17:56",
-        "estimateHours": 24,
-        "createdAt": "2025-11-16T15:56:58.758Z",
-        "updatedAt": "2025-11-16T15:56:58.758Z",
-        "projectId": "2",
-        "user": {
-          "id": "1",
-          "name": "Mahmoud Ahmed",
-          "email": "mahmoud@gmail.com",
-          "role": "admin",
-          "password": "mahmoud@123"
-        },
-        "project": {
-          "id": "2",
-          "name": "Mobile App Redesign",
-          "description": "New UI/UX for the company mobile app.",
-          "leaderId": 3,
-          "members": [
-            2,
-            3,
-            6,
-            1
-          ],
-          "status": "active",
-          "createdAt": "2025-10-02T09:00:00Z"
-        },
-        "time": {
-          "start": "2025-11-16T15:56:00.000Z",
-          "end": "2025-11-17T15:56:00.000Z",
-          "msLeft": 86280754,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "actor"
-        ],
-        "undoUntil": "2025-11-23T15:58:02.146Z"
-      },
-      "notificationGroupId": "project:2:task:1763308618741",
-      "status": "unread",
-      "createdAt": "2025-11-16T15:58:02.149Z"
-    },
-    {
-      "id": "uKgyr8",
-      "type": "task_added team to 5",
-      "title": "New Task Added: tery taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"tery taske\" to project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "5",
-      "taskId": "1763308975046",
-      "taskSnapshot": {
-        "id": "1763308975046",
-        "title": "tery taske",
-        "description": "fedsopdujf89sdhijf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "8",
-        "createdBy": 1,
-        "requirements": [
-          "dsad"
-        ],
-        "acceptanceCriteria": [
-          "asdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T18:02",
-        "dueDate": "2025-11-27T18:02",
-        "estimateHours": 264,
-        "createdAt": "2025-11-16T16:02:55.050Z",
-        "updatedAt": "2025-11-16T16:02:55.050Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T16:02:55.056Z"
-    },
-    {
-      "id": "RuiGTu",
-      "type": "task_added team to 5",
-      "title": "New Task Added: tery taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"tery taske\" to project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "5",
-      "projectId": "5",
-      "taskId": "1763308975046",
-      "taskSnapshot": {
-        "id": "1763308975046",
-        "title": "tery taske",
-        "description": "fedsopdujf89sdhijf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "8",
-        "createdBy": 1,
-        "requirements": [
-          "dsad"
-        ],
-        "acceptanceCriteria": [
-          "asdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T18:02",
-        "dueDate": "2025-11-27T18:02",
-        "estimateHours": 264,
-        "createdAt": "2025-11-16T16:02:55.050Z",
-        "updatedAt": "2025-11-16T16:02:55.050Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T16:02:55.094Z"
-    },
-    {
-      "id": "AFsG3z",
-      "type": "task_added team to 5",
-      "title": "New Task Added: tery taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"tery taske\" to project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "8",
-      "projectId": "5",
-      "taskId": "1763308975046",
-      "taskSnapshot": {
-        "id": "1763308975046",
-        "title": "tery taske",
-        "description": "fedsopdujf89sdhijf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "8",
-        "createdBy": 1,
-        "requirements": [
-          "dsad"
-        ],
-        "acceptanceCriteria": [
-          "asdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T18:02",
-        "dueDate": "2025-11-27T18:02",
-        "estimateHours": 264,
-        "createdAt": "2025-11-16T16:02:55.050Z",
-        "updatedAt": "2025-11-16T16:02:55.050Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-11-16T16:02:55.104Z"
-    },
-    {
-      "id": "quLRQE",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"tery taske\" was deleted by user Mahmoud Ahmed from project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "5",
-      "taskId": "1763308975046",
-      "taskSnapshot": {
-        "id": "1763308975046",
-        "title": "tery taske",
-        "description": "fedsopdujf89sdhijf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "8",
-        "createdBy": 1,
-        "requirements": [
-          "dsad"
-        ],
-        "acceptanceCriteria": [
-          "asdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T18:02",
-        "dueDate": "2025-11-27T18:02",
-        "estimateHours": 264,
-        "createdAt": "2025-11-16T16:02:55.050Z",
-        "updatedAt": "2025-11-16T16:02:55.050Z",
-        "projectId": "5",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "5",
-          "name": "Internal Tools Cleanup",
-          "description": "Refactor shared components & remove dead code.",
-          "leaderId": 5,
-          "members": [
-            2,
-            5,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-05T09:20:00Z",
-          "tasks": [
-            {
-              "id": 13,
-              "title": "Type-safe API client",
-              "description": "Introduce a typed API client for fetch calls.",
-              "status": "in progress",
-              "priority": "high",
-              "assignedTo": 5,
-              "createdBy": 5,
-              "requirements": [
-                "Types for endpoints",
-                "Error handling"
-              ],
-              "acceptanceCriteria": [
-                "Compile-time safety"
-              ],
-              "labels": [
-                "typescript",
-                "api"
-              ],
-              "blockerNote": null,
-              "startAt": "2025-10-05T10:00:00Z",
-              "dueDate": "2025-10-17T23:59:59Z",
-              "endAt": null,
-              "estimateHours": 8,
-              "createdAt": "2025-10-05T10:00:00Z",
-              "updatedAt": "2025-10-06T15:30:00Z"
-            },
-            {
-              "id": "1763308975046",
-              "title": "tery taske",
-              "description": "fedsopdujf89sdhijf",
-              "status": "active",
-              "priority": "urgent",
-              "assignedTo": "8",
-              "createdBy": 1,
-              "requirements": [
-                "dsad"
-              ],
-              "acceptanceCriteria": [
-                "asdas"
-              ],
-              "labels": [
-                "dasd"
-              ],
-              "blockerNote": null,
-              "endAt": null,
-              "startAt": "2025-11-16T18:02",
-              "dueDate": "2025-11-27T18:02",
-              "estimateHours": 264,
-              "createdAt": "2025-11-16T16:02:55.050Z",
-              "updatedAt": "2025-11-16T16:02:55.050Z"
-            }
-          ]
-        },
-        "time": {
-          "start": "2025-11-16T16:02:00.000Z",
-          "end": "2025-11-27T16:02:00.000Z",
-          "msLeft": 950344914,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T16:03:11.953Z"
-      },
-      "notificationGroupId": "project:5:task:1763308975046",
-      "status": "unread",
-      "createdAt": "2025-11-16T16:03:11.953Z"
-    },
-    {
-      "id": "WEIJNp",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"tery taske\" was deleted by user Mahmoud Ahmed from project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "5",
-      "projectId": "5",
-      "taskId": "1763308975046",
-      "taskSnapshot": {
-        "id": "1763308975046",
-        "title": "tery taske",
-        "description": "fedsopdujf89sdhijf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "8",
-        "createdBy": 1,
-        "requirements": [
-          "dsad"
-        ],
-        "acceptanceCriteria": [
-          "asdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T18:02",
-        "dueDate": "2025-11-27T18:02",
-        "estimateHours": 264,
-        "createdAt": "2025-11-16T16:02:55.050Z",
-        "updatedAt": "2025-11-16T16:02:55.050Z",
-        "projectId": "5",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "5",
-          "name": "Internal Tools Cleanup",
-          "description": "Refactor shared components & remove dead code.",
-          "leaderId": 5,
-          "members": [
-            2,
-            5,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-05T09:20:00Z",
-          "tasks": [
-            {
-              "id": 13,
-              "title": "Type-safe API client",
-              "description": "Introduce a typed API client for fetch calls.",
-              "status": "in progress",
-              "priority": "high",
-              "assignedTo": 5,
-              "createdBy": 5,
-              "requirements": [
-                "Types for endpoints",
-                "Error handling"
-              ],
-              "acceptanceCriteria": [
-                "Compile-time safety"
-              ],
-              "labels": [
-                "typescript",
-                "api"
-              ],
-              "blockerNote": null,
-              "startAt": "2025-10-05T10:00:00Z",
-              "dueDate": "2025-10-17T23:59:59Z",
-              "endAt": null,
-              "estimateHours": 8,
-              "createdAt": "2025-10-05T10:00:00Z",
-              "updatedAt": "2025-10-06T15:30:00Z"
-            },
-            {
-              "id": "1763308975046",
-              "title": "tery taske",
-              "description": "fedsopdujf89sdhijf",
-              "status": "active",
-              "priority": "urgent",
-              "assignedTo": "8",
-              "createdBy": 1,
-              "requirements": [
-                "dsad"
-              ],
-              "acceptanceCriteria": [
-                "asdas"
-              ],
-              "labels": [
-                "dasd"
-              ],
-              "blockerNote": null,
-              "endAt": null,
-              "startAt": "2025-11-16T18:02",
-              "dueDate": "2025-11-27T18:02",
-              "estimateHours": 264,
-              "createdAt": "2025-11-16T16:02:55.050Z",
-              "updatedAt": "2025-11-16T16:02:55.050Z"
-            }
-          ]
-        },
-        "time": {
-          "start": "2025-11-16T16:02:00.000Z",
-          "end": "2025-11-27T16:02:00.000Z",
-          "msLeft": 950344914,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T16:03:11.953Z"
-      },
-      "notificationGroupId": "project:5:task:1763308975046",
-      "status": "unread",
-      "createdAt": "2025-11-16T16:03:11.954Z"
-    },
-    {
-      "id": "WQ7PPC",
-      "type": "task_deleted_team",
-      "title": "Task deleted",
-      "message": "Task \"tery taske\" was deleted by user Mahmoud Ahmed from project \"Internal Tools Cleanup\"",
-      "fromUserId": "1",
-      "toUserId": "8",
-      "projectId": "5",
-      "taskId": "1763308975046",
-      "taskSnapshot": {
-        "id": "1763308975046",
-        "title": "tery taske",
-        "description": "fedsopdujf89sdhijf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "8",
-        "createdBy": 1,
-        "requirements": [
-          "dsad"
-        ],
-        "acceptanceCriteria": [
-          "asdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T18:02",
-        "dueDate": "2025-11-27T18:02",
-        "estimateHours": 264,
-        "createdAt": "2025-11-16T16:02:55.050Z",
-        "updatedAt": "2025-11-16T16:02:55.050Z",
-        "projectId": "5",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "5",
-          "name": "Internal Tools Cleanup",
-          "description": "Refactor shared components & remove dead code.",
-          "leaderId": 5,
-          "members": [
-            2,
-            5,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-05T09:20:00Z",
-          "tasks": [
-            {
-              "id": 13,
-              "title": "Type-safe API client",
-              "description": "Introduce a typed API client for fetch calls.",
-              "status": "in progress",
-              "priority": "high",
-              "assignedTo": 5,
-              "createdBy": 5,
-              "requirements": [
-                "Types for endpoints",
-                "Error handling"
-              ],
-              "acceptanceCriteria": [
-                "Compile-time safety"
-              ],
-              "labels": [
-                "typescript",
-                "api"
-              ],
-              "blockerNote": null,
-              "startAt": "2025-10-05T10:00:00Z",
-              "dueDate": "2025-10-17T23:59:59Z",
-              "endAt": null,
-              "estimateHours": 8,
-              "createdAt": "2025-10-05T10:00:00Z",
-              "updatedAt": "2025-10-06T15:30:00Z"
-            },
-            {
-              "id": "1763308975046",
-              "title": "tery taske",
-              "description": "fedsopdujf89sdhijf",
-              "status": "active",
-              "priority": "urgent",
-              "assignedTo": "8",
-              "createdBy": 1,
-              "requirements": [
-                "dsad"
-              ],
-              "acceptanceCriteria": [
-                "asdas"
-              ],
-              "labels": [
-                "dasd"
-              ],
-              "blockerNote": null,
-              "endAt": null,
-              "startAt": "2025-11-16T18:02",
-              "dueDate": "2025-11-27T18:02",
-              "estimateHours": 264,
-              "createdAt": "2025-11-16T16:02:55.050Z",
-              "updatedAt": "2025-11-16T16:02:55.050Z"
-            }
-          ]
-        },
-        "time": {
-          "start": "2025-11-16T16:02:00.000Z",
-          "end": "2025-11-27T16:02:00.000Z",
-          "msLeft": 950344914,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "team"
-        ],
-        "undoUntil": "2025-11-23T16:03:11.953Z"
-      },
-      "notificationGroupId": "project:5:task:1763308975046",
-      "status": "unread",
-      "createdAt": "2025-11-16T16:03:11.955Z"
-    },
-    {
-      "id": "Xex2j6",
-      "type": "task_delete_actor_approved",
-      "title": "You approved deleting a task",
-      "message": "You approved deleting task \"tery taske\" in project \"Internal Tools Cleanup\".",
-      "fromUserId": "1",
-      "toUserId": "1",
-      "projectId": "5",
-      "taskId": "1763308975046",
-      "taskSnapshot": {
-        "id": "1763308975046",
-        "title": "tery taske",
-        "description": "fedsopdujf89sdhijf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "8",
-        "createdBy": 1,
-        "requirements": [
-          "dsad"
-        ],
-        "acceptanceCriteria": [
-          "asdas"
-        ],
-        "labels": [
-          "dasd"
-        ],
-        "blockerNote": null,
-        "endAt": null,
-        "startAt": "2025-11-16T18:02",
-        "dueDate": "2025-11-27T18:02",
-        "estimateHours": 264,
-        "createdAt": "2025-11-16T16:02:55.050Z",
-        "updatedAt": "2025-11-16T16:02:55.050Z",
-        "projectId": "5",
-        "user": {
-          "id": "8",
-          "name": "Mahmoud",
-          "email": "mah.dev@example.com",
-          "role": "user",
-          "password": "dev@123"
-        },
-        "project": {
-          "id": "5",
-          "name": "Internal Tools Cleanup",
-          "description": "Refactor shared components & remove dead code.",
-          "leaderId": 5,
-          "members": [
-            2,
-            5,
-            8
-          ],
-          "status": "active",
-          "createdAt": "2025-10-05T09:20:00Z",
-          "tasks": [
-            {
-              "id": 13,
-              "title": "Type-safe API client",
-              "description": "Introduce a typed API client for fetch calls.",
-              "status": "in progress",
-              "priority": "high",
-              "assignedTo": 5,
-              "createdBy": 5,
-              "requirements": [
-                "Types for endpoints",
-                "Error handling"
-              ],
-              "acceptanceCriteria": [
-                "Compile-time safety"
-              ],
-              "labels": [
-                "typescript",
-                "api"
-              ],
-              "blockerNote": null,
-              "startAt": "2025-10-05T10:00:00Z",
-              "dueDate": "2025-10-17T23:59:59Z",
-              "endAt": null,
-              "estimateHours": 8,
-              "createdAt": "2025-10-05T10:00:00Z",
-              "updatedAt": "2025-10-06T15:30:00Z"
-            },
-            {
-              "id": "1763308975046",
-              "title": "tery taske",
-              "description": "fedsopdujf89sdhijf",
-              "status": "active",
-              "priority": "urgent",
-              "assignedTo": "8",
-              "createdBy": 1,
-              "requirements": [
-                "dsad"
-              ],
-              "acceptanceCriteria": [
-                "asdas"
-              ],
-              "labels": [
-                "dasd"
-              ],
-              "blockerNote": null,
-              "endAt": null,
-              "startAt": "2025-11-16T18:02",
-              "dueDate": "2025-11-27T18:02",
-              "estimateHours": 264,
-              "createdAt": "2025-11-16T16:02:55.050Z",
-              "updatedAt": "2025-11-16T16:02:55.050Z"
-            }
-          ]
-        },
-        "time": {
-          "start": "2025-11-16T16:02:00.000Z",
-          "end": "2025-11-27T16:02:00.000Z",
-          "msLeft": 950344914,
-          "inWindow": true,
-          "isOverdue": false,
-          "isDisabled": false
-        }
-      },
-      "meta": {
-        "deleted": true,
-        "kinds": [
-          "actor"
-        ],
-        "undoUntil": "2025-11-23T16:03:11.953Z"
-      },
-      "notificationGroupId": "project:5:task:1763308975046",
-      "status": "unread",
-      "createdAt": "2025-11-16T16:03:11.956Z"
-    },
-    {
-      "id": "ztocee",
+      "id": "4bjrV7",
       "type": "user_login",
       "title": "Welcome back, Mahmoud Ahmed!",
-      "message": "Mahmoud Ahmed logged in at 11/27/2025, 3:03:23 PM",
+      "message": "Mahmoud Ahmed logged in at 12/7/2025, 1:45:15 PM",
       "fromUserId": null,
       "toUserId": "1",
       "projectId": null,
@@ -4328,127 +395,972 @@
         "event": "login"
       },
       "status": "unread",
-      "createdAt": "2025-11-27T13:03:23.175Z"
+      "createdAt": "2025-12-07T11:45:15.902Z"
     },
     {
-      "id": "5tqEG6",
-      "type": "task_added team to 7",
-      "title": "New Task Added: add v4 by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"add v4\" to project \"Design System v2\"",
+      "id": "y56FuA",
+      "type": "task_added team to 3",
+      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test Taske\" to project \"Website Performance Sprint\"",
       "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "7",
-      "taskId": "1764256741673",
+      "toUserId": "2",
+      "projectId": "3",
+      "taskId": "1765113561630",
       "taskSnapshot": {
-        "id": "1764256741673",
-        "title": "add v4",
-        "description": "lspoifomsadfjewiornhfwe;l,kf",
+        "id": "1765113561630",
+        "title": "Test Taske",
+        "description": "dfasfaspifk90osaoujhfiokdjsahf",
         "status": "active",
         "priority": "urgent",
-        "assignedTo": "7",
+        "assignedTo": "2",
         "createdBy": 1,
         "requirements": [
-          "fdgfdg"
+          "asdsad"
         ],
         "acceptanceCriteria": [
-          "dfgfdgd"
+          "asdasd"
         ],
         "labels": [
-          "fgdfgfg"
+          "asdasd"
         ],
         "blockerNote": null,
         "endAt": null,
-        "startAt": "2025-11-27T17:18",
-        "dueDate": "2025-11-28T17:18",
+        "startAt": "2025-12-07T15:19",
+        "dueDate": "2025-12-08T15:19",
         "estimateHours": 24,
-        "createdAt": "2025-11-27T15:19:01.678Z",
-        "updatedAt": "2025-11-27T15:19:01.678Z"
+        "createdAt": "2025-12-07T13:19:21.635Z",
+        "updatedAt": "2025-12-07T13:19:21.635Z"
       },
       "meta": {
         "phase": "added"
       },
       "status": "unread",
-      "createdAt": "2025-11-27T15:19:01.686Z"
+      "createdAt": "2025-12-07T13:19:21.642Z"
     },
     {
-      "id": "ywxyLn",
-      "type": "task_added team to 7",
-      "title": "New Task Added: add v4 by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"add v4\" to project \"Design System v2\"",
+      "id": "lMsrQ-",
+      "type": "task_added team to 3",
+      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test Taske\" to project \"Website Performance Sprint\"",
       "fromUserId": "1",
-      "toUserId": "6",
-      "projectId": "7",
-      "taskId": "1764256741673",
+      "toUserId": "5",
+      "projectId": "3",
+      "taskId": "1765113561630",
       "taskSnapshot": {
-        "id": "1764256741673",
-        "title": "add v4",
-        "description": "lspoifomsadfjewiornhfwe;l,kf",
+        "id": "1765113561630",
+        "title": "Test Taske",
+        "description": "dfasfaspifk90osaoujhfiokdjsahf",
         "status": "active",
         "priority": "urgent",
-        "assignedTo": "7",
+        "assignedTo": "2",
         "createdBy": 1,
         "requirements": [
-          "fdgfdg"
+          "asdsad"
         ],
         "acceptanceCriteria": [
-          "dfgfdgd"
+          "asdasd"
         ],
         "labels": [
-          "fgdfgfg"
+          "asdasd"
         ],
         "blockerNote": null,
         "endAt": null,
-        "startAt": "2025-11-27T17:18",
-        "dueDate": "2025-11-28T17:18",
+        "startAt": "2025-12-07T15:19",
+        "dueDate": "2025-12-08T15:19",
         "estimateHours": 24,
-        "createdAt": "2025-11-27T15:19:01.678Z",
-        "updatedAt": "2025-11-27T15:19:01.678Z"
+        "createdAt": "2025-12-07T13:19:21.635Z",
+        "updatedAt": "2025-12-07T13:19:21.635Z"
       },
       "meta": {
         "phase": "added"
       },
       "status": "unread",
-      "createdAt": "2025-11-27T15:19:01.719Z"
+      "createdAt": "2025-12-07T13:19:21.678Z"
     },
     {
-      "id": "4FTIbm",
-      "type": "task_added team to 7",
-      "title": "New Task Added: add v4 by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"add v4\" to project \"Design System v2\"",
+      "id": "dYFGVv",
+      "type": "task_added team to 3",
+      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test Taske\" to project \"Website Performance Sprint\"",
       "fromUserId": "1",
       "toUserId": "7",
-      "projectId": "7",
-      "taskId": "1764256741673",
+      "projectId": "3",
+      "taskId": "1765113561630",
       "taskSnapshot": {
-        "id": "1764256741673",
-        "title": "add v4",
-        "description": "lspoifomsadfjewiornhfwe;l,kf",
+        "id": "1765113561630",
+        "title": "Test Taske",
+        "description": "dfasfaspifk90osaoujhfiokdjsahf",
         "status": "active",
         "priority": "urgent",
-        "assignedTo": "7",
+        "assignedTo": "2",
         "createdBy": 1,
         "requirements": [
-          "fdgfdg"
+          "asdsad"
         ],
         "acceptanceCriteria": [
-          "dfgfdgd"
+          "asdasd"
         ],
         "labels": [
-          "fgdfgfg"
+          "asdasd"
         ],
         "blockerNote": null,
         "endAt": null,
-        "startAt": "2025-11-27T17:18",
-        "dueDate": "2025-11-28T17:18",
+        "startAt": "2025-12-07T15:19",
+        "dueDate": "2025-12-08T15:19",
         "estimateHours": 24,
-        "createdAt": "2025-11-27T15:19:01.678Z",
-        "updatedAt": "2025-11-27T15:19:01.678Z"
+        "createdAt": "2025-12-07T13:19:21.635Z",
+        "updatedAt": "2025-12-07T13:19:21.635Z"
       },
       "meta": {
         "phase": "added"
       },
       "status": "unread",
-      "createdAt": "2025-11-27T15:19:01.728Z"
+      "createdAt": "2025-12-07T13:19:21.689Z"
+    },
+    {
+      "id": "2QWwWc",
+      "type": "task_added team to 3",
+      "title": "New Task Added: Test aske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test aske\" to project \"Website Performance Sprint\"",
+      "fromUserId": "1",
+      "toUserId": "2",
+      "projectId": "3",
+      "taskId": "1765113610773",
+      "taskSnapshot": {
+        "id": "1765113610773",
+        "title": "Test aske",
+        "description": "[sldokfpjsudiofgsjdfh89uywerfj",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "2",
+        "createdBy": 1,
+        "requirements": [
+          "sdasdads"
+        ],
+        "acceptanceCriteria": [
+          "asdasd"
+        ],
+        "labels": [
+          "asdasd"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-07T15:20",
+        "dueDate": "2025-12-08T15:20",
+        "estimateHours": 24,
+        "createdAt": "2025-12-07T13:20:10.777Z",
+        "updatedAt": "2025-12-07T13:20:10.777Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-07T13:20:10.784Z"
+    },
+    {
+      "id": "Jp8woO",
+      "type": "task_added team to 3",
+      "title": "New Task Added: Test aske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test aske\" to project \"Website Performance Sprint\"",
+      "fromUserId": "1",
+      "toUserId": "5",
+      "projectId": "3",
+      "taskId": "1765113610773",
+      "taskSnapshot": {
+        "id": "1765113610773",
+        "title": "Test aske",
+        "description": "[sldokfpjsudiofgsjdfh89uywerfj",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "2",
+        "createdBy": 1,
+        "requirements": [
+          "sdasdads"
+        ],
+        "acceptanceCriteria": [
+          "asdasd"
+        ],
+        "labels": [
+          "asdasd"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-07T15:20",
+        "dueDate": "2025-12-08T15:20",
+        "estimateHours": 24,
+        "createdAt": "2025-12-07T13:20:10.777Z",
+        "updatedAt": "2025-12-07T13:20:10.777Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-07T13:20:10.813Z"
+    },
+    {
+      "id": "EEP4Oj",
+      "type": "task_added team to 3",
+      "title": "New Task Added: Test aske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test aske\" to project \"Website Performance Sprint\"",
+      "fromUserId": "1",
+      "toUserId": "7",
+      "projectId": "3",
+      "taskId": "1765113610773",
+      "taskSnapshot": {
+        "id": "1765113610773",
+        "title": "Test aske",
+        "description": "[sldokfpjsudiofgsjdfh89uywerfj",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "2",
+        "createdBy": 1,
+        "requirements": [
+          "sdasdads"
+        ],
+        "acceptanceCriteria": [
+          "asdasd"
+        ],
+        "labels": [
+          "asdasd"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-07T15:20",
+        "dueDate": "2025-12-08T15:20",
+        "estimateHours": 24,
+        "createdAt": "2025-12-07T13:20:10.777Z",
+        "updatedAt": "2025-12-07T13:20:10.777Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-07T13:20:10.821Z"
+    },
+    {
+      "id": "ELV5g1",
+      "type": "user_login",
+      "title": "Welcome back, Mahmoud Ahmed!",
+      "message": "Mahmoud Ahmed logged in at 9‏/12‏/2025 3:33:15 م",
+      "fromUserId": null,
+      "toUserId": "1",
+      "projectId": null,
+      "taskId": null,
+      "taskSnapshot": null,
+      "meta": {
+        "source": "auth-listener",
+        "event": "login"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T13:33:15.853Z"
+    },
+    {
+      "id": "iGT0GJ",
+      "type": "task_added own to 1",
+      "title": "New Task Added: landeng page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"landeng page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "1",
+      "projectId": "1",
+      "taskId": "1765287235501",
+      "taskSnapshot": {
+        "id": "1765287235501",
+        "title": "landeng page",
+        "description": "dasdeasdqawsdeqwewwq",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "zdfsa"
+        ],
+        "acceptanceCriteria": [
+          "fdsadas"
+        ],
+        "labels": [
+          "dasdas"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T15:33",
+        "dueDate": "2025-12-10T15:33",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T13:33:55.507Z",
+        "updatedAt": "2025-12-09T13:33:55.507Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T13:33:55.513Z"
+    },
+    {
+      "id": "QXTTtq",
+      "type": "task_added team to 1",
+      "title": "New Task Added: landeng page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"landeng page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "2",
+      "projectId": "1",
+      "taskId": "1765287235501",
+      "taskSnapshot": {
+        "id": "1765287235501",
+        "title": "landeng page",
+        "description": "dasdeasdqawsdeqwewwq",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "zdfsa"
+        ],
+        "acceptanceCriteria": [
+          "fdsadas"
+        ],
+        "labels": [
+          "dasdas"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T15:33",
+        "dueDate": "2025-12-10T15:33",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T13:33:55.507Z",
+        "updatedAt": "2025-12-09T13:33:55.507Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T13:33:55.551Z"
+    },
+    {
+      "id": "saYKbi",
+      "type": "task_added team to 1",
+      "title": "New Task Added: landeng page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"landeng page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "3",
+      "projectId": "1",
+      "taskId": "1765287235501",
+      "taskSnapshot": {
+        "id": "1765287235501",
+        "title": "landeng page",
+        "description": "dasdeasdqawsdeqwewwq",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "zdfsa"
+        ],
+        "acceptanceCriteria": [
+          "fdsadas"
+        ],
+        "labels": [
+          "dasdas"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T15:33",
+        "dueDate": "2025-12-10T15:33",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T13:33:55.507Z",
+        "updatedAt": "2025-12-09T13:33:55.507Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T13:33:55.566Z"
+    },
+    {
+      "id": "Yu_x-a",
+      "type": "task_added team to 1",
+      "title": "New Task Added: landeng page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"landeng page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "5",
+      "projectId": "1",
+      "taskId": "1765287235501",
+      "taskSnapshot": {
+        "id": "1765287235501",
+        "title": "landeng page",
+        "description": "dasdeasdqawsdeqwewwq",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "zdfsa"
+        ],
+        "acceptanceCriteria": [
+          "fdsadas"
+        ],
+        "labels": [
+          "dasdas"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T15:33",
+        "dueDate": "2025-12-10T15:33",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T13:33:55.507Z",
+        "updatedAt": "2025-12-09T13:33:55.507Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T13:33:55.579Z"
+    },
+    {
+      "id": "X7WNOO",
+      "type": "task_added own to 1",
+      "title": "New Task Added: Landeing page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Landeing page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "1",
+      "projectId": "1",
+      "taskId": "1765290496459",
+      "taskSnapshot": {
+        "id": "1765290496459",
+        "title": "Landeing page",
+        "description": "dfkojdsiofjisoojuredfwerf",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "dsdaa"
+        ],
+        "acceptanceCriteria": [
+          "sdasdas"
+        ],
+        "labels": [
+          "dasdsa"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T16:28",
+        "dueDate": "2025-12-10T16:28",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T14:28:16.463Z",
+        "updatedAt": "2025-12-09T14:28:16.463Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T14:28:16.476Z"
+    },
+    {
+      "id": "r9tVec",
+      "type": "task_added team to 1",
+      "title": "New Task Added: Landeing page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Landeing page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "2",
+      "projectId": "1",
+      "taskId": "1765290496459",
+      "taskSnapshot": {
+        "id": "1765290496459",
+        "title": "Landeing page",
+        "description": "dfkojdsiofjisoojuredfwerf",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "dsdaa"
+        ],
+        "acceptanceCriteria": [
+          "sdasdas"
+        ],
+        "labels": [
+          "dasdsa"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T16:28",
+        "dueDate": "2025-12-10T16:28",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T14:28:16.463Z",
+        "updatedAt": "2025-12-09T14:28:16.463Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T14:28:16.524Z"
+    },
+    {
+      "id": "GixRi4",
+      "type": "task_added team to 1",
+      "title": "New Task Added: Landeing page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Landeing page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "3",
+      "projectId": "1",
+      "taskId": "1765290496459",
+      "taskSnapshot": {
+        "id": "1765290496459",
+        "title": "Landeing page",
+        "description": "dfkojdsiofjisoojuredfwerf",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "dsdaa"
+        ],
+        "acceptanceCriteria": [
+          "sdasdas"
+        ],
+        "labels": [
+          "dasdsa"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T16:28",
+        "dueDate": "2025-12-10T16:28",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T14:28:16.463Z",
+        "updatedAt": "2025-12-09T14:28:16.463Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T14:28:16.538Z"
+    },
+    {
+      "id": "vSI0vj",
+      "type": "task_added team to 1",
+      "title": "New Task Added: Landeing page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Landeing page\" to project \"Marketing Dashboard\"",
+      "fromUserId": "1",
+      "toUserId": "5",
+      "projectId": "1",
+      "taskId": "1765290496459",
+      "taskSnapshot": {
+        "id": "1765290496459",
+        "title": "Landeing page",
+        "description": "dfkojdsiofjisoojuredfwerf",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": 1,
+        "requirements": [
+          "dsdaa"
+        ],
+        "acceptanceCriteria": [
+          "sdasdas"
+        ],
+        "labels": [
+          "dasdsa"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-09T16:28",
+        "dueDate": "2025-12-10T16:28",
+        "estimateHours": 24,
+        "createdAt": "2025-12-09T14:28:16.463Z",
+        "updatedAt": "2025-12-09T14:28:16.463Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-09T14:28:16.555Z"
+    },
+    {
+      "id": "ZCekt5",
+      "type": "user_login",
+      "title": "Welcome back, Sara Ali!",
+      "message": "Sara Ali logged in at 10‏/12‏/2025 12:57:34 م",
+      "fromUserId": null,
+      "toUserId": "2",
+      "projectId": null,
+      "taskId": null,
+      "taskSnapshot": null,
+      "meta": {
+        "source": "auth-listener",
+        "event": "login"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-10T10:57:34.482Z"
+    },
+    {
+      "id": "Ge0aUo",
+      "type": "task_added own to d434",
+      "title": "New Task Added: performans by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"performans\" to project \"Taske Maneger App\"",
+      "fromUserId": "1",
+      "toUserId": "1",
+      "projectId": "d434",
+      "taskId": "1765364355580",
+      "taskSnapshot": {
+        "id": "1765364355580",
+        "title": "performans",
+        "description": ";pksfo9siud980fujsiodkfju9i8ytweq67ytegdaswjuhfd",
+        "status": "active",
+        "priority": "medium",
+        "assignedTo": "2",
+        "createdBy": 1,
+        "requirements": [
+          "fdsfsaf"
+        ],
+        "acceptanceCriteria": [
+          "asdasd"
+        ],
+        "labels": [
+          "asdasd"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-10T12:59",
+        "dueDate": "2025-12-11T12:59",
+        "estimateHours": 24,
+        "createdAt": "2025-12-10T10:59:15.588Z",
+        "updatedAt": "2025-12-10T10:59:15.589Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-10T10:59:15.596Z"
+    },
+    {
+      "id": "sueqQe",
+      "type": "task_added team to d434",
+      "title": "New Task Added: performans by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"performans\" to project \"Taske Maneger App\"",
+      "fromUserId": "1",
+      "toUserId": "2",
+      "projectId": "d434",
+      "taskId": "1765364355580",
+      "taskSnapshot": {
+        "id": "1765364355580",
+        "title": "performans",
+        "description": ";pksfo9siud980fujsiodkfju9i8ytweq67ytegdaswjuhfd",
+        "status": "active",
+        "priority": "medium",
+        "assignedTo": "2",
+        "createdBy": 1,
+        "requirements": [
+          "fdsfsaf"
+        ],
+        "acceptanceCriteria": [
+          "asdasd"
+        ],
+        "labels": [
+          "asdasd"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-10T12:59",
+        "dueDate": "2025-12-11T12:59",
+        "estimateHours": 24,
+        "createdAt": "2025-12-10T10:59:15.588Z",
+        "updatedAt": "2025-12-10T10:59:15.589Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-10T10:59:15.634Z"
+    },
+    {
+      "id": "AiEAch",
+      "type": "task_added team to d434",
+      "title": "New Task Added: performans by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"performans\" to project \"Taske Maneger App\"",
+      "fromUserId": "1",
+      "toUserId": "6",
+      "projectId": "d434",
+      "taskId": "1765364355580",
+      "taskSnapshot": {
+        "id": "1765364355580",
+        "title": "performans",
+        "description": ";pksfo9siud980fujsiodkfju9i8ytweq67ytegdaswjuhfd",
+        "status": "active",
+        "priority": "medium",
+        "assignedTo": "2",
+        "createdBy": 1,
+        "requirements": [
+          "fdsfsaf"
+        ],
+        "acceptanceCriteria": [
+          "asdasd"
+        ],
+        "labels": [
+          "asdasd"
+        ],
+        "blockerNote": null,
+        "endAt": null,
+        "startAt": "2025-12-10T12:59",
+        "dueDate": "2025-12-11T12:59",
+        "estimateHours": 24,
+        "createdAt": "2025-12-10T10:59:15.588Z",
+        "updatedAt": "2025-12-10T10:59:15.589Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-10T10:59:15.643Z"
+    },
+    {
+      "id": "Rj8LKB",
+      "type": "task_added team to 237d",
+      "title": "New Task Added: test taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"test taske\" to project \"Two  Test Project\"",
+      "fromUserId": "1",
+      "toUserId": "3",
+      "projectId": null,
+      "taskId": "1765368202993",
+      "taskSnapshot": {
+        "id": "1765368202993",
+        "title": "test taske",
+        "description": "sadasdafrsdfs",
+        "status": "active",
+        "priority": "medium",
+        "assignedTo": null,
+        "createdBy": "1",
+        "requirements": [
+          "asaS"
+        ],
+        "acceptanceCriteria": [
+          "AsAS"
+        ],
+        "labels": [
+          "asAS"
+        ],
+        "blockerNote": null,
+        "startAt": "2025-12-10T14:02",
+        "dueDate": "2025-12-11T14:02",
+        "estimateHours": 24,
+        "createdAt": "2025-12-10T12:03:23.005Z",
+        "updatedAt": "2025-12-10T12:03:23.005Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-10T12:03:23.013Z"
+    },
+    {
+      "id": "0Bna7G",
+      "type": "task_added own to 237d",
+      "title": "New Task Added: test taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"test taske\" to project \"Two  Test Project\"",
+      "fromUserId": "1",
+      "toUserId": "1",
+      "projectId": null,
+      "taskId": "1765368202993",
+      "taskSnapshot": {
+        "id": "1765368202993",
+        "title": "test taske",
+        "description": "sadasdafrsdfs",
+        "status": "active",
+        "priority": "medium",
+        "assignedTo": null,
+        "createdBy": "1",
+        "requirements": [
+          "asaS"
+        ],
+        "acceptanceCriteria": [
+          "AsAS"
+        ],
+        "labels": [
+          "asAS"
+        ],
+        "blockerNote": null,
+        "startAt": "2025-12-10T14:02",
+        "dueDate": "2025-12-11T14:02",
+        "estimateHours": 24,
+        "createdAt": "2025-12-10T12:03:23.005Z",
+        "updatedAt": "2025-12-10T12:03:23.005Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-10T12:03:23.052Z"
+    },
+    {
+      "id": "H5oByl",
+      "type": "task_added team to 2",
+      "title": "New Task Added: Add A Fnc Delete by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Add A Fnc Delete\" to project \"Mobile App Redesign\"",
+      "fromUserId": "1",
+      "toUserId": "2",
+      "projectId": "2",
+      "taskId": "1765637631766",
+      "taskSnapshot": {
+        "id": "1765637631766",
+        "title": "Add A Fnc Delete",
+        "description": "dasdaswedq3wersda",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": "1",
+        "requirements": [
+          "fdg"
+        ],
+        "acceptanceCriteria": [
+          "fgdfg"
+        ],
+        "labels": [
+          "dfgfdgdf"
+        ],
+        "blockerNote": null,
+        "startAt": "2025-12-13T16:53",
+        "dueDate": "2025-12-14T16:53",
+        "estimateHours": 24,
+        "createdAt": "2025-12-13T14:53:51.774Z",
+        "updatedAt": "2025-12-13T14:53:51.774Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-13T14:53:51.780Z"
+    },
+    {
+      "id": "-ReYZ_",
+      "type": "task_added team to 2",
+      "title": "New Task Added: Add A Fnc Delete by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Add A Fnc Delete\" to project \"Mobile App Redesign\"",
+      "fromUserId": "1",
+      "toUserId": "3",
+      "projectId": "2",
+      "taskId": "1765637631766",
+      "taskSnapshot": {
+        "id": "1765637631766",
+        "title": "Add A Fnc Delete",
+        "description": "dasdaswedq3wersda",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": "1",
+        "requirements": [
+          "fdg"
+        ],
+        "acceptanceCriteria": [
+          "fgdfg"
+        ],
+        "labels": [
+          "dfgfdgdf"
+        ],
+        "blockerNote": null,
+        "startAt": "2025-12-13T16:53",
+        "dueDate": "2025-12-14T16:53",
+        "estimateHours": 24,
+        "createdAt": "2025-12-13T14:53:51.774Z",
+        "updatedAt": "2025-12-13T14:53:51.774Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-13T14:53:51.800Z"
+    },
+    {
+      "id": "fct9gK",
+      "type": "task_added team to 2",
+      "title": "New Task Added: Add A Fnc Delete by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Add A Fnc Delete\" to project \"Mobile App Redesign\"",
+      "fromUserId": "1",
+      "toUserId": "6",
+      "projectId": "2",
+      "taskId": "1765637631766",
+      "taskSnapshot": {
+        "id": "1765637631766",
+        "title": "Add A Fnc Delete",
+        "description": "dasdaswedq3wersda",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": "1",
+        "requirements": [
+          "fdg"
+        ],
+        "acceptanceCriteria": [
+          "fgdfg"
+        ],
+        "labels": [
+          "dfgfdgdf"
+        ],
+        "blockerNote": null,
+        "startAt": "2025-12-13T16:53",
+        "dueDate": "2025-12-14T16:53",
+        "estimateHours": 24,
+        "createdAt": "2025-12-13T14:53:51.774Z",
+        "updatedAt": "2025-12-13T14:53:51.774Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-13T14:53:51.805Z"
+    },
+    {
+      "id": "TQl3vi",
+      "type": "task_added own to 2",
+      "title": "New Task Added: Add A Fnc Delete by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Add A Fnc Delete\" to project \"Mobile App Redesign\"",
+      "fromUserId": "1",
+      "toUserId": "1",
+      "projectId": "2",
+      "taskId": "1765637631766",
+      "taskSnapshot": {
+        "id": "1765637631766",
+        "title": "Add A Fnc Delete",
+        "description": "dasdaswedq3wersda",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "1",
+        "createdBy": "1",
+        "requirements": [
+          "fdg"
+        ],
+        "acceptanceCriteria": [
+          "fgdfg"
+        ],
+        "labels": [
+          "dfgfdgdf"
+        ],
+        "blockerNote": null,
+        "startAt": "2025-12-13T16:53",
+        "dueDate": "2025-12-14T16:53",
+        "estimateHours": 24,
+        "createdAt": "2025-12-13T14:53:51.774Z",
+        "updatedAt": "2025-12-13T14:53:51.774Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-13T14:53:51.813Z"
+    },
+    {
+      "id": "zAL3Qi",
+      "type": "user_login",
+      "title": "Welcome back, Sara Ali!",
+      "message": "Sara Ali logged in at 13‏/12‏/2025 5:02:14 م",
+      "fromUserId": null,
+      "toUserId": "2",
+      "projectId": null,
+      "taskId": null,
+      "taskSnapshot": null,
+      "meta": {
+        "source": "auth-listener",
+        "event": "login"
+      },
+      "status": "unread",
+      "createdAt": "2025-12-13T15:02:14.972Z"
     }
   ]
 }

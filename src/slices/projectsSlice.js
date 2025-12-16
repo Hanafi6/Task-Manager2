@@ -177,12 +177,14 @@ export const unArchiveProject = createAsyncThunk(
 // 🟦 Delete Permanently
 export const deletePermanentlyProject = createAsyncThunk(
   "projects/deletePermanently",
-  async (projectId, { rejectWithValue }) => {
+  async (project, { rejectWithValue }) => {
     try {
-      await deleteData("projects", projectId);
-      await deleteData("archeivePorjects", projectId);
+      const Project = await getData(`projects/${project.id}`);
 
-      return { projectId };
+      const updated = { ...Project, deleted: !Project.deleted };
+
+      const saved = await updateData("projects", Project.id, updated);
+      return { saved };
     } catch (err) {
       return rejectWithValue(err.message || "Failed to delete permanently");
     }
@@ -305,7 +307,6 @@ const projectsSlice = createSlice({
       if (project) {
         project.hidden = !project.hidden;
       }
-      console.log(state.list)
     },
     setSelectProject(state, action) {
       state.selectProject = action.payload;
@@ -528,13 +529,11 @@ const projectsSlice = createSlice({
       })
       .addCase(hideProject.fulfilled, (state, action) => {
         state.loadingSome = false;
-        console.log(action)
-
         const updated = action.payload;
 
-        const i = state.list.findIndex((p) => p.id === updated.id);
+        const i = state.list.findIndex((p) => p.id == updated.id);
         if (i !== -1) {
-          state.list[i] = { ...state.list[i], hidden: true };
+          state.list[i] = action.payload;
         }
       })
       .addCase(hideProject.rejected, (state, action) => {

@@ -1,0 +1,16 @@
+    #logo{
+        font-family:sans-serif;
+        font-size: 50px;
+        background-image: url('../../public/bg.jpg');
+        background-size:cover;
+        background-clip:text;
+        font-weight: bolder;
+        color: transparent;
+        animation: animate 20s linear infinite;
+    }
+
+@keyframes animate {
+    to{
+        background-position-x: 500px;
+    }
+}

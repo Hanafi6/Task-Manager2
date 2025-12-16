@@ -199,24 +199,49 @@ export function formatDuration(ms) {
 // بيرجع كل المهام اللي متعيّنة على يوزر معين
 // ولو حددت activeOnly=true → بيرجع بس اللي مشاريعها "active"
 // بيرجع كمان مع كل تاسك: بيانات اليوزر، المشروع، ووقت التنفيذ
-export const makeSelectTasksByUser = (userId, { activeOnly = false } = {}) =>
-  createSelector([selectTasks, selectProjects, selectUsers], (tasks, projects, users) => {
-    const activeIds = activeOnly
-      ? new Set(projects.filter((p) => p.status == "active").map((p) => Number(p.id)))
-      : null;
+// store/selectors.js
 
-    const userById = new Map(users.map((u) => [Number(u.id), u]));
-    const projById = new Map(projects.map((p) => [Number(p.id), p]));
-    return tasks
-      .filter((t) => t.assignedTo == userId)
-      .filter((t) => !activeOnly || activeIds.has(t.projectId))
-      .map((t) => ({
-        ...t,
-        user: userById.get(t.assignedTo) || null,
-        project: projById.get(t.projectId) || null,
-        time: computeTaskTimeMeta(t),
-      }));
+export const makeSelectTasks = ({ userId, role, status = "all" } = {}) =>
+  createSelector([selectTasks, selectProjects, selectUsers], (tasks, projects, users) => {
+    const uid = Number(userId);
+
+    // لو أدمن: يشوف كل المهام
+    let filtered = role === "admin"
+      ? tasks
+      : tasks.filter(t => Number(t.assignedTo) === uid);
+
+    // بناء الـ grouping حسب status
+    const grouped = {};
+    filtered.forEach((t) => {
+      if (!grouped[t.status]) grouped[t.status] = [];
+      grouped[t.status].push(t);
+    });
+
+    // فلترة active/done/all
+    if (status === "active") {
+      filtered = filtered.filter(t => t.status !== "done");
+    } else if (status === "done") {
+      filtered = filtered.filter(t => t.status === "done");
+    }
+
+    const userById = new Map(users.map(u => [Number(u.id), u]));
+    const projById = new Map(projects.map(p => [Number(p.id), p]));
+
+    const tasksWithMeta = filtered.map(t => ({
+      ...t,
+      user: userById.get(Number(t.assignedTo)) || null,
+      project: projById.get(Number(t.projectId)) || null,
+      time: computeTaskTimeMeta(t),
+    }));
+
+    return {
+      list: tasksWithMeta,
+      grouped,        // <-- ال object اللي انت عايزه
+      statuses: Object.keys(grouped)
+    };
   });
+
+
 
 // ✅ makeSelectTaskDetails(taskId)
 // بيرجع تفاصيل تاسك واحدة كاملة:

@@ -3,11 +3,42 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ProjectCard from '../components/ProjectCard';
 import { makeSelectALLProjectsForUser } from '../store/selectors';
+import { useLocation } from 'react-router-dom';
 
 const ProjectsPage = () => {
   const { list, loading } = useSelector((state) => state.projects);
   const { user, role } = useSelector((state) => state.auth);
 
+   const location = useLocation();
+  
+  
+      useEffect(() => {
+        if (location.state?.scroll) {
+          console.log(location.state?.scroll)
+          const { sec, id } = location.state.scroll;
+    
+          const element = document.getElementById(sec);
+          if (element) {
+            const elementRect = element.getBoundingClientRect();
+            const absoluteElementTop = elementRect.top + window.pageYOffset;
+            const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
+    
+            window.scrollTo({ top: middle, behavior: 'smooth' });
+    
+            // Highlight
+            setHighlightId(sec);
+            setTarget(id); // <--- هنا بنحدد العنصر نفسه
+    
+            const timeout = setTimeout(() => {
+              setHighlightId(null);
+              setTarget(null);
+              navigate(location.pathname, { replace: true, state: {} });
+            }, 800);
+    
+            return () => clearTimeout(timeout);
+          }
+        }
+      }, [location.state]);
 
   // اسم أوضح للحالة
   const [projectsToShow, setProjectsToShow] = useState([]);

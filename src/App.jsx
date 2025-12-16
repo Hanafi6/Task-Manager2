@@ -28,14 +28,14 @@ import Notifications from "./pages/Notifications.jsx";
 import { fetchUsers } from "./slices/AuthSlice.js";
 
 // RTK Query hooks (تأكد المسار صحيح)
-import { archiveProject, fetchProjects, hideProject } from "./slices/projectsSlice.js";
+import { archiveProject, fetchProjects, hideProject, deletePermanentlyProject } from "./slices/projectsSlice.js";
 import { fetchNotifications } from "./slices/notificationsSlice.js";
 import { setOpenDiitailsDelete } from "./slices/Modals.js";
 
 
 
 
-const DitailsOfDelete = ({ project, onDelete, onClose }) => {
+const DitailsOfDelete = ({ project, list, onClose }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -84,9 +84,9 @@ const DitailsOfDelete = ({ project, onDelete, onClose }) => {
               placeholder="--Choose--"
               options={[
                 { value: "", label: "--Choose--", },
-                { value: "hide", label: "Hide", func: (project) => dispatch(hideProject(project)) },
-                { value: "delete", label: "Delete", func: (project) => onDelete(project) },
-                { value: "archive", label: "Archive", func: (project) => dispatch(archiveProject(project)) },
+                { value: "hide", label: "Hide", func: (project) => list.hide(project) },
+                { value: "delete", label: "Delete", func: (project) => list.delete(project) },
+                { value: "archive", label: "Archive", func: (project) => list.archive(project) },
                 { value: "stop", label: "Stop support", func: (project) => console.log(project) },
               ]}
               onChange={(opt) => {
@@ -158,7 +158,11 @@ export default function App() {
     <div className="min-h-screen bg-gray-100">
       <AnimatePresence mode="sync">
         {OpenDatilsDeleteProject && (
-          <DitailsOfDelete project={Project} onClose={e => dispatch(setOpenDiitailsDelete(false))} onDelete={(proj) => {
+          <DitailsOfDelete project={Project} onClose={e => dispatch(setOpenDiitailsDelete(false))} list={{
+            hide: (proj) => dispatch(hideProject(proj)),
+            delete: (proj) => dispatch(deletePermanentlyProject(proj)),
+            archive: (proj) => dispatch(archiveProject(proj)),
+          }} onDelete={(proj) => {
             dispatch(archiveProject(proj))
             navigate('/')
           }} />

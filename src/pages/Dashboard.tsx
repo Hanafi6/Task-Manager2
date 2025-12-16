@@ -19,13 +19,15 @@ const Dashboard: React.FC = () => {
   const tasks = useSelector((state: any) => state.projects.tasks);
 
   const [highlightId, setHighlightId] = useState<string | null>(null);
+  const [Target, setTarget] = useState<number | null>(null);
 
   // Scroll + Highlight
   useEffect(() => {
     if (location.state?.scroll) {
-      const element = document.getElementById(location.state.scroll);
+      const { sec, id } = location.state.scroll;
+
+      const element = document.getElementById(sec);
       if (element) {
-        // Scroll للمنتصف
         const elementRect = element.getBoundingClientRect();
         const absoluteElementTop = elementRect.top + window.pageYOffset;
         const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
@@ -33,18 +35,23 @@ const Dashboard: React.FC = () => {
         window.scrollTo({ top: middle, behavior: 'smooth' });
 
         // Highlight
-        setHighlightId(location.state.scroll);
+        setHighlightId(sec);
+        setTarget(id); // <--- هنا بنحدد العنصر نفسه
 
         const timeout = setTimeout(() => {
-          setHighlightId(null); // نمسح highlight
-          navigate(location.pathname, { replace: true, state: {} }); // نمسح state بعد الانتهاء
+          setHighlightId(null);
+          setTarget(null);
+          navigate(location.pathname, { replace: true, state: {} });
         }, 800);
 
-        return () => clearTimeout(timeout); // cleanup
+        return () => clearTimeout(timeout);
       }
     }
   }, [location.state]);
 
+
+
+  // console.log(tasks) 
 
 
   // Logout handler
@@ -69,10 +76,11 @@ const Dashboard: React.FC = () => {
     [projects]
   );
 
+
   // Actions
   const handleToggleHidden = (project: any) => {
     dispatch(hideProject(project));
-    dispatch(toggleProjectHidden(project.id)); // مشكلتك في إداره الحاله عشان انتا محدثتش الستور
+    // dispatch(toggleProjectHidden(project.id));
   };
 
   const handleRestoreProject = (project: any) => {
@@ -87,7 +95,8 @@ const Dashboard: React.FC = () => {
         <div className="flex items-center gap-4">
           <span>{user?.name?.slice(0, 8)}</span>
           <button onClick={handelLogOut}>
-            {!logoutLoading ? <LogOut /> : <div>...Logging Out</div>}
+
+            {!logoutLoading ? <LogOut /> : <div>...Logging Out  </div>}
           </button>
         </div>
       </header>
@@ -121,6 +130,8 @@ const Dashboard: React.FC = () => {
             projects={hiddenProjects}
             onToggleHidden={handleToggleHidden}
             onRestore={handleRestoreProject}
+
+            targetId={Target}  // <--- هنا
             highlightId={highlightId}
           />
           <ProjectsSection
@@ -130,6 +141,8 @@ const Dashboard: React.FC = () => {
             onToggleHidden={handleToggleHidden}
             onRestore={handleRestoreProject}
             highlightId={highlightId}
+            targetId={Target}  // <--- هنا
+
           />
         </div>
       )}
@@ -163,12 +176,12 @@ const StatCard = ({ title, count, color, completed }: any) => (
 );
 
 // ---- ProjectsSection Component ----
-const ProjectsSection = ({ idS, title, projects, onToggleHidden, onRestore, highlightId }: any) => (
+const ProjectsSection = ({ idS, title, projects, onToggleHidden, onRestore, highlightId, targetId }: any) => (
   <motion.div
     id={idS}
     className="rounded-lg shadow p-4"
     animate={{
-      backgroundColor: highlightId === idS ? "#fef3c7" : "#ffffff", // Highlight yellow
+      backgroundColor: highlightId === idS ? "#fef3c7" : "#ffffff",
       border: highlightId === idS ? "2px solid #f59e0b" : "2px solid transparent",
     }}
     transition={{ duration: 0.3 }}
@@ -180,8 +193,9 @@ const ProjectsSection = ({ idS, title, projects, onToggleHidden, onRestore, high
       {projects.map((project: any) => (
         <li
           key={project.id}
-          className={`flex justify-between items-center p-3 border rounded hover:bg-gray-50 ${project.hidden ? 'bg-gray-100 opacity-80' : ''
-            }`}
+          className={`flex justify-between items-center p-3 border rounded 
+            ${project.id === targetId ? 'bg-yellow-100 border-2 border-yellow-400' : ''} 
+            hover:bg-gray-50 ${project.hidden ? 'bg-gray-100 opacity-80' : ''}`}
         >
           <div>
             <div className={`font-semibold ${project.hidden ? 'line-through text-gray-400' : ''}`}>
@@ -220,5 +234,6 @@ const ProjectsSection = ({ idS, title, projects, onToggleHidden, onRestore, high
     </ul>
   </motion.div>
 );
+
 
 export default Dashboard;

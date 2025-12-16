@@ -1,9 +1,9 @@
 // components/ProjectCard.jsx
-import React, { use, useMemo } from "react";
+import React, { use, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { CircleArrowOutDownLeft, Delete } from "lucide-react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import TaskCard from "../components/TaskeCard"; // تأكد من المسار والاسم
 import { makeSelectTasksByProjectId } from "../store/selectors";
 import { setOpenDiitailsDelete } from "../slices/Modals";
@@ -83,9 +83,7 @@ export default function ProjectCard({
   const users = useSelector((s) => s.auth?.usersList || []);
   const { tasks: allFlatTasks = [] } = useSelector((s) => s.projects || { tasks: [] });
   const dispach = useDispatch();
-
-
-
+ 
 
   // --- Normalize IDs and inputs to avoid type-mismatch bugs ---
   const projId = project?.id;
@@ -106,7 +104,6 @@ export default function ProjectCard({
   }
 
   const pc = projectBadge(project || {}, tasks);
-
 
   const stats = showStats
     ? {
@@ -227,12 +224,14 @@ export default function ProjectCard({
                 // if You Clicked On It Will Rotion You To Hiddens Pages
                 <div
                   onClick={_ => {
-                    navigate('/dashboard', { state: { scroll: ProjectSection.HIDDEN } });
+                    navigate('/dashboard', { state: { scroll: { id: projId, sec: ProjectSection.HIDDEN } } });
                   }}
                   className="text-[#444] font-bold rounded p-1 bg-[#1f1f1f] duration-200 hover:text-[#fff] hover:bg-[#444] cursor-pointer "> Hided</div>
               }
 
-              <span className={`text-xs px-2 py-0.5 rounded ${pc.badgeCls}`}>{pc.badge}</span>
+              <span onClick={_ =>  {
+                project.status == 'completed' && navigate('/dashboard', { state: { scroll: { id: projId, sec: ProjectSection.ARCHIVED } } })
+              } } className={`text-xs px-2 cursor-pointer hover:bg-[#111] duration-200 py-0.5 rounded ${pc.badgeCls}`}>{pc.badge}</span>
               {mode === "mine" && (
                 <span className="text-xs px-2 flex items-center gap-2 py-0.5 rounded bg-gray-100 text-gray-700">
 

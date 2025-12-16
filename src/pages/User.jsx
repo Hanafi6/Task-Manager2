@@ -6,7 +6,7 @@ import TaskCard from "../components/TaskeCard";
 import {
   makeSelectUserProjects,
   makeSelectCollaboratorsPerProjectForUser,
-  makeSelectTasksByUser,
+  makeSelectTasks,
 } from "../store/selectors"; // عدّل المسار حسب مكانك
 
 export default function User() {
@@ -29,7 +29,7 @@ export default function User() {
   const collabTree = useSelector(selectCollabsPerProject);
   
   
-  const selectMyTasks = React.useMemo(() => makeSelectTasksByUser(uid), [uid]);
+  const selectMyTasks = React.useMemo(() => makeSelectTasks({userId:uid,role:user.role}), [uid]);
   const myTasks = useSelector(selectMyTasks);
 
 
