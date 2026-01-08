@@ -75,6 +75,7 @@
       ],
       "status": "active",
       "hidden": false,
+      "archived": false,
       "createdAt": "2025-01-05T09:00:00Z",
       "tasks": [
         {
@@ -114,6 +115,7 @@
       ],
       "status": "active",
       "hidden": false,
+      "archived": false,
       "tasks": [
         {
           "id": "t4",
@@ -123,11 +125,28 @@
           "assignedTo": "6"
         },
         {
-          "id": "t5",
-          "title": "Approval Workflow",
+          "id": "1767454563530",
+          "title": "Client Portal",
+          "description": "asdasdasdasdasd",
           "status": "active",
-          "priority": "high",
-          "assignedTo": "4"
+          "priority": "urgent",
+          "assignedTo": "4",
+          "createdBy": "1",
+          "requirements": [
+            "asdas"
+          ],
+          "acceptanceCriteria": [
+            "dasda"
+          ],
+          "labels": [
+            "sasdasd"
+          ],
+          "blockerNote": null,
+          "startAt": "2026-01-03T17:35",
+          "dueDate": "2026-01-04T17:35",
+          "estimateHours": 24,
+          "createdAt": "2026-01-03T15:36:03.548Z",
+          "updatedAt": "2026-01-03T15:36:03.548Z"
         }
       ]
     },
@@ -139,10 +158,32 @@
         "8",
         "9"
       ],
-      "status": "archived",
+      "status": "active",
       "hidden": false,
-      "archivedAt": null,
-      "archived": false
+      "archivedAt": "2026-01-03T14:53:17.385Z",
+      "archived": false,
+      "hiddenAt": null,
+      "tasks": [
+        {
+          "id": "1767451981755",
+          "title": "New Test Taske",
+          "description": ";pksodifgjidsomg",
+          "status": "active",
+          "priority": "urgent",
+          "assignedTo": "8",
+          "createdBy": "1",
+          "requirements": [],
+          "acceptanceCriteria": [],
+          "labels": [],
+          "blockerNote": null,
+          "startAt": null,
+          "dueDate": null,
+          "estimateHours": null,
+          "createdAt": "2026-01-03T14:53:01.772Z",
+          "updatedAt": "2026-01-03T14:53:01.772Z",
+          "projectId": "p3"
+        }
+      ]
     },
     {
       "id": "p4",
@@ -154,20 +195,23 @@
         "5"
       ],
       "status": "active",
-      "hidden": true,
-      "hiddenAt": "2025-01-18T10:30:00Z",
+      "hidden": false,
+      "archived": false,
+      "hiddenAt": null,
       "tasks": [
         {
           "id": "t7",
           "title": "Audit API Access",
           "status": "active",
-          "assignedTo": "3"
+          "assignedTo": "3",
+          "projectId": "p4"
         },
         {
           "id": "t8",
           "title": "Rotate Secrets",
           "status": "pending",
-          "assignedTo": "5"
+          "assignedTo": "5",
+          "projectId": "p4"
         }
       ]
     },
@@ -181,13 +225,32 @@
       ],
       "status": "stopped",
       "hidden": false,
+      "archived": false,
       "stoppedAt": "2025-01-10T09:00:00Z",
       "tasks": [
         {
-          "id": "t9",
-          "title": "Bug Fixes",
-          "status": "blocked",
-          "assignedTo": "6"
+          "id": "1767446712401",
+          "title": "Test Taske",
+          "description": "pfkgijhfudiognl;s.,fop0d9yhfunj",
+          "status": "active",
+          "priority": "urgent",
+          "assignedTo": "10",
+          "createdBy": "1",
+          "requirements": [
+            "asda"
+          ],
+          "acceptanceCriteria": [
+            "sdasd"
+          ],
+          "labels": [
+            "asdas"
+          ],
+          "blockerNote": null,
+          "startAt": "2026-01-03T15:25",
+          "dueDate": "2026-01-04T15:25",
+          "estimateHours": 24,
+          "createdAt": "2026-01-03T13:25:12.419Z",
+          "updatedAt": "2026-01-03T13:25:12.420Z"
         }
       ]
     },
@@ -201,350 +264,496 @@
       ],
       "status": "active",
       "hidden": false,
+      "archived": false,
+      "hiddenAt": null,
       "tasks": [
         {
-          "id": "t10",
-          "title": "Social Media Assets",
+          "id": "1767454098719",
+          "title": "landeng page",
+          "description": "ofmjdsioghniujfsdk ,mgoiudsfhnjm",
           "status": "active",
-          "assignedTo": "7"
+          "priority": "urgent",
+          "assignedTo": "7",
+          "createdBy": "1",
+          "requirements": [
+            "asd"
+          ],
+          "acceptanceCriteria": [
+            "asdas"
+          ],
+          "labels": [
+            "dasd"
+          ],
+          "blockerNote": null,
+          "startAt": "2026-01-03T17:28",
+          "dueDate": "2026-01-04T17:28",
+          "estimateHours": 24,
+          "createdAt": "2026-01-03T15:28:18.740Z",
+          "updatedAt": "2026-01-03T15:28:18.740Z",
+          "projectId": "p6"
         }
       ]
     }
   ],
   "BlokUsers": [],
   "archeiveTaskes": [],
-  "archeivePorjects": [
-
-  ],
+  "archeivePorjects": [],
   "notifications": [
     {
-      "id": "jFTsKA",
-      "type": "task_added own to 1",
+      "id": "yTZ0kx",
+      "type": "task_added team to p5",
       "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Marketing Dashboard\"",
-      "fromUserId": "1",
-      "toUserId": "1",
-      "projectId": null,
-      "taskId": "1767004859834",
-      "taskSnapshot": {
-        "id": "1767004859834",
-        "title": "Test Taske",
-        "description": "ffjjfoajdsfihasujdnsad",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "5",
-        "createdBy": "1",
-        "requirements": [
-          "dsa"
-        ],
-        "acceptanceCriteria": [
-          "dasda"
-        ],
-        "labels": [
-          "sdasd"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-12-29T12:40",
-        "dueDate": "2025-12-30T12:40",
-        "estimateHours": 24,
-        "createdAt": "2025-12-29T10:40:59.843Z",
-        "updatedAt": "2025-12-29T10:40:59.844Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-12-29T10:40:59.856Z"
-    },
-    {
-      "id": "C0Uxct",
-      "type": "task_added team to 1",
-      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Marketing Dashboard\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": null,
-      "taskId": "1767004859834",
-      "taskSnapshot": {
-        "id": "1767004859834",
-        "title": "Test Taske",
-        "description": "ffjjfoajdsfihasujdnsad",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "5",
-        "createdBy": "1",
-        "requirements": [
-          "dsa"
-        ],
-        "acceptanceCriteria": [
-          "dasda"
-        ],
-        "labels": [
-          "sdasd"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-12-29T12:40",
-        "dueDate": "2025-12-30T12:40",
-        "estimateHours": 24,
-        "createdAt": "2025-12-29T10:40:59.843Z",
-        "updatedAt": "2025-12-29T10:40:59.844Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-12-29T10:41:00.018Z"
-    },
-    {
-      "id": "PmRkNE",
-      "type": "task_added team to 1",
-      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Marketing Dashboard\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": null,
-      "taskId": "1767004859834",
-      "taskSnapshot": {
-        "id": "1767004859834",
-        "title": "Test Taske",
-        "description": "ffjjfoajdsfihasujdnsad",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "5",
-        "createdBy": "1",
-        "requirements": [
-          "dsa"
-        ],
-        "acceptanceCriteria": [
-          "dasda"
-        ],
-        "labels": [
-          "sdasd"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-12-29T12:40",
-        "dueDate": "2025-12-30T12:40",
-        "estimateHours": 24,
-        "createdAt": "2025-12-29T10:40:59.843Z",
-        "updatedAt": "2025-12-29T10:40:59.844Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-12-29T10:41:00.165Z"
-    },
-    {
-      "id": "SmUjOP",
-      "type": "task_added team to 1",
-      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Marketing Dashboard\"",
-      "fromUserId": "1",
-      "toUserId": "5",
-      "projectId": null,
-      "taskId": "1767004859834",
-      "taskSnapshot": {
-        "id": "1767004859834",
-        "title": "Test Taske",
-        "description": "ffjjfoajdsfihasujdnsad",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "5",
-        "createdBy": "1",
-        "requirements": [
-          "dsa"
-        ],
-        "acceptanceCriteria": [
-          "dasda"
-        ],
-        "labels": [
-          "sdasd"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-12-29T12:40",
-        "dueDate": "2025-12-30T12:40",
-        "estimateHours": 24,
-        "createdAt": "2025-12-29T10:40:59.843Z",
-        "updatedAt": "2025-12-29T10:40:59.844Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-12-29T10:41:00.191Z"
-    },
-    {
-      "id": "TAOwWl",
-      "type": "task_added team to 2",
-      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "2",
-      "projectId": "2",
-      "taskId": "1767194693734",
-      "taskSnapshot": {
-        "id": "1767194693734",
-        "title": "Test Taske",
-        "description": "fds;kfgijosdhunjkldsafipksedaf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "3",
-        "createdBy": "1",
-        "requirements": [
-          "asdas"
-        ],
-        "acceptanceCriteria": [
-          "dasd"
-        ],
-        "labels": [
-          "asdas"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-12-31T17:24",
-        "dueDate": "2026-01-01T17:24",
-        "estimateHours": 24,
-        "createdAt": "2025-12-31T15:24:53.757Z",
-        "updatedAt": "2025-12-31T15:24:53.757Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-12-31T15:24:53.775Z"
-    },
-    {
-      "id": "zoEI-a",
-      "type": "task_added team to 2",
-      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Mobile App Redesign\"",
-      "fromUserId": "1",
-      "toUserId": "3",
-      "projectId": "2",
-      "taskId": "1767194693734",
-      "taskSnapshot": {
-        "id": "1767194693734",
-        "title": "Test Taske",
-        "description": "fds;kfgijosdhunjkldsafipksedaf",
-        "status": "active",
-        "priority": "urgent",
-        "assignedTo": "3",
-        "createdBy": "1",
-        "requirements": [
-          "asdas"
-        ],
-        "acceptanceCriteria": [
-          "dasd"
-        ],
-        "labels": [
-          "asdas"
-        ],
-        "blockerNote": null,
-        "startAt": "2025-12-31T17:24",
-        "dueDate": "2026-01-01T17:24",
-        "estimateHours": 24,
-        "createdAt": "2025-12-31T15:24:53.757Z",
-        "updatedAt": "2025-12-31T15:24:53.757Z"
-      },
-      "meta": {
-        "phase": "added"
-      },
-      "status": "unread",
-      "createdAt": "2025-12-31T15:24:53.905Z"
-    },
-    {
-      "id": "cTpBsX",
-      "type": "task_added team to 2",
-      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Mobile App Redesign\"",
+      "message": "User 1 added a new task \"Test Taske\" to project \"Legacy CRM\"",
       "fromUserId": "1",
       "toUserId": "6",
-      "projectId": "2",
-      "taskId": "1767194693734",
+      "projectId": "p5",
+      "taskId": "1767446669361",
       "taskSnapshot": {
-        "id": "1767194693734",
+        "id": "1767446669361",
         "title": "Test Taske",
-        "description": "fds;kfgijosdhunjkldsafipksedaf",
+        "description": "fde;fjksu9idyhgjiufmokd",
         "status": "active",
         "priority": "urgent",
-        "assignedTo": "3",
+        "assignedTo": "6",
         "createdBy": "1",
         "requirements": [
-          "asdas"
+          "dfsfsdaf"
         ],
         "acceptanceCriteria": [
-          "dasd"
+          "dsfsd"
         ],
         "labels": [
-          "asdas"
+          "fsdfsfd"
         ],
         "blockerNote": null,
-        "startAt": "2025-12-31T17:24",
-        "dueDate": "2026-01-01T17:24",
+        "startAt": "2026-01-03T15:24",
+        "dueDate": "2026-01-04T15:24",
         "estimateHours": 24,
-        "createdAt": "2025-12-31T15:24:53.757Z",
-        "updatedAt": "2025-12-31T15:24:53.757Z"
+        "createdAt": "2026-01-03T13:24:29.381Z",
+        "updatedAt": "2026-01-03T13:24:29.381Z"
       },
       "meta": {
         "phase": "added"
       },
       "status": "unread",
-      "createdAt": "2025-12-31T15:24:54.090Z"
+      "createdAt": "2026-01-03T13:24:29.393Z"
     },
     {
-      "id": "RWW52G",
-      "type": "task_added own to 2",
+      "id": "JunEHC",
+      "type": "task_added team to p5",
       "title": "New Task Added: Test Taske by Mahmoud Ahmed",
-      "message": "User 1 added a new task \"Test Taske\" to project \"Mobile App Redesign\"",
+      "message": "User 1 added a new task \"Test Taske\" to project \"Legacy CRM\"",
       "fromUserId": "1",
-      "toUserId": "1",
-      "projectId": "2",
-      "taskId": "1767194693734",
+      "toUserId": "10",
+      "projectId": "p5",
+      "taskId": "1767446669361",
       "taskSnapshot": {
-        "id": "1767194693734",
+        "id": "1767446669361",
         "title": "Test Taske",
-        "description": "fds;kfgijosdhunjkldsafipksedaf",
+        "description": "fde;fjksu9idyhgjiufmokd",
         "status": "active",
         "priority": "urgent",
-        "assignedTo": "3",
+        "assignedTo": "6",
         "createdBy": "1",
         "requirements": [
-          "asdas"
+          "dfsfsdaf"
         ],
         "acceptanceCriteria": [
-          "dasd"
+          "dsfsd"
         ],
         "labels": [
-          "asdas"
+          "fsdfsfd"
         ],
         "blockerNote": null,
-        "startAt": "2025-12-31T17:24",
-        "dueDate": "2026-01-01T17:24",
+        "startAt": "2026-01-03T15:24",
+        "dueDate": "2026-01-04T15:24",
         "estimateHours": 24,
-        "createdAt": "2025-12-31T15:24:53.757Z",
-        "updatedAt": "2025-12-31T15:24:53.757Z"
+        "createdAt": "2026-01-03T13:24:29.381Z",
+        "updatedAt": "2026-01-03T13:24:29.381Z"
       },
       "meta": {
         "phase": "added"
       },
       "status": "unread",
-      "createdAt": "2025-12-31T15:24:54.120Z"
+      "createdAt": "2026-01-03T13:24:29.472Z"
     },
     {
-      "id": "eMvv4I",
-      "type": "user_login",
-      "title": "Welcome back, Mahmoud Ahmed!",
-      "message": "Mahmoud Ahmed logged in at 12/31/2025, 5:31:19 PM",
-      "fromUserId": null,
-      "toUserId": "1",
-      "projectId": null,
-      "taskId": null,
-      "taskSnapshot": null,
+      "id": "Oqqst9",
+      "type": "task_added team to p5",
+      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test Taske\" to project \"Legacy CRM\"",
+      "fromUserId": "1",
+      "toUserId": "6",
+      "projectId": "p5",
+      "taskId": "1767446712401",
+      "taskSnapshot": {
+        "id": "1767446712401",
+        "title": "Test Taske",
+        "description": "pfkgijhfudiognl;s.,fop0d9yhfunj",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "10",
+        "createdBy": "1",
+        "requirements": [
+          "asda"
+        ],
+        "acceptanceCriteria": [
+          "sdasd"
+        ],
+        "labels": [
+          "asdas"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T15:25",
+        "dueDate": "2026-01-04T15:25",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T13:25:12.419Z",
+        "updatedAt": "2026-01-03T13:25:12.420Z"
+      },
       "meta": {
-        "source": "auth-listener",
-        "event": "login"
+        "phase": "added"
       },
       "status": "unread",
-      "createdAt": "2025-12-31T15:31:19.246Z"
+      "createdAt": "2026-01-03T13:25:12.434Z"
+    },
+    {
+      "id": "Vl1dTN",
+      "type": "task_added team to p5",
+      "title": "New Task Added: Test Taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Test Taske\" to project \"Legacy CRM\"",
+      "fromUserId": "1",
+      "toUserId": "10",
+      "projectId": "p5",
+      "taskId": "1767446712401",
+      "taskSnapshot": {
+        "id": "1767446712401",
+        "title": "Test Taske",
+        "description": "pfkgijhfudiognl;s.,fop0d9yhfunj",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "10",
+        "createdBy": "1",
+        "requirements": [
+          "asda"
+        ],
+        "acceptanceCriteria": [
+          "sdasd"
+        ],
+        "labels": [
+          "asdas"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T15:25",
+        "dueDate": "2026-01-04T15:25",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T13:25:12.419Z",
+        "updatedAt": "2026-01-03T13:25:12.420Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T13:25:12.524Z"
+    },
+    {
+      "id": "TCXSGb",
+      "type": "task_added team to p3",
+      "title": "New Task Added: New Test Taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"New Test Taske\" to project \"Landing Page Redesign\"",
+      "fromUserId": "1",
+      "toUserId": "8",
+      "projectId": "p3",
+      "taskId": "1767451981755",
+      "taskSnapshot": {
+        "id": "1767451981755",
+        "title": "New Test Taske",
+        "description": ";pksodifgjidsomg",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "8",
+        "createdBy": "1",
+        "requirements": [],
+        "acceptanceCriteria": [],
+        "labels": [],
+        "blockerNote": null,
+        "startAt": null,
+        "dueDate": null,
+        "estimateHours": null,
+        "createdAt": "2026-01-03T14:53:01.772Z",
+        "updatedAt": "2026-01-03T14:53:01.772Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T14:53:01.785Z"
+    },
+    {
+      "id": "z27Eas",
+      "type": "task_added team to p3",
+      "title": "New Task Added: New Test Taske by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"New Test Taske\" to project \"Landing Page Redesign\"",
+      "fromUserId": "1",
+      "toUserId": "9",
+      "projectId": "p3",
+      "taskId": "1767451981755",
+      "taskSnapshot": {
+        "id": "1767451981755",
+        "title": "New Test Taske",
+        "description": ";pksodifgjidsomg",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "8",
+        "createdBy": "1",
+        "requirements": [],
+        "acceptanceCriteria": [],
+        "labels": [],
+        "blockerNote": null,
+        "startAt": null,
+        "dueDate": null,
+        "estimateHours": null,
+        "createdAt": "2026-01-03T14:53:01.772Z",
+        "updatedAt": "2026-01-03T14:53:01.772Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T14:53:01.871Z"
+    },
+    {
+      "id": "_RWpNV",
+      "type": "task_added team to p6",
+      "title": "New Task Added: landeng page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"landeng page\" to project \"Marketing Campaign\"",
+      "fromUserId": "1",
+      "toUserId": "7",
+      "projectId": "p6",
+      "taskId": "1767454098719",
+      "taskSnapshot": {
+        "id": "1767454098719",
+        "title": "landeng page",
+        "description": "ofmjdsioghniujfsdk ,mgoiudsfhnjm",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "7",
+        "createdBy": "1",
+        "requirements": [
+          "asd"
+        ],
+        "acceptanceCriteria": [
+          "asdas"
+        ],
+        "labels": [
+          "dasd"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T17:28",
+        "dueDate": "2026-01-04T17:28",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T15:28:18.740Z",
+        "updatedAt": "2026-01-03T15:28:18.740Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T15:28:18.752Z"
+    },
+    {
+      "id": "6tsbuS",
+      "type": "task_added team to p6",
+      "title": "New Task Added: landeng page by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"landeng page\" to project \"Marketing Campaign\"",
+      "fromUserId": "1",
+      "toUserId": "9",
+      "projectId": "p6",
+      "taskId": "1767454098719",
+      "taskSnapshot": {
+        "id": "1767454098719",
+        "title": "landeng page",
+        "description": "ofmjdsioghniujfsdk ,mgoiudsfhnjm",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "7",
+        "createdBy": "1",
+        "requirements": [
+          "asd"
+        ],
+        "acceptanceCriteria": [
+          "asdas"
+        ],
+        "labels": [
+          "dasd"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T17:28",
+        "dueDate": "2026-01-04T17:28",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T15:28:18.740Z",
+        "updatedAt": "2026-01-03T15:28:18.740Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T15:28:18.832Z"
+    },
+    {
+      "id": "9cbYn6",
+      "type": "task_added team to p2",
+      "title": "New Task Added: Client Portal by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Client Portal\" to project \"Client Portal\"",
+      "fromUserId": "1",
+      "toUserId": "4",
+      "projectId": "p2",
+      "taskId": "1767454563530",
+      "taskSnapshot": {
+        "id": "1767454563530",
+        "title": "Client Portal",
+        "description": "asdasdasdasdasd",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "4",
+        "createdBy": "1",
+        "requirements": [
+          "asdas"
+        ],
+        "acceptanceCriteria": [
+          "dasda"
+        ],
+        "labels": [
+          "sasdasd"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T17:35",
+        "dueDate": "2026-01-04T17:35",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T15:36:03.548Z",
+        "updatedAt": "2026-01-03T15:36:03.548Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T15:36:03.559Z"
+    },
+    {
+      "id": "lb4EVM",
+      "type": "task_added team to p2",
+      "title": "New Task Added: Client Portal by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Client Portal\" to project \"Client Portal\"",
+      "fromUserId": "1",
+      "toUserId": "5",
+      "projectId": "p2",
+      "taskId": "1767454563530",
+      "taskSnapshot": {
+        "id": "1767454563530",
+        "title": "Client Portal",
+        "description": "asdasdasdasdasd",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "4",
+        "createdBy": "1",
+        "requirements": [
+          "asdas"
+        ],
+        "acceptanceCriteria": [
+          "dasda"
+        ],
+        "labels": [
+          "sasdasd"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T17:35",
+        "dueDate": "2026-01-04T17:35",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T15:36:03.548Z",
+        "updatedAt": "2026-01-03T15:36:03.548Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T15:36:03.656Z"
+    },
+    {
+      "id": "THfv_7",
+      "type": "task_added team to p2",
+      "title": "New Task Added: Client Portal by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Client Portal\" to project \"Client Portal\"",
+      "fromUserId": "1",
+      "toUserId": "6",
+      "projectId": "p2",
+      "taskId": "1767454563530",
+      "taskSnapshot": {
+        "id": "1767454563530",
+        "title": "Client Portal",
+        "description": "asdasdasdasdasd",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "4",
+        "createdBy": "1",
+        "requirements": [
+          "asdas"
+        ],
+        "acceptanceCriteria": [
+          "dasda"
+        ],
+        "labels": [
+          "sasdasd"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T17:35",
+        "dueDate": "2026-01-04T17:35",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T15:36:03.548Z",
+        "updatedAt": "2026-01-03T15:36:03.548Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T15:36:03.688Z"
+    },
+    {
+      "id": "peIjyb",
+      "type": "task_added team to p2",
+      "title": "New Task Added: Client Portal by Mahmoud Ahmed",
+      "message": "User 1 added a new task \"Client Portal\" to project \"Client Portal\"",
+      "fromUserId": "1",
+      "toUserId": "9",
+      "projectId": "p2",
+      "taskId": "1767454563530",
+      "taskSnapshot": {
+        "id": "1767454563530",
+        "title": "Client Portal",
+        "description": "asdasdasdasdasd",
+        "status": "active",
+        "priority": "urgent",
+        "assignedTo": "4",
+        "createdBy": "1",
+        "requirements": [
+          "asdas"
+        ],
+        "acceptanceCriteria": [
+          "dasda"
+        ],
+        "labels": [
+          "sasdasd"
+        ],
+        "blockerNote": null,
+        "startAt": "2026-01-03T17:35",
+        "dueDate": "2026-01-04T17:35",
+        "estimateHours": 24,
+        "createdAt": "2026-01-03T15:36:03.548Z",
+        "updatedAt": "2026-01-03T15:36:03.548Z"
+      },
+      "meta": {
+        "phase": "added"
+      },
+      "status": "unread",
+      "createdAt": "2026-01-03T15:36:03.705Z"
     }
   ]
 }

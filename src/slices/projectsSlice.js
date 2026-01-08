@@ -221,29 +221,38 @@ export const stopProject = createAsyncThunk(
     }
   }
 );
-
-// 🟦 Hide Project
+// 🟦 Toggle Hide / Show Project
 export const hideProject = createAsyncThunk(
   "projects/toggleProjectHidden",
-  async (project, { rejectWithValue,getState }) => {
-
+  async (project, { rejectWithValue, getState }) => {
     try {
       const { tasks } = getState().projects;
-      const TasksOfProject = tasks.find(e => e.projectId == project.id)
 
-      const updated = {
+        // كل التاسكات الخاصة بالمشروع
+      const projectTasks = tasks.filter(
+        t => t.projectId === project.id
+      );
+  
+      const isHidden = project.hidden === true;
+
+      const updatedProject = {
         ...project,
-        hidden: !project.hidden,
-        hiddenAt: !project.hidden ? new Date().toISOString() : null,
-        tasks:TasksOfProject
+        hidden: !isHidden,
+        hiddenAt: isHidden ? null : new Date().toISOString(),
+        tasks: projectTasks,
       };
 
-      console.log(updated)
+      const saved = await updateData(
+        "projects",
+        project.id,
+        updatedProject
+      );
 
-      const saved = await updateData("projects", project.id, updated);
       return saved;
     } catch (err) {
-      return rejectWithValue(err.message || "Failed to toggle project hidden");
+      return rejectWithValue(
+        err.message || "Failed to toggle project hidden"
+      );
     }
   }
 );

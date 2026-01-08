@@ -13,6 +13,7 @@ const AddTaskToProject = () => {
   const projects = useSelector(selectProjects);
   const selectProject = useSelector((state) => state.projects.selectProject);
   const users = useSelector(selectUsers);
+  
   const { user } = useSelector((state) => state.auth);
 
   const [warning, setWarning] = useState("");
@@ -57,9 +58,11 @@ const AddTaskToProject = () => {
 
   // Set members when project changes
   useEffect(() => {
-    if (selectProject) {
-      const memberIds = selectProject.members || [];
-      setMembers(users.filter((u) => memberIds.includes(Number(u.id) || u.id)));
+    if (selectProject && projectId) {
+      const memberIds = selectProject.members || users.filter(e => e.id);
+      setMembers(users.filter((u) => memberIds.includes(u.id )));
+  console.log(members)
+      
     } else {
       setMembers([]);
     }
@@ -98,7 +101,7 @@ const AddTaskToProject = () => {
       description: form.description,
       status: "active",
       priority: form.priority,
-      assignedTo: form.assignedTo || null, // يمكن يكون null
+      assignedTo: form.assignedTo , // يمكن يكون null
       createdBy: user.id,
       requirements: form.requirements
         ? form.requirements.split(",").map((s) => s.trim())
@@ -124,7 +127,6 @@ const AddTaskToProject = () => {
       setWarning(err.message || "Failed to add task.");
     }
   };
-
   return (
     <form
       onSubmit={handleSubmit}

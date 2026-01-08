@@ -28,9 +28,12 @@ export default function ProjectsAccordionUnified({ mode = "auto" }) {
   const filteredProjects =
     resolvedMode === "all"
       ? projects
-      : projects.filter((p) => p.leaderId === uid || p.members?.includes(uid));
+      : projects.filter((p) => p.leaderId == Number(uid) || p.members?.includes(`${uid}`));
+
+
 
   if (loading) return <Skeleton />;
+
 
   return (
     <ul className="space-y-3">

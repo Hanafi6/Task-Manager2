@@ -84,7 +84,6 @@ export default function ProjectCard({
   const { tasks: allFlatTasks = [] } = useSelector((s) => s.projects || { tasks: [] });
   const dispach = useDispatch();
 
-
   // --- Normalize IDs and inputs to avoid type-mismatch bugs ---
   const projId = project?.id;
   const numericCurrentUserId = currentUserId != null ? Number(currentUserId) : null;

@@ -17,6 +17,8 @@ const TasksPage: React.FC = () => {
     selectTasks(state)
   );
 
+  console.log(statuses, grouped,user.id);
+
   // 🔥 Active tab state
   const [activeTab, setActiveTab] = useState( "done");
 

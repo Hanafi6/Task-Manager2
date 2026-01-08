@@ -218,6 +218,8 @@ function ViweerSingelTaske() {
     }
   };
 
+
+
   return (
     <div className="container mx-auto px-6 py-8 space-y-6">
       {/* Breadcrumbs */}
@@ -255,7 +257,7 @@ function ViweerSingelTaske() {
             Start / Open
           </button>
 
-          {!currentUser.role == 'user' && (
+          {currentUser.role == 'admin' && (
             <motion.button
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 260, damping: 15 }}

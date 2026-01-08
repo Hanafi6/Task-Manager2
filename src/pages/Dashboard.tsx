@@ -24,6 +24,7 @@ const Dashboard: React.FC = () => {
     [projects]
   );
 
+
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const [targetId, setTargetId] = useState<string | null>(null);
 
@@ -35,6 +36,7 @@ const Dashboard: React.FC = () => {
     const element = document.getElementById(sec);
 
     if (!element) return;
+
 
     const rect = element.getBoundingClientRect();
     const top =
@@ -78,6 +80,22 @@ const Dashboard: React.FC = () => {
     [projects]
   );
 
+  const taps = projects.reduce((acc: any, proj: any) => {
+    if (proj.hidden) acc.hidden.push(proj);
+    else if (proj.status === "archived") acc.archived.push(proj);
+    else if (
+      proj.status === "completed" ||
+      proj.status === "done" ||
+      proj.status === "finished"
+    ) {
+      acc.completed.push(proj);
+    } else {
+      acc.active.push(proj);
+    }
+
+    return acc;
+  }, { hidden: [] as any[], archived: [] as any[], completed: [] as any[], active: [] as any[] });
+
   // -------------------- Actions --------------------
   const handleToggleHidden = (project: any) => {
     dispatch(hideProject(project));
@@ -102,44 +120,36 @@ const Dashboard: React.FC = () => {
       </header>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="w-[200px] bg-red-300 absolute left-[-200px]">
+      <div className="grid grid-rows-1 md:grid-rows-3 gap-6 mb-8">
         <StatCard title="Users" count={users.length} color="blue" />
         <StatCard title="Projects" count={projects.length} color="green" />
         <StatCard title="Tasks" count={tasks.length} color="purple" />
+      </div> 
       </div>
+
+
 
       {/* Projects Sections (Admin only) */}
       {user?.role === "admin" && (
         <div className="space-y-6">
-          <ProjectsSection
-            idS={ProjectSection.ACTIVE}
-            title="Active Projects"
-            projects={activeProjects}
-            onToggleHidden={handleToggleHidden}
-            onRestore={handleRestoreProject}
-            highlightId={highlightId}
-            targetId={targetId}
-          />
-
-          <ProjectsSection
-            idS={ProjectSection.HIDDEN}
-            title="Hidden Projects"
-            projects={hiddenProjects}
-            onToggleHidden={handleToggleHidden}
-            onRestore={handleRestoreProject}
-            highlightId={highlightId}
-            targetId={targetId}
-          />
-
-          <ProjectsSection
-            idS={ProjectSection.ARCHIVED}
-            title="Archived Projects"
-            projects={archivedProjects}
-            onToggleHidden={handleToggleHidden}
-            onRestore={handleRestoreProject}
-            highlightId={highlightId}
-            targetId={targetId}
-          />
+          {[
+            { idS: ProjectSection.ACTIVE, title: "Active Projects", projects: taps.active },
+            { idS: ProjectSection.HIDDEN, title: "Hidden Projects", projects: taps.hidden },
+            { idS: ProjectSection.ARCHIVED, title: "Archived Projects", projects: taps.archived },
+            { idS: ProjectSection.ARCHIVED, title: "Completed Projects", projects: taps.completed },
+          ].map(({ idS, title, projects: sectionProjects }) => (
+            <ProjectsSection
+              key={title}
+              idS={idS}
+              title={title}
+              projects={sectionProjects}
+              onToggleHidden={handleToggleHidden}
+              onRestore={handleRestoreProject}
+              highlightId={highlightId}
+              targetId={targetId}
+            />
+          ))}
         </div>
       )}
     </div>
